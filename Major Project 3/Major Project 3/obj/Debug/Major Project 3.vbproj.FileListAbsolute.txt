@@ -1,0 +1,2 @@
+K:\Information Systems Development\Projects\Major Project 3\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
