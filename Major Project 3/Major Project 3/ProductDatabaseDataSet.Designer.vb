@@ -345,7 +345,7 @@ Partial Public Class ProductDatabaseDataSet
         
         Private columnBrand As Global.System.Data.DataColumn
         
-        Private _columnDiscount__ As Global.System.Data.DataColumn
+        Private columnDiscount As Global.System.Data.DataColumn
         
         Private columnYTD_Purchases As Global.System.Data.DataColumn
         
@@ -474,9 +474,9 @@ Partial Public Class ProductDatabaseDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property _Discount__Column() As Global.System.Data.DataColumn
+        Public ReadOnly Property DiscountColumn() As Global.System.Data.DataColumn
             Get
-                Return Me._columnDiscount__
+                Return Me.columnDiscount
             End Get
         End Property
         
@@ -525,9 +525,9 @@ Partial Public Class ProductDatabaseDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddProductRow(ByVal Product_ID As Short, ByVal Product_Name As String, ByVal parentVendorRowByVendorProduct As VendorRow, ByVal Product_Unit_Price As Decimal, ByVal Product_Cost As Decimal, ByVal Quantity_On_Hand As Short, ByVal Quantity_On_Order As Short, ByVal Product_Lead_Time As Short, ByVal Product_Reorder_Level As String, ByVal Product_Line As String, ByVal Brand As String, ByVal _Discount__ As Decimal, ByVal YTD_Purchases As Decimal) As ProductRow
+        Public Overloads Function AddProductRow(ByVal Product_ID As Short, ByVal Product_Name As String, ByVal parentVendorRowByVendorProduct As VendorRow, ByVal Product_Unit_Price As Decimal, ByVal Product_Cost As Decimal, ByVal Quantity_On_Hand As Short, ByVal Quantity_On_Order As Short, ByVal Product_Lead_Time As Short, ByVal Product_Reorder_Level As String, ByVal Product_Line As String, ByVal Brand As String, ByVal Discount As Double, ByVal YTD_Purchases As Decimal) As ProductRow
             Dim rowProductRow As ProductRow = CType(Me.NewRow,ProductRow)
-            Dim columnValuesArray() As Object = New Object() {Product_ID, Product_Name, Nothing, Product_Unit_Price, Product_Cost, Quantity_On_Hand, Quantity_On_Order, Product_Lead_Time, Product_Reorder_Level, Product_Line, Brand, _Discount__, YTD_Purchases}
+            Dim columnValuesArray() As Object = New Object() {Product_ID, Product_Name, Nothing, Product_Unit_Price, Product_Cost, Quantity_On_Hand, Quantity_On_Order, Product_Lead_Time, Product_Reorder_Level, Product_Line, Brand, Discount, YTD_Purchases}
             If (Not (parentVendorRowByVendorProduct) Is Nothing) Then
                 columnValuesArray(2) = parentVendorRowByVendorProduct(0)
             End If
@@ -570,7 +570,7 @@ Partial Public Class ProductDatabaseDataSet
             Me.columnProduct_Reorder_Level = MyBase.Columns("Product_Reorder_Level")
             Me.columnProduct_Line = MyBase.Columns("Product_Line")
             Me.columnBrand = MyBase.Columns("Brand")
-            Me._columnDiscount__ = MyBase.Columns("Discount %")
+            Me.columnDiscount = MyBase.Columns("Discount")
             Me.columnYTD_Purchases = MyBase.Columns("YTD_Purchases")
         End Sub
         
@@ -599,10 +599,8 @@ Partial Public Class ProductDatabaseDataSet
             MyBase.Columns.Add(Me.columnProduct_Line)
             Me.columnBrand = New Global.System.Data.DataColumn("Brand", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnBrand)
-            Me._columnDiscount__ = New Global.System.Data.DataColumn("Discount %", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            Me._columnDiscount__.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnDiscount__")
-            Me._columnDiscount__.ExtendedProperties.Add("Generator_UserColumnName", "Discount %")
-            MyBase.Columns.Add(Me._columnDiscount__)
+            Me.columnDiscount = New Global.System.Data.DataColumn("Discount", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDiscount)
             Me.columnYTD_Purchases = New Global.System.Data.DataColumn("YTD_Purchases", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnYTD_Purchases)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnProduct_ID}, true))
@@ -1361,16 +1359,16 @@ Partial Public Class ProductDatabaseDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property _Discount__() As Decimal
+        Public Property Discount() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tableProduct._Discount__Column),Decimal)
+                    Return CType(Me(Me.tableProduct.DiscountColumn),Double)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Discount %' in table 'Product' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Discount' in table 'Product' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableProduct._Discount__Column) = value
+                Me(Me.tableProduct.DiscountColumn) = value
             End Set
         End Property
         
@@ -1522,14 +1520,14 @@ Partial Public Class ProductDatabaseDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Is_Discount__Null() As Boolean
-            Return Me.IsNull(Me.tableProduct._Discount__Column)
+        Public Function IsDiscountNull() As Boolean
+            Return Me.IsNull(Me.tableProduct.DiscountColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Set_Discount__Null()
-            Me(Me.tableProduct._Discount__Column) = Global.System.Convert.DBNull
+        Public Sub SetDiscountNull()
+            Me(Me.tableProduct.DiscountColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2146,7 +2144,7 @@ Namespace ProductDatabaseDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Product_Reorder_Level", "Product_Reorder_Level")
             tableMapping.ColumnMappings.Add("Product_Line", "Product_Line")
             tableMapping.ColumnMappings.Add("Brand", "Brand")
-            tableMapping.ColumnMappings.Add("Discount %", "Discount %")
+            tableMapping.ColumnMappings.Add("Discount", "Discount")
             tableMapping.ColumnMappings.Add("YTD_Purchases", "YTD_Purchases")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.OleDb.OleDbCommand()
@@ -2160,8 +2158,8 @@ Namespace ProductDatabaseDataSetTableAdapters
                 "oduct_Lead_Time` IS NULL) OR (`Product_Lead_Time` = ?)) AND ((? = 1 AND `Product"& _ 
                 "_Reorder_Level` IS NULL) OR (`Product_Reorder_Level` = ?)) AND ((? = 1 AND `Prod"& _ 
                 "uct_Line` IS NULL) OR (`Product_Line` = ?)) AND ((? = 1 AND `Brand` IS NULL) OR "& _ 
-                "(`Brand` = ?)) AND ((? = 1 AND `Discount %` IS NULL) OR (`Discount %` = ?)) AND "& _ 
-                "((? = 1 AND `YTD_Purchases` IS NULL) OR (`YTD_Purchases` = ?)))"
+                "(`Brand` = ?)) AND ((? = 1 AND `Discount` IS NULL) OR (`Discount` = ?)) AND ((? "& _ 
+                "= 1 AND `YTD_Purchases` IS NULL) OR (`YTD_Purchases` = ?)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Product_ID", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Product_Name", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Name", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -2184,16 +2182,16 @@ Namespace ProductDatabaseDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Product_Line", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Line", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Brand", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Brand", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Brand", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Brand", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Discount_%", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount %", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Discount_%", Global.System.Data.OleDb.OleDbType.Currency, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount %", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Discount", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Discount", Global.System.Data.OleDb.OleDbType.[Double], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_YTD_Purchases", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "YTD_Purchases", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_YTD_Purchases", Global.System.Data.OleDb.OleDbType.Numeric, 0, Global.System.Data.ParameterDirection.Input, CType(12,Byte), CType(0,Byte), "YTD_Purchases", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `Product` (`Product_ID`, `Product_Name`, `Vendor_ID`, `Product_Unit_P"& _ 
                 "rice`, `Product_Cost`, `Quantity_On_Hand`, `Quantity_On_Order`, `Product_Lead_Ti"& _ 
-                "me`, `Product_Reorder_Level`, `Product_Line`, `Brand`, `Discount %`, `YTD_Purcha"& _ 
-                "ses`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                "me`, `Product_Reorder_Level`, `Product_Line`, `Brand`, `Discount`, `YTD_Purchase"& _ 
+                "s`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Product_ID", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Product_Name", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Name", Global.System.Data.DataRowVersion.Current, false, Nothing))
@@ -2206,25 +2204,25 @@ Namespace ProductDatabaseDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Product_Reorder_Level", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Reorder_Level", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Product_Line", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Line", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Brand", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Brand", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Discount_%", Global.System.Data.OleDb.OleDbType.Currency, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount %", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Discount", Global.System.Data.OleDb.OleDbType.[Double], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("YTD_Purchases", Global.System.Data.OleDb.OleDbType.Numeric, 0, Global.System.Data.ParameterDirection.Input, CType(12,Byte), CType(0,Byte), "YTD_Purchases", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `Product` SET `Product_ID` = ?, `Product_Name` = ?, `Vendor_ID` = ?, `Prod"& _ 
                 "uct_Unit_Price` = ?, `Product_Cost` = ?, `Quantity_On_Hand` = ?, `Quantity_On_Or"& _ 
                 "der` = ?, `Product_Lead_Time` = ?, `Product_Reorder_Level` = ?, `Product_Line` ="& _ 
-                " ?, `Brand` = ?, `Discount %` = ?, `YTD_Purchases` = ? WHERE ((`Product_ID` = ?)"& _ 
-                " AND ((? = 1 AND `Product_Name` IS NULL) OR (`Product_Name` = ?)) AND ((? = 1 AN"& _ 
-                "D `Vendor_ID` IS NULL) OR (`Vendor_ID` = ?)) AND ((? = 1 AND `Product_Unit_Price"& _ 
-                "` IS NULL) OR (`Product_Unit_Price` = ?)) AND ((? = 1 AND `Product_Cost` IS NULL"& _ 
-                ") OR (`Product_Cost` = ?)) AND ((? = 1 AND `Quantity_On_Hand` IS NULL) OR (`Quan"& _ 
-                "tity_On_Hand` = ?)) AND ((? = 1 AND `Quantity_On_Order` IS NULL) OR (`Quantity_O"& _ 
-                "n_Order` = ?)) AND ((? = 1 AND `Product_Lead_Time` IS NULL) OR (`Product_Lead_Ti"& _ 
-                "me` = ?)) AND ((? = 1 AND `Product_Reorder_Level` IS NULL) OR (`Product_Reorder_"& _ 
-                "Level` = ?)) AND ((? = 1 AND `Product_Line` IS NULL) OR (`Product_Line` = ?)) AN"& _ 
-                "D ((? = 1 AND `Brand` IS NULL) OR (`Brand` = ?)) AND ((? = 1 AND `Discount %` IS"& _ 
-                " NULL) OR (`Discount %` = ?)) AND ((? = 1 AND `YTD_Purchases` IS NULL) OR (`YTD_"& _ 
-                "Purchases` = ?)))"
+                " ?, `Brand` = ?, `Discount` = ?, `YTD_Purchases` = ? WHERE ((`Product_ID` = ?) A"& _ 
+                "ND ((? = 1 AND `Product_Name` IS NULL) OR (`Product_Name` = ?)) AND ((? = 1 AND "& _ 
+                "`Vendor_ID` IS NULL) OR (`Vendor_ID` = ?)) AND ((? = 1 AND `Product_Unit_Price` "& _ 
+                "IS NULL) OR (`Product_Unit_Price` = ?)) AND ((? = 1 AND `Product_Cost` IS NULL) "& _ 
+                "OR (`Product_Cost` = ?)) AND ((? = 1 AND `Quantity_On_Hand` IS NULL) OR (`Quanti"& _ 
+                "ty_On_Hand` = ?)) AND ((? = 1 AND `Quantity_On_Order` IS NULL) OR (`Quantity_On_"& _ 
+                "Order` = ?)) AND ((? = 1 AND `Product_Lead_Time` IS NULL) OR (`Product_Lead_Time"& _ 
+                "` = ?)) AND ((? = 1 AND `Product_Reorder_Level` IS NULL) OR (`Product_Reorder_Le"& _ 
+                "vel` = ?)) AND ((? = 1 AND `Product_Line` IS NULL) OR (`Product_Line` = ?)) AND "& _ 
+                "((? = 1 AND `Brand` IS NULL) OR (`Brand` = ?)) AND ((? = 1 AND `Discount` IS NUL"& _ 
+                "L) OR (`Discount` = ?)) AND ((? = 1 AND `YTD_Purchases` IS NULL) OR (`YTD_Purcha"& _ 
+                "ses` = ?)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Product_ID", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Product_Name", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Name", Global.System.Data.DataRowVersion.Current, false, Nothing))
@@ -2237,7 +2235,7 @@ Namespace ProductDatabaseDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Product_Reorder_Level", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Reorder_Level", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Product_Line", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Line", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Brand", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Brand", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Discount_%", Global.System.Data.OleDb.OleDbType.Currency, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount %", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Discount", Global.System.Data.OleDb.OleDbType.[Double], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("YTD_Purchases", Global.System.Data.OleDb.OleDbType.Numeric, 0, Global.System.Data.ParameterDirection.Input, CType(12,Byte), CType(0,Byte), "YTD_Purchases", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Product_ID", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Product_Name", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Name", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -2260,8 +2258,8 @@ Namespace ProductDatabaseDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Product_Line", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Line", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Brand", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Brand", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Brand", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Brand", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Discount_%", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount %", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Discount_%", Global.System.Data.OleDb.OleDbType.Currency, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount %", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_Discount", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Discount", Global.System.Data.OleDb.OleDbType.[Double], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Discount", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_YTD_Purchases", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "YTD_Purchases", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_YTD_Purchases", Global.System.Data.OleDb.OleDbType.Numeric, 0, Global.System.Data.ParameterDirection.Input, CType(12,Byte), CType(0,Byte), "YTD_Purchases", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
@@ -2281,7 +2279,7 @@ Namespace ProductDatabaseDataSetTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Product_ID, Product_Name, Vendor_ID, Product_Unit_Price, Product_Cost, Qua"& _ 
                 "ntity_On_Hand, Quantity_On_Order, Product_Lead_Time, Product_Reorder_Level, Prod"& _ 
-                "uct_Line, Brand, [Discount %], YTD_Purchases FROM Product"
+                "uct_Line, Brand, Discount, YTD_Purchases FROM Product"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -2341,67 +2339,34 @@ Namespace ProductDatabaseDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Product_ID As Short, ByVal Original_Product_Name As String, ByVal Original_Vendor_ID As Global.System.Nullable(Of Short), ByVal Original_Product_Unit_Price As Global.System.Nullable(Of Decimal), ByVal Original_Product_Cost As Global.System.Nullable(Of Decimal), ByVal Original_Quantity_On_Hand As Global.System.Nullable(Of Short), ByVal Original_Quantity_On_Order As Global.System.Nullable(Of Short), ByVal Original_Product_Lead_Time As Global.System.Nullable(Of Short), ByVal Original_Product_Reorder_Level As String, ByVal Original_Product_Line As String, ByVal Original_Brand As String, ByVal _Original_Discount__ As Global.System.Nullable(Of Decimal), ByVal Original_YTD_Purchases As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Product_ID As Short, ByVal Original_Product_Name As String, ByVal Original_Vendor_ID As Short, ByVal Original_Product_Unit_Price As Decimal, ByVal Original_Product_Cost As Decimal, ByVal Original_Quantity_On_Hand As Short, ByVal Original_Quantity_On_Order As Short, ByVal Original_Product_Lead_Time As Short, ByVal Original_Product_Reorder_Level As String, ByVal Original_Product_Line As String, ByVal Original_Brand As String, ByVal Original_Discount As Global.System.Nullable(Of Double), ByVal Original_YTD_Purchases As Decimal) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Product_ID,Short)
             If (Original_Product_Name Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Product_Name")
             Else
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Product_Name,String)
             End If
-            If (Original_Vendor_ID.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Vendor_ID.Value,Short)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Product_Unit_Price.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Product_Unit_Price.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Product_Cost.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Product_Cost.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Quantity_On_Hand.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Quantity_On_Hand.Value,Short)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Quantity_On_Order.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Quantity_On_Order.Value,Short)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Product_Lead_Time.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Product_Lead_Time.Value,Short)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Vendor_ID,Short)
+            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Product_Unit_Price,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Product_Cost,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Quantity_On_Hand,Short)
+            Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Quantity_On_Order,Short)
+            Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Product_Lead_Time,Short)
             If (Original_Product_Reorder_Level Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Product_Reorder_Level")
             Else
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_Product_Reorder_Level,String)
             End If
             If (Original_Product_Line Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Product_Line")
             Else
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_Product_Line,String)
@@ -2413,20 +2378,15 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_Brand,String)
             End If
-            If (_Original_Discount__.HasValue = true) Then
+            If (Original_Discount.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(_Original_Discount__.Value,Decimal)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_Discount.Value,Double)
             Else
                 Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
             End If
-            If (Original_YTD_Purchases.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_YTD_Purchases.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_YTD_Purchases,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -2446,50 +2406,26 @@ Namespace ProductDatabaseDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Product_ID As Short, ByVal Product_Name As String, ByVal Vendor_ID As Global.System.Nullable(Of Short), ByVal Product_Unit_Price As Global.System.Nullable(Of Decimal), ByVal Product_Cost As Global.System.Nullable(Of Decimal), ByVal Quantity_On_Hand As Global.System.Nullable(Of Short), ByVal Quantity_On_Order As Global.System.Nullable(Of Short), ByVal Product_Lead_Time As Global.System.Nullable(Of Short), ByVal Product_Reorder_Level As String, ByVal Product_Line As String, ByVal Brand As String, ByVal _Discount__ As Global.System.Nullable(Of Decimal), ByVal YTD_Purchases As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Product_ID As Short, ByVal Product_Name As String, ByVal Vendor_ID As Short, ByVal Product_Unit_Price As Decimal, ByVal Product_Cost As Decimal, ByVal Quantity_On_Hand As Short, ByVal Quantity_On_Order As Short, ByVal Product_Lead_Time As Short, ByVal Product_Reorder_Level As String, ByVal Product_Line As String, ByVal Brand As String, ByVal Discount As Global.System.Nullable(Of Double), ByVal YTD_Purchases As Decimal) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(Product_ID,Short)
             If (Product_Name Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Product_Name")
             Else
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(Product_Name,String)
             End If
-            If (Vendor_ID.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Vendor_ID.Value,Short)
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (Product_Unit_Price.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Product_Unit_Price.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (Product_Cost.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(Product_Cost.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (Quantity_On_Hand.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Quantity_On_Hand.Value,Short)
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (Quantity_On_Order.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(Quantity_On_Order.Value,Short)
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (Product_Lead_Time.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(Product_Lead_Time.Value,Short)
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.InsertCommand.Parameters(2).Value = CType(Vendor_ID,Short)
+            Me.Adapter.InsertCommand.Parameters(3).Value = CType(Product_Unit_Price,Decimal)
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Product_Cost,Decimal)
+            Me.Adapter.InsertCommand.Parameters(5).Value = CType(Quantity_On_Hand,Short)
+            Me.Adapter.InsertCommand.Parameters(6).Value = CType(Quantity_On_Order,Short)
+            Me.Adapter.InsertCommand.Parameters(7).Value = CType(Product_Lead_Time,Short)
             If (Product_Reorder_Level Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Product_Reorder_Level")
             Else
                 Me.Adapter.InsertCommand.Parameters(8).Value = CType(Product_Reorder_Level,String)
             End If
             If (Product_Line Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Product_Line")
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = CType(Product_Line,String)
             End If
@@ -2498,16 +2434,12 @@ Namespace ProductDatabaseDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(10).Value = CType(Brand,String)
             End If
-            If (_Discount__.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(_Discount__.Value,Decimal)
+            If (Discount.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(Discount.Value,Double)
             Else
                 Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
-            If (YTD_Purchases.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(YTD_Purchases.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.InsertCommand.Parameters(12).Value = CType(YTD_Purchases,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -2530,73 +2462,49 @@ Namespace ProductDatabaseDataSetTableAdapters
         Public Overloads Overridable Function Update( _
                     ByVal Product_ID As Short,  _
                     ByVal Product_Name As String,  _
-                    ByVal Vendor_ID As Global.System.Nullable(Of Short),  _
-                    ByVal Product_Unit_Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal Product_Cost As Global.System.Nullable(Of Decimal),  _
-                    ByVal Quantity_On_Hand As Global.System.Nullable(Of Short),  _
-                    ByVal Quantity_On_Order As Global.System.Nullable(Of Short),  _
-                    ByVal Product_Lead_Time As Global.System.Nullable(Of Short),  _
+                    ByVal Vendor_ID As Short,  _
+                    ByVal Product_Unit_Price As Decimal,  _
+                    ByVal Product_Cost As Decimal,  _
+                    ByVal Quantity_On_Hand As Short,  _
+                    ByVal Quantity_On_Order As Short,  _
+                    ByVal Product_Lead_Time As Short,  _
                     ByVal Product_Reorder_Level As String,  _
                     ByVal Product_Line As String,  _
                     ByVal Brand As String,  _
-                    ByVal _Discount__ As Global.System.Nullable(Of Decimal),  _
-                    ByVal YTD_Purchases As Global.System.Nullable(Of Decimal),  _
+                    ByVal Discount As Global.System.Nullable(Of Double),  _
+                    ByVal YTD_Purchases As Decimal,  _
                     ByVal Original_Product_ID As Short,  _
                     ByVal Original_Product_Name As String,  _
-                    ByVal Original_Vendor_ID As Global.System.Nullable(Of Short),  _
-                    ByVal Original_Product_Unit_Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Product_Cost As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Quantity_On_Hand As Global.System.Nullable(Of Short),  _
-                    ByVal Original_Quantity_On_Order As Global.System.Nullable(Of Short),  _
-                    ByVal Original_Product_Lead_Time As Global.System.Nullable(Of Short),  _
+                    ByVal Original_Vendor_ID As Short,  _
+                    ByVal Original_Product_Unit_Price As Decimal,  _
+                    ByVal Original_Product_Cost As Decimal,  _
+                    ByVal Original_Quantity_On_Hand As Short,  _
+                    ByVal Original_Quantity_On_Order As Short,  _
+                    ByVal Original_Product_Lead_Time As Short,  _
                     ByVal Original_Product_Reorder_Level As String,  _
                     ByVal Original_Product_Line As String,  _
                     ByVal Original_Brand As String,  _
-                    ByVal _Original_Discount__ As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_YTD_Purchases As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal Original_Discount As Global.System.Nullable(Of Double),  _
+                    ByVal Original_YTD_Purchases As Decimal) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Product_ID,Short)
             If (Product_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Product_Name")
             Else
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Product_Name,String)
             End If
-            If (Vendor_ID.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Vendor_ID.Value,Short)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (Product_Unit_Price.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Product_Unit_Price.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (Product_Cost.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Product_Cost.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (Quantity_On_Hand.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Quantity_On_Hand.Value,Short)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (Quantity_On_Order.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Quantity_On_Order.Value,Short)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (Product_Lead_Time.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Product_Lead_Time.Value,Short)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Vendor_ID,Short)
+            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Product_Unit_Price,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Product_Cost,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Quantity_On_Hand,Short)
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Quantity_On_Order,Short)
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Product_Lead_Time,Short)
             If (Product_Reorder_Level Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Product_Reorder_Level")
             Else
                 Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Product_Reorder_Level,String)
             End If
             If (Product_Line Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Product_Line")
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Product_Line,String)
             End If
@@ -2605,76 +2513,39 @@ Namespace ProductDatabaseDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Brand,String)
             End If
-            If (_Discount__.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(_Discount__.Value,Decimal)
+            If (Discount.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Discount.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
-            If (YTD_Purchases.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(YTD_Purchases.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(YTD_Purchases,Decimal)
             Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Product_ID,Short)
             If (Original_Product_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Product_Name")
             Else
                 Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Product_Name,String)
             End If
-            If (Original_Vendor_ID.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Vendor_ID.Value,Short)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Product_Unit_Price.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Product_Unit_Price.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Product_Cost.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Product_Cost.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Quantity_On_Hand.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Quantity_On_Hand.Value,Short)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Quantity_On_Order.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Quantity_On_Order.Value,Short)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Product_Lead_Time.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Product_Lead_Time.Value,Short)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Vendor_ID,Short)
+            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Product_Unit_Price,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Product_Cost,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Quantity_On_Hand,Short)
+            Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Quantity_On_Order,Short)
+            Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Product_Lead_Time,Short)
             If (Original_Product_Reorder_Level Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Product_Reorder_Level")
             Else
                 Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Product_Reorder_Level,String)
             End If
             If (Original_Product_Line Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Product_Line")
             Else
                 Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Product_Line,String)
@@ -2686,20 +2557,15 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_Brand,String)
             End If
-            If (_Original_Discount__.HasValue = true) Then
+            If (Original_Discount.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(_Original_Discount__.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_Discount.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
-            If (Original_YTD_Purchases.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_YTD_Purchases.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_YTD_Purchases,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -2721,31 +2587,31 @@ Namespace ProductDatabaseDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update( _
                     ByVal Product_Name As String,  _
-                    ByVal Vendor_ID As Global.System.Nullable(Of Short),  _
-                    ByVal Product_Unit_Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal Product_Cost As Global.System.Nullable(Of Decimal),  _
-                    ByVal Quantity_On_Hand As Global.System.Nullable(Of Short),  _
-                    ByVal Quantity_On_Order As Global.System.Nullable(Of Short),  _
-                    ByVal Product_Lead_Time As Global.System.Nullable(Of Short),  _
+                    ByVal Vendor_ID As Short,  _
+                    ByVal Product_Unit_Price As Decimal,  _
+                    ByVal Product_Cost As Decimal,  _
+                    ByVal Quantity_On_Hand As Short,  _
+                    ByVal Quantity_On_Order As Short,  _
+                    ByVal Product_Lead_Time As Short,  _
                     ByVal Product_Reorder_Level As String,  _
                     ByVal Product_Line As String,  _
                     ByVal Brand As String,  _
-                    ByVal _Discount__ As Global.System.Nullable(Of Decimal),  _
-                    ByVal YTD_Purchases As Global.System.Nullable(Of Decimal),  _
+                    ByVal Discount As Global.System.Nullable(Of Double),  _
+                    ByVal YTD_Purchases As Decimal,  _
                     ByVal Original_Product_ID As Short,  _
                     ByVal Original_Product_Name As String,  _
-                    ByVal Original_Vendor_ID As Global.System.Nullable(Of Short),  _
-                    ByVal Original_Product_Unit_Price As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Product_Cost As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Quantity_On_Hand As Global.System.Nullable(Of Short),  _
-                    ByVal Original_Quantity_On_Order As Global.System.Nullable(Of Short),  _
-                    ByVal Original_Product_Lead_Time As Global.System.Nullable(Of Short),  _
+                    ByVal Original_Vendor_ID As Short,  _
+                    ByVal Original_Product_Unit_Price As Decimal,  _
+                    ByVal Original_Product_Cost As Decimal,  _
+                    ByVal Original_Quantity_On_Hand As Short,  _
+                    ByVal Original_Quantity_On_Order As Short,  _
+                    ByVal Original_Product_Lead_Time As Short,  _
                     ByVal Original_Product_Reorder_Level As String,  _
                     ByVal Original_Product_Line As String,  _
                     ByVal Original_Brand As String,  _
-                    ByVal _Original_Discount__ As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_YTD_Purchases As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(Original_Product_ID, Product_Name, Vendor_ID, Product_Unit_Price, Product_Cost, Quantity_On_Hand, Quantity_On_Order, Product_Lead_Time, Product_Reorder_Level, Product_Line, Brand, _Discount__, YTD_Purchases, Original_Product_ID, Original_Product_Name, Original_Vendor_ID, Original_Product_Unit_Price, Original_Product_Cost, Original_Quantity_On_Hand, Original_Quantity_On_Order, Original_Product_Lead_Time, Original_Product_Reorder_Level, Original_Product_Line, Original_Brand, _Original_Discount__, Original_YTD_Purchases)
+                    ByVal Original_Discount As Global.System.Nullable(Of Double),  _
+                    ByVal Original_YTD_Purchases As Decimal) As Integer
+            Return Me.Update(Original_Product_ID, Product_Name, Vendor_ID, Product_Unit_Price, Product_Cost, Quantity_On_Hand, Quantity_On_Order, Product_Lead_Time, Product_Reorder_Level, Product_Line, Brand, Discount, YTD_Purchases, Original_Product_ID, Original_Product_Name, Original_Vendor_ID, Original_Product_Unit_Price, Original_Product_Cost, Original_Quantity_On_Hand, Original_Quantity_On_Order, Original_Product_Lead_Time, Original_Product_Reorder_Level, Original_Product_Line, Original_Brand, Original_Discount, Original_YTD_Purchases)
         End Function
     End Class
     
@@ -3088,74 +2954,60 @@ Namespace ProductDatabaseDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Vendor_ID As Short, ByVal Original_Vendor_Name As String, ByVal Original_Vendor_Region As String, ByVal Original_City As String, ByVal Original_Zip_Code As Global.System.Nullable(Of Integer), ByVal Original_Country As String, ByVal Original_Email_Address As String, ByVal Original_Phone_Number As String, ByVal Original_Website_Address As String, ByVal Original_Classification As String, ByVal Original_Active_Status As String, ByVal Original_Notes As String, ByVal Original_Contact_Name As String, ByVal Original_State As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Vendor_ID As Short, ByVal Original_Vendor_Name As String, ByVal Original_Vendor_Region As String, ByVal Original_City As String, ByVal Original_Zip_Code As Integer, ByVal Original_Country As String, ByVal Original_Email_Address As String, ByVal Original_Phone_Number As String, ByVal Original_Website_Address As String, ByVal Original_Classification As String, ByVal Original_Active_Status As String, ByVal Original_Notes As String, ByVal Original_Contact_Name As String, ByVal Original_State As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Vendor_ID,Short)
             If (Original_Vendor_Name Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Vendor_Name")
             Else
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Vendor_Name,String)
             End If
             If (Original_Vendor_Region Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Vendor_Region")
             Else
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Vendor_Region,String)
             End If
             If (Original_City Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_City")
             Else
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_City,String)
             End If
-            If (Original_Zip_Code.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Zip_Code.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Zip_Code,Integer)
             If (Original_Country Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Country")
             Else
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Country,String)
             End If
             If (Original_Email_Address Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Email_Address")
             Else
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Email_Address,String)
             End If
             If (Original_Phone_Number Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Phone_Number")
             Else
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Phone_Number,String)
             End If
             If (Original_Website_Address Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Website_Address")
             Else
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_Website_Address,String)
             End If
             If (Original_Classification Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Classification")
             Else
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_Classification,String)
             End If
             If (Original_Active_Status Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Active_Status")
             Else
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_Active_Status,String)
@@ -3168,15 +3020,13 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_Notes,String)
             End If
             If (Original_Contact_Name Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Contact_Name")
             Else
                 Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_Contact_Name,String)
             End If
             If (Original_State Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_State")
             Else
                 Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_State,String)
@@ -3200,55 +3050,51 @@ Namespace ProductDatabaseDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Vendor_ID As Short, ByVal Vendor_Name As String, ByVal Vendor_Region As String, ByVal City As String, ByVal Zip_Code As Global.System.Nullable(Of Integer), ByVal Country As String, ByVal Email_Address As String, ByVal Phone_Number As String, ByVal Website_Address As String, ByVal Classification As String, ByVal Active_Status As String, ByVal Notes As String, ByVal Contact_Name As String, ByVal State As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal Vendor_ID As Short, ByVal Vendor_Name As String, ByVal Vendor_Region As String, ByVal City As String, ByVal Zip_Code As Integer, ByVal Country As String, ByVal Email_Address As String, ByVal Phone_Number As String, ByVal Website_Address As String, ByVal Classification As String, ByVal Active_Status As String, ByVal Notes As String, ByVal Contact_Name As String, ByVal State As String) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(Vendor_ID,Short)
             If (Vendor_Name Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Vendor_Name")
             Else
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(Vendor_Name,String)
             End If
             If (Vendor_Region Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Vendor_Region")
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(Vendor_Region,String)
             End If
             If (City Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("City")
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = CType(City,String)
             End If
-            If (Zip_Code.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(Zip_Code.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Zip_Code,Integer)
             If (Country Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Country")
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = CType(Country,String)
             End If
             If (Email_Address Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Email_Address")
             Else
                 Me.Adapter.InsertCommand.Parameters(6).Value = CType(Email_Address,String)
             End If
             If (Phone_Number Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Phone_Number")
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = CType(Phone_Number,String)
             End If
             If (Website_Address Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Website_Address")
             Else
                 Me.Adapter.InsertCommand.Parameters(8).Value = CType(Website_Address,String)
             End If
             If (Classification Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Classification")
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = CType(Classification,String)
             End If
             If (Active_Status Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Active_Status")
             Else
                 Me.Adapter.InsertCommand.Parameters(10).Value = CType(Active_Status,String)
             End If
@@ -3258,12 +3104,12 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.InsertCommand.Parameters(11).Value = CType(Notes,String)
             End If
             If (Contact_Name Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Contact_Name")
             Else
                 Me.Adapter.InsertCommand.Parameters(12).Value = CType(Contact_Name,String)
             End If
             If (State Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("State")
             Else
                 Me.Adapter.InsertCommand.Parameters(13).Value = CType(State,String)
             End If
@@ -3291,7 +3137,7 @@ Namespace ProductDatabaseDataSetTableAdapters
                     ByVal Vendor_Name As String,  _
                     ByVal Vendor_Region As String,  _
                     ByVal City As String,  _
-                    ByVal Zip_Code As Global.System.Nullable(Of Integer),  _
+                    ByVal Zip_Code As Integer,  _
                     ByVal Country As String,  _
                     ByVal Email_Address As String,  _
                     ByVal Phone_Number As String,  _
@@ -3305,7 +3151,7 @@ Namespace ProductDatabaseDataSetTableAdapters
                     ByVal Original_Vendor_Name As String,  _
                     ByVal Original_Vendor_Region As String,  _
                     ByVal Original_City As String,  _
-                    ByVal Original_Zip_Code As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Zip_Code As Integer,  _
                     ByVal Original_Country As String,  _
                     ByVal Original_Email_Address As String,  _
                     ByVal Original_Phone_Number As String,  _
@@ -3317,52 +3163,48 @@ Namespace ProductDatabaseDataSetTableAdapters
                     ByVal Original_State As String) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Vendor_ID,Short)
             If (Vendor_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Vendor_Name")
             Else
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Vendor_Name,String)
             End If
             If (Vendor_Region Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Vendor_Region")
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Vendor_Region,String)
             End If
             If (City Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("City")
             Else
                 Me.Adapter.UpdateCommand.Parameters(3).Value = CType(City,String)
             End If
-            If (Zip_Code.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Zip_Code.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Zip_Code,Integer)
             If (Country Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Country")
             Else
                 Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Country,String)
             End If
             If (Email_Address Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Email_Address")
             Else
                 Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Email_Address,String)
             End If
             If (Phone_Number Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Phone_Number")
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Phone_Number,String)
             End If
             If (Website_Address Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Website_Address")
             Else
                 Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Website_Address,String)
             End If
             If (Classification Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Classification")
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Classification,String)
             End If
             If (Active_Status Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Active_Status")
             Else
                 Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Active_Status,String)
             End If
@@ -3372,82 +3214,68 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Notes,String)
             End If
             If (Contact_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Contact_Name")
             Else
                 Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Contact_Name,String)
             End If
             If (State Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("State")
             Else
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(State,String)
             End If
             Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Vendor_ID,Short)
             If (Original_Vendor_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Vendor_Name")
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Vendor_Name,String)
             End If
             If (Original_Vendor_Region Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Vendor_Region")
             Else
                 Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Vendor_Region,String)
             End If
             If (Original_City Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_City")
             Else
                 Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_City,String)
             End If
-            If (Original_Zip_Code.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Zip_Code.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Zip_Code,Integer)
             If (Original_Country Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Country")
             Else
                 Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Country,String)
             End If
             If (Original_Email_Address Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Email_Address")
             Else
                 Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Email_Address,String)
             End If
             If (Original_Phone_Number Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Phone_Number")
             Else
                 Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Phone_Number,String)
             End If
             If (Original_Website_Address Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Website_Address")
             Else
                 Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Website_Address,String)
             End If
             If (Original_Classification Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Classification")
             Else
                 Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_Classification,String)
             End If
             If (Original_Active_Status Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Active_Status")
             Else
                 Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Active_Status,String)
@@ -3460,15 +3288,13 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Notes,String)
             End If
             If (Original_Contact_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_Contact_Name")
             Else
                 Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Contact_Name,String)
             End If
             If (Original_State Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Original_State")
             Else
                 Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_State,String)
@@ -3496,7 +3322,7 @@ Namespace ProductDatabaseDataSetTableAdapters
                     ByVal Vendor_Name As String,  _
                     ByVal Vendor_Region As String,  _
                     ByVal City As String,  _
-                    ByVal Zip_Code As Global.System.Nullable(Of Integer),  _
+                    ByVal Zip_Code As Integer,  _
                     ByVal Country As String,  _
                     ByVal Email_Address As String,  _
                     ByVal Phone_Number As String,  _
@@ -3510,7 +3336,7 @@ Namespace ProductDatabaseDataSetTableAdapters
                     ByVal Original_Vendor_Name As String,  _
                     ByVal Original_Vendor_Region As String,  _
                     ByVal Original_City As String,  _
-                    ByVal Original_Zip_Code As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Zip_Code As Integer,  _
                     ByVal Original_Country As String,  _
                     ByVal Original_Email_Address As String,  _
                     ByVal Original_Phone_Number As String,  _
