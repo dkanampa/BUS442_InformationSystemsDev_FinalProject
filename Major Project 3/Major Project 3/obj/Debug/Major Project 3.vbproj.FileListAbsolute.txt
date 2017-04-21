@@ -1,3 +1,39 @@
 K:\Information Systems Development\Projects\Major Project 3\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
 C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
 C:\Users\cjkerchm\Downloads\BUS442_InformationSystemsDev_FinalProject-master\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\bin\Debug\ProductDatabase.accdb
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\bin\Debug\Major Project 3.pdb
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\bin\Debug\Major Project 3.xml
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbprojResolveAssemblyReference.cache
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.MainForm.resources
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.Resources.resources
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbproj.GenerateResource.Cache
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\obj\Debug\Major Project 3.exe
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\obj\Debug\Major Project 3.xml
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3\Major Project 3\obj\Debug\Major Project 3.pdb
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\obj\Debug\Major Project 3.exe
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\obj\Debug\Major Project 3.xml
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\obj\Debug\Major Project 3.pdb
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\bin\Debug\ProductDatabase.accdb
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\bin\Debug\Major Project 3.pdb
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\bin\Debug\Major Project 3.xml
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbprojResolveAssemblyReference.cache
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.MainForm.resources
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.Resources.resources
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbproj.GenerateResource.Cache
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major Project 3.exe
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major Project 3.xml
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major Project 3.pdb
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbprojResolveAssemblyReference.cache
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.MainForm.resources
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.Resources.resources
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbproj.GenerateResource.Cache
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\bin\Debug\ProductDatabase.accdb
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\bin\Debug\Major Project 3.pdb
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\bin\Debug\Major Project 3.xml
