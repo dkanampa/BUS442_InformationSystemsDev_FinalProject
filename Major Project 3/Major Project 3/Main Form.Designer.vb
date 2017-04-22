@@ -25,10 +25,11 @@ Partial Class MainForm
         Me.components = New System.ComponentModel.Container()
         Dim Label1 As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
+        Dim Label3 As System.Windows.Forms.Label
         Dim Label4 As System.Windows.Forms.Label
+        Dim Label5 As System.Windows.Forms.Label
         Dim Label6 As System.Windows.Forms.Label
         Dim Label7 As System.Windows.Forms.Label
-        Dim Label8 As System.Windows.Forms.Label
         Dim Label9 As System.Windows.Forms.Label
         Dim Label10 As System.Windows.Forms.Label
         Dim Label11 As System.Windows.Forms.Label
@@ -47,13 +48,26 @@ Partial Class MainForm
         Dim Label24 As System.Windows.Forms.Label
         Dim Label25 As System.Windows.Forms.Label
         Dim Label26 As System.Windows.Forms.Label
-        Dim Label33 As System.Windows.Forms.Label
-        Dim Label34 As System.Windows.Forms.Label
+        Dim Label8 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-        Me.ProductDatabaseDataSet = New Major_Project_3.ProductDatabaseDataSet()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.productReorderLevelTextBox = New System.Windows.Forms.TextBox()
         Me.ProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ProductDatabaseDataSet = New Major_Project_3.ProductDatabaseDataSet()
+        Me.ytdPurchasesTextBox = New System.Windows.Forms.TextBox()
+        Me.discountTextBox = New System.Windows.Forms.TextBox()
+        Me.brandTextBox = New System.Windows.Forms.TextBox()
+        Me.productLineTextBox = New System.Windows.Forms.TextBox()
+        Me.productLeadTimeTextBox = New System.Windows.Forms.TextBox()
+        Me.quantityOnOrderTextBox = New System.Windows.Forms.TextBox()
+        Me.quantityOnHandTextBox = New System.Windows.Forms.TextBox()
+        Me.productCostTextBox = New System.Windows.Forms.TextBox()
+        Me.productUnitPriceTextBox = New System.Windows.Forms.TextBox()
+        Me.vendorIDComboBox = New System.Windows.Forms.ComboBox()
+        Me.productIDTextBox = New System.Windows.Forms.TextBox()
         Me.ProductTableAdapter = New Major_Project_3.ProductDatabaseDataSetTableAdapters.ProductTableAdapter()
         Me.TableAdapterManager = New Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager()
+        Me.VendorTableAdapter = New Major_Project_3.ProductDatabaseDataSetTableAdapters.VendorTableAdapter()
         Me.ProductBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -67,37 +81,16 @@ Partial Class MainForm
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ProductBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.productIDTextBox = New System.Windows.Forms.TextBox()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ChinaQueriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ytdPurchasesTextBox = New System.Windows.Forms.TextBox()
-        Me.discountTextBox = New System.Windows.Forms.TextBox()
-        Me.brandTextBox = New System.Windows.Forms.TextBox()
-        Me.productLineTextBox = New System.Windows.Forms.TextBox()
-        Me.productLeadTimeTextBox = New System.Windows.Forms.TextBox()
-        Me.productReorderLevelTextBox = New System.Windows.Forms.TextBox()
-        Me.quantityOnOrderTextBox = New System.Windows.Forms.TextBox()
-        Me.quantityOnHandTextBox = New System.Windows.Forms.TextBox()
-        Me.productUnitPriceTextBox = New System.Windows.Forms.TextBox()
-        Me.productCostTextBox = New System.Windows.Forms.TextBox()
-        Me.vendorIDComboBox = New System.Windows.Forms.ComboBox()
-        Me.VendorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.VendorTableAdapter = New Major_Project_3.ProductDatabaseDataSetTableAdapters.VendorTableAdapter()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.contactNameLabel = New System.Windows.Forms.Label()
+        Me.VendorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.notesLabel = New System.Windows.Forms.Label()
         Me.activeStatusLabel = New System.Windows.Forms.Label()
         Me.classificationLabel = New System.Windows.Forms.Label()
-        Me.contactNameLabel = New System.Windows.Forms.Label()
-        Me.notesLabel = New System.Windows.Forms.Label()
         Me.websiteAddressLabel = New System.Windows.Forms.Label()
         Me.phoneNumberLabel = New System.Windows.Forms.Label()
         Me.emailAddressLabel = New System.Windows.Forms.Label()
-        Me.countryLabel1 = New System.Windows.Forms.Label()
+        Me.countryLabel = New System.Windows.Forms.Label()
         Me.zipCodeLabel = New System.Windows.Forms.Label()
         Me.stateLabel = New System.Windows.Forms.Label()
         Me.cityLabel = New System.Windows.Forms.Label()
@@ -127,10 +120,11 @@ Partial Class MainForm
         Me.Label27 = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
+        Label3 = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
+        Label5 = New System.Windows.Forms.Label()
         Label6 = New System.Windows.Forms.Label()
         Label7 = New System.Windows.Forms.Label()
-        Label8 = New System.Windows.Forms.Label()
         Label9 = New System.Windows.Forms.Label()
         Label10 = New System.Windows.Forms.Label()
         Label11 = New System.Windows.Forms.Label()
@@ -149,262 +143,390 @@ Partial Class MainForm
         Label24 = New System.Windows.Forms.Label()
         Label25 = New System.Windows.Forms.Label()
         Label26 = New System.Windows.Forms.Label()
-        Label33 = New System.Windows.Forms.Label()
-        Label34 = New System.Windows.Forms.Label()
-        CType(Me.ProductDatabaseDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Label8 = New System.Windows.Forms.Label()
+        Me.GroupBox1.SuspendLayout()
         CType(Me.ProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProductDatabaseDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ProductBindingNavigator.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.VendorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.VendorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(19, 29)
+        Label1.Location = New System.Drawing.Point(20, 28)
         Label1.Name = "Label1"
-        Label1.Size = New System.Drawing.Size(66, 15)
-        Label1.TabIndex = 1
+        Label1.Size = New System.Drawing.Size(61, 13)
+        Label1.TabIndex = 0
         Label1.Text = "Product ID:"
         '
         'Label2
         '
         Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(19, 58)
+        Label2.Location = New System.Drawing.Point(27, 61)
         Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(61, 15)
+        Label2.Size = New System.Drawing.Size(58, 13)
         Label2.TabIndex = 2
         Label2.Text = "Vendor ID:"
+        '
+        'Label3
+        '
+        Label3.AutoSize = True
+        Label3.Location = New System.Drawing.Point(29, 98)
+        Label3.Name = "Label3"
+        Label3.Size = New System.Drawing.Size(93, 13)
+        Label3.TabIndex = 4
+        Label3.Text = "Product unit price:"
         '
         'Label4
         '
         Label4.AutoSize = True
-        Label4.Location = New System.Drawing.Point(19, 115)
+        Label4.Location = New System.Drawing.Point(33, 131)
         Label4.Name = "Label4"
-        Label4.Size = New System.Drawing.Size(77, 15)
+        Label4.Size = New System.Drawing.Size(70, 13)
         Label4.TabIndex = 6
         Label4.Text = "Product cost:"
+        '
+        'Label5
+        '
+        Label5.AutoSize = True
+        Label5.Location = New System.Drawing.Point(21, 159)
+        Label5.Name = "Label5"
+        Label5.Size = New System.Drawing.Size(91, 13)
+        Label5.TabIndex = 8
+        Label5.Text = "Quantity on hand:"
         '
         'Label6
         '
         Label6.AutoSize = True
-        Label6.Location = New System.Drawing.Point(19, 173)
+        Label6.Location = New System.Drawing.Point(21, 186)
         Label6.Name = "Label6"
-        Label6.Size = New System.Drawing.Size(105, 15)
+        Label6.Size = New System.Drawing.Size(91, 13)
         Label6.TabIndex = 10
-        Label6.Text = "Product unit price:"
+        Label6.Text = "Quantity on order:"
         '
         'Label7
         '
         Label7.AutoSize = True
-        Label7.Location = New System.Drawing.Point(19, 202)
+        Label7.Location = New System.Drawing.Point(22, 209)
         Label7.Name = "Label7"
-        Label7.Size = New System.Drawing.Size(103, 15)
+        Label7.Size = New System.Drawing.Size(92, 13)
         Label7.TabIndex = 12
-        Label7.Text = "Quantity on hand:"
-        '
-        'Label8
-        '
-        Label8.AutoSize = True
-        Label8.Location = New System.Drawing.Point(19, 231)
-        Label8.Name = "Label8"
-        Label8.Size = New System.Drawing.Size(104, 15)
-        Label8.TabIndex = 14
-        Label8.Text = "Quantity on order:"
+        Label7.Text = "Product lead time:"
         '
         'Label9
         '
         Label9.AutoSize = True
-        Label9.Location = New System.Drawing.Point(19, 260)
+        Label9.Location = New System.Drawing.Point(34, 256)
         Label9.Name = "Label9"
-        Label9.Size = New System.Drawing.Size(120, 15)
-        Label9.TabIndex = 16
-        Label9.Text = "Product reorder level:"
+        Label9.Size = New System.Drawing.Size(66, 13)
+        Label9.TabIndex = 14
+        Label9.Text = "Product line:"
         '
         'Label10
         '
         Label10.AutoSize = True
-        Label10.Location = New System.Drawing.Point(19, 289)
+        Label10.Location = New System.Drawing.Point(35, 282)
         Label10.Name = "Label10"
-        Label10.Size = New System.Drawing.Size(104, 15)
-        Label10.TabIndex = 18
-        Label10.Text = "Product lead time:"
+        Label10.Size = New System.Drawing.Size(38, 13)
+        Label10.TabIndex = 16
+        Label10.Text = "Brand:"
         '
         'Label11
         '
         Label11.AutoSize = True
-        Label11.Location = New System.Drawing.Point(19, 318)
+        Label11.Location = New System.Drawing.Point(30, 320)
         Label11.Name = "Label11"
-        Label11.Size = New System.Drawing.Size(74, 15)
-        Label11.TabIndex = 20
-        Label11.Text = "Product line:"
+        Label11.Size = New System.Drawing.Size(52, 13)
+        Label11.TabIndex = 18
+        Label11.Text = "Discount:"
         '
         'Label12
         '
         Label12.AutoSize = True
-        Label12.Location = New System.Drawing.Point(19, 347)
+        Label12.Location = New System.Drawing.Point(42, 362)
         Label12.Name = "Label12"
-        Label12.Size = New System.Drawing.Size(41, 15)
-        Label12.TabIndex = 22
-        Label12.Text = "Brand:"
+        Label12.Size = New System.Drawing.Size(84, 13)
+        Label12.TabIndex = 20
+        Label12.Text = "YTD purchases:"
         '
         'Label13
         '
         Label13.AutoSize = True
-        Label13.Location = New System.Drawing.Point(19, 376)
+        Label13.Location = New System.Drawing.Point(16, 24)
         Label13.Name = "Label13"
-        Label13.Size = New System.Drawing.Size(57, 15)
-        Label13.TabIndex = 24
-        Label13.Text = "Discount:"
+        Label13.Size = New System.Drawing.Size(76, 13)
+        Label13.TabIndex = 0
+        Label13.Text = "Product name:"
         '
         'Label14
         '
         Label14.AutoSize = True
-        Label14.Location = New System.Drawing.Point(19, 405)
+        Label14.Location = New System.Drawing.Point(22, 49)
         Label14.Name = "Label14"
-        Label14.Size = New System.Drawing.Size(88, 15)
-        Label14.TabIndex = 26
-        Label14.Text = "YTD purchases:"
+        Label14.Size = New System.Drawing.Size(73, 13)
+        Label14.TabIndex = 2
+        Label14.Text = "Vendor name:"
         '
         'Label15
         '
         Label15.AutoSize = True
-        Label15.Location = New System.Drawing.Point(15, 28)
+        Label15.Location = New System.Drawing.Point(26, 76)
         Label15.Name = "Label15"
-        Label15.Size = New System.Drawing.Size(85, 15)
-        Label15.TabIndex = 0
-        Label15.Text = "Product name:"
+        Label15.Size = New System.Drawing.Size(76, 13)
+        Label15.TabIndex = 4
+        Label15.Text = "Vendor region:"
         '
         'Label16
         '
         Label16.AutoSize = True
-        Label16.Location = New System.Drawing.Point(15, 68)
+        Label16.Location = New System.Drawing.Point(29, 106)
         Label16.Name = "Label16"
-        Label16.Size = New System.Drawing.Size(80, 15)
-        Label16.TabIndex = 2
-        Label16.Text = "Vendor name:"
+        Label16.Size = New System.Drawing.Size(27, 13)
+        Label16.TabIndex = 6
+        Label16.Text = "City:"
         '
         'Label17
         '
         Label17.AutoSize = True
-        Label17.Location = New System.Drawing.Point(15, 91)
+        Label17.Location = New System.Drawing.Point(33, 138)
         Label17.Name = "Label17"
-        Label17.Size = New System.Drawing.Size(84, 15)
-        Label17.TabIndex = 4
-        Label17.Text = "Vendor region:"
+        Label17.Size = New System.Drawing.Size(35, 13)
+        Label17.TabIndex = 8
+        Label17.Text = "State:"
         '
         'Label18
         '
         Label18.AutoSize = True
-        Label18.Location = New System.Drawing.Point(15, 165)
+        Label18.Location = New System.Drawing.Point(33, 177)
         Label18.Name = "Label18"
-        Label18.Size = New System.Drawing.Size(31, 15)
-        Label18.TabIndex = 6
-        Label18.Text = "City:"
+        Label18.Size = New System.Drawing.Size(52, 13)
+        Label18.TabIndex = 10
+        Label18.Text = "Zip code:"
         '
         'Label19
         '
         Label19.AutoSize = True
-        Label19.Location = New System.Drawing.Point(15, 188)
+        Label19.Location = New System.Drawing.Point(34, 202)
         Label19.Name = "Label19"
-        Label19.Size = New System.Drawing.Size(36, 15)
-        Label19.TabIndex = 8
-        Label19.Text = "State:"
+        Label19.Size = New System.Drawing.Size(46, 13)
+        Label19.TabIndex = 12
+        Label19.Text = "Country:"
         '
         'Label20
         '
         Label20.AutoSize = True
-        Label20.Location = New System.Drawing.Point(15, 211)
+        Label20.Location = New System.Drawing.Point(41, 238)
         Label20.Name = "Label20"
-        Label20.Size = New System.Drawing.Size(56, 15)
-        Label20.TabIndex = 10
-        Label20.Text = "Zip code:"
+        Label20.Size = New System.Drawing.Size(75, 13)
+        Label20.TabIndex = 14
+        Label20.Text = "Email address:"
         '
         'Label21
         '
         Label21.AutoSize = True
-        Label21.Location = New System.Drawing.Point(15, 234)
+        Label21.Location = New System.Drawing.Point(26, 261)
         Label21.Name = "Label21"
-        Label21.Size = New System.Drawing.Size(53, 15)
-        Label21.TabIndex = 12
-        Label21.Text = "Country:"
+        Label21.Size = New System.Drawing.Size(79, 13)
+        Label21.TabIndex = 16
+        Label21.Text = "Phone number:"
         '
         'Label22
         '
         Label22.AutoSize = True
-        Label22.Location = New System.Drawing.Point(15, 257)
+        Label22.Location = New System.Drawing.Point(17, 284)
         Label22.Name = "Label22"
-        Label22.Size = New System.Drawing.Size(82, 15)
-        Label22.TabIndex = 14
-        Label22.Text = "Email address:"
+        Label22.Size = New System.Drawing.Size(89, 13)
+        Label22.TabIndex = 18
+        Label22.Text = "Website address:"
         '
         'Label23
         '
         Label23.AutoSize = True
-        Label23.Location = New System.Drawing.Point(15, 280)
+        Label23.Location = New System.Drawing.Point(26, 309)
         Label23.Name = "Label23"
-        Label23.Size = New System.Drawing.Size(89, 15)
-        Label23.TabIndex = 16
-        Label23.Text = "Phone number:"
+        Label23.Size = New System.Drawing.Size(71, 13)
+        Label23.TabIndex = 20
+        Label23.Text = "Classification:"
         '
         'Label24
         '
         Label24.AutoSize = True
-        Label24.Location = New System.Drawing.Point(15, 303)
+        Label24.Location = New System.Drawing.Point(32, 342)
         Label24.Name = "Label24"
-        Label24.Size = New System.Drawing.Size(95, 15)
-        Label24.TabIndex = 18
-        Label24.Text = "Website address:"
+        Label24.Size = New System.Drawing.Size(71, 13)
+        Label24.TabIndex = 22
+        Label24.Text = "Active status:"
         '
         'Label25
         '
         Label25.AutoSize = True
-        Label25.Location = New System.Drawing.Point(15, 326)
+        Label25.Location = New System.Drawing.Point(39, 367)
         Label25.Name = "Label25"
-        Label25.Size = New System.Drawing.Size(41, 15)
-        Label25.TabIndex = 20
+        Label25.Size = New System.Drawing.Size(38, 13)
+        Label25.TabIndex = 24
         Label25.Text = "Notes:"
         '
         'Label26
         '
         Label26.AutoSize = True
-        Label26.Location = New System.Drawing.Point(15, 349)
+        Label26.Location = New System.Drawing.Point(46, 391)
         Label26.Name = "Label26"
-        Label26.Size = New System.Drawing.Size(85, 15)
-        Label26.TabIndex = 22
+        Label26.Size = New System.Drawing.Size(76, 13)
+        Label26.TabIndex = 26
         Label26.Text = "Contact name:"
         '
-        'Label33
+        'Label8
         '
-        Label33.AutoSize = True
-        Label33.Location = New System.Drawing.Point(15, 115)
-        Label33.Name = "Label33"
-        Label33.Size = New System.Drawing.Size(80, 15)
-        Label33.TabIndex = 24
-        Label33.Text = "Classification:"
+        Label8.AutoSize = True
+        Label8.Location = New System.Drawing.Point(22, 236)
+        Label8.Name = "Label8"
+        Label8.Size = New System.Drawing.Size(108, 13)
+        Label8.TabIndex = 22
+        Label8.Text = "Product reorder level:"
         '
-        'Label34
+        'GroupBox1
         '
-        Label34.AutoSize = True
-        Label34.Location = New System.Drawing.Point(15, 139)
-        Label34.Name = "Label34"
-        Label34.Size = New System.Drawing.Size(78, 15)
-        Label34.TabIndex = 26
-        Label34.Text = "Active Status:"
+        Me.GroupBox1.Controls.Add(Label8)
+        Me.GroupBox1.Controls.Add(Me.productReorderLevelTextBox)
+        Me.GroupBox1.Controls.Add(Label12)
+        Me.GroupBox1.Controls.Add(Me.ytdPurchasesTextBox)
+        Me.GroupBox1.Controls.Add(Label11)
+        Me.GroupBox1.Controls.Add(Me.discountTextBox)
+        Me.GroupBox1.Controls.Add(Label10)
+        Me.GroupBox1.Controls.Add(Me.brandTextBox)
+        Me.GroupBox1.Controls.Add(Label9)
+        Me.GroupBox1.Controls.Add(Me.productLineTextBox)
+        Me.GroupBox1.Controls.Add(Label7)
+        Me.GroupBox1.Controls.Add(Me.productLeadTimeTextBox)
+        Me.GroupBox1.Controls.Add(Label6)
+        Me.GroupBox1.Controls.Add(Me.quantityOnOrderTextBox)
+        Me.GroupBox1.Controls.Add(Label5)
+        Me.GroupBox1.Controls.Add(Me.quantityOnHandTextBox)
+        Me.GroupBox1.Controls.Add(Label4)
+        Me.GroupBox1.Controls.Add(Me.productCostTextBox)
+        Me.GroupBox1.Controls.Add(Label3)
+        Me.GroupBox1.Controls.Add(Me.productUnitPriceTextBox)
+        Me.GroupBox1.Controls.Add(Label2)
+        Me.GroupBox1.Controls.Add(Me.vendorIDComboBox)
+        Me.GroupBox1.Controls.Add(Label1)
+        Me.GroupBox1.Controls.Add(Me.productIDTextBox)
+        Me.GroupBox1.Location = New System.Drawing.Point(25, 33)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(275, 399)
+        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "GroupBox1"
+        '
+        'productReorderLevelTextBox
+        '
+        Me.productReorderLevelTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Reorder_Level", True))
+        Me.productReorderLevelTextBox.Location = New System.Drawing.Point(145, 227)
+        Me.productReorderLevelTextBox.Name = "productReorderLevelTextBox"
+        Me.productReorderLevelTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.productReorderLevelTextBox.TabIndex = 23
+        '
+        'ProductBindingSource
+        '
+        Me.ProductBindingSource.DataMember = "Product"
+        Me.ProductBindingSource.DataSource = Me.ProductDatabaseDataSet
         '
         'ProductDatabaseDataSet
         '
         Me.ProductDatabaseDataSet.DataSetName = "ProductDatabaseDataSet"
         Me.ProductDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'ProductBindingSource
+        'ytdPurchasesTextBox
         '
-        Me.ProductBindingSource.DataMember = "Product"
-        Me.ProductBindingSource.DataSource = Me.ProductDatabaseDataSet
+        Me.ytdPurchasesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "YTD_Purchases", True))
+        Me.ytdPurchasesTextBox.Location = New System.Drawing.Point(133, 359)
+        Me.ytdPurchasesTextBox.Name = "ytdPurchasesTextBox"
+        Me.ytdPurchasesTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.ytdPurchasesTextBox.TabIndex = 21
+        '
+        'discountTextBox
+        '
+        Me.discountTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Discount", True))
+        Me.discountTextBox.Location = New System.Drawing.Point(88, 317)
+        Me.discountTextBox.Name = "discountTextBox"
+        Me.discountTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.discountTextBox.TabIndex = 19
+        '
+        'brandTextBox
+        '
+        Me.brandTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Brand", True))
+        Me.brandTextBox.Location = New System.Drawing.Point(79, 279)
+        Me.brandTextBox.Name = "brandTextBox"
+        Me.brandTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.brandTextBox.TabIndex = 17
+        '
+        'productLineTextBox
+        '
+        Me.productLineTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Line", True))
+        Me.productLineTextBox.Location = New System.Drawing.Point(110, 253)
+        Me.productLineTextBox.Name = "productLineTextBox"
+        Me.productLineTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.productLineTextBox.TabIndex = 15
+        '
+        'productLeadTimeTextBox
+        '
+        Me.productLeadTimeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Lead_Time", True))
+        Me.productLeadTimeTextBox.Location = New System.Drawing.Point(128, 206)
+        Me.productLeadTimeTextBox.Name = "productLeadTimeTextBox"
+        Me.productLeadTimeTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.productLeadTimeTextBox.TabIndex = 13
+        '
+        'quantityOnOrderTextBox
+        '
+        Me.quantityOnOrderTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Quantity_On_Order", True))
+        Me.quantityOnOrderTextBox.Location = New System.Drawing.Point(122, 183)
+        Me.quantityOnOrderTextBox.Name = "quantityOnOrderTextBox"
+        Me.quantityOnOrderTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.quantityOnOrderTextBox.TabIndex = 11
+        '
+        'quantityOnHandTextBox
+        '
+        Me.quantityOnHandTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Quantity_On_Hand", True))
+        Me.quantityOnHandTextBox.Location = New System.Drawing.Point(122, 156)
+        Me.quantityOnHandTextBox.Name = "quantityOnHandTextBox"
+        Me.quantityOnHandTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.quantityOnHandTextBox.TabIndex = 9
+        '
+        'productCostTextBox
+        '
+        Me.productCostTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Cost", True))
+        Me.productCostTextBox.Location = New System.Drawing.Point(110, 128)
+        Me.productCostTextBox.Name = "productCostTextBox"
+        Me.productCostTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.productCostTextBox.TabIndex = 7
+        '
+        'productUnitPriceTextBox
+        '
+        Me.productUnitPriceTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Unit_Price", True))
+        Me.productUnitPriceTextBox.Location = New System.Drawing.Point(131, 95)
+        Me.productUnitPriceTextBox.Name = "productUnitPriceTextBox"
+        Me.productUnitPriceTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.productUnitPriceTextBox.TabIndex = 5
+        '
+        'vendorIDComboBox
+        '
+        Me.vendorIDComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Vendor_ID", True))
+        Me.vendorIDComboBox.FormattingEnabled = True
+        Me.vendorIDComboBox.Location = New System.Drawing.Point(91, 58)
+        Me.vendorIDComboBox.Name = "vendorIDComboBox"
+        Me.vendorIDComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.vendorIDComboBox.TabIndex = 3
+        '
+        'productIDTextBox
+        '
+        Me.productIDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_ID", True))
+        Me.productIDTextBox.Location = New System.Drawing.Point(87, 25)
+        Me.productIDTextBox.Name = "productIDTextBox"
+        Me.productIDTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.productIDTextBox.TabIndex = 1
         '
         'ProductTableAdapter
         '
@@ -415,7 +537,11 @@ Partial Class MainForm
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.ProductTableAdapter = Me.ProductTableAdapter
         Me.TableAdapterManager.UpdateOrder = Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        Me.TableAdapterManager.VendorTableAdapter = Nothing
+        Me.TableAdapterManager.VendorTableAdapter = Me.VendorTableAdapter
+        '
+        'VendorTableAdapter
+        '
+        Me.VendorTableAdapter.ClearBeforeFill = True
         '
         'ProductBindingNavigator
         '
@@ -423,16 +549,16 @@ Partial Class MainForm
         Me.ProductBindingNavigator.BindingSource = Me.ProductBindingSource
         Me.ProductBindingNavigator.CountItem = Me.BindingNavigatorCountItem
         Me.ProductBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.ProductBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ProductBindingNavigatorSaveItem, Me.ToolStripTextBox1, Me.ToolStripButton1, Me.ToolStripDropDownButton1})
-        Me.ProductBindingNavigator.Location = New System.Drawing.Point(0, 24)
+        Me.ProductBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ProductBindingNavigatorSaveItem})
+        Me.ProductBindingNavigator.Location = New System.Drawing.Point(0, 0)
         Me.ProductBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.ProductBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
         Me.ProductBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
         Me.ProductBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.ProductBindingNavigator.Name = "ProductBindingNavigator"
         Me.ProductBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.ProductBindingNavigator.Size = New System.Drawing.Size(1148, 25)
-        Me.ProductBindingNavigator.TabIndex = 0
+        Me.ProductBindingNavigator.Size = New System.Drawing.Size(1143, 25)
+        Me.ProductBindingNavigator.TabIndex = 1
         Me.ProductBindingNavigator.Text = "BindingNavigator1"
         '
         'BindingNavigatorAddNewItem
@@ -488,7 +614,7 @@ Partial Class MainForm
         Me.BindingNavigatorPositionItem.AccessibleName = "Position"
         Me.BindingNavigatorPositionItem.AutoSize = False
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(58, 23)
+        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
         Me.BindingNavigatorPositionItem.Text = "0"
         Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
         '
@@ -528,272 +654,88 @@ Partial Class MainForm
         Me.ProductBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
         Me.ProductBindingNavigatorSaveItem.Text = "Save Data"
         '
-        'ToolStripTextBox1
+        'GroupBox2
         '
-        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(100, 25)
+        Me.GroupBox2.Controls.Add(Label26)
+        Me.GroupBox2.Controls.Add(Me.contactNameLabel)
+        Me.GroupBox2.Controls.Add(Label25)
+        Me.GroupBox2.Controls.Add(Me.notesLabel)
+        Me.GroupBox2.Controls.Add(Label24)
+        Me.GroupBox2.Controls.Add(Me.activeStatusLabel)
+        Me.GroupBox2.Controls.Add(Label23)
+        Me.GroupBox2.Controls.Add(Me.classificationLabel)
+        Me.GroupBox2.Controls.Add(Label22)
+        Me.GroupBox2.Controls.Add(Me.websiteAddressLabel)
+        Me.GroupBox2.Controls.Add(Label21)
+        Me.GroupBox2.Controls.Add(Me.phoneNumberLabel)
+        Me.GroupBox2.Controls.Add(Label20)
+        Me.GroupBox2.Controls.Add(Me.emailAddressLabel)
+        Me.GroupBox2.Controls.Add(Label19)
+        Me.GroupBox2.Controls.Add(Me.countryLabel)
+        Me.GroupBox2.Controls.Add(Label18)
+        Me.GroupBox2.Controls.Add(Me.zipCodeLabel)
+        Me.GroupBox2.Controls.Add(Label17)
+        Me.GroupBox2.Controls.Add(Me.stateLabel)
+        Me.GroupBox2.Controls.Add(Label16)
+        Me.GroupBox2.Controls.Add(Me.cityLabel)
+        Me.GroupBox2.Controls.Add(Label15)
+        Me.GroupBox2.Controls.Add(Me.vendorRegionLabel)
+        Me.GroupBox2.Controls.Add(Label14)
+        Me.GroupBox2.Controls.Add(Me.vendorNameLabel)
+        Me.GroupBox2.Controls.Add(Label13)
+        Me.GroupBox2.Controls.Add(Me.productNameTextBox)
+        Me.GroupBox2.Location = New System.Drawing.Point(328, 33)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(275, 434)
+        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "GroupBox2"
         '
-        'ToolStripButton1
+        'contactNameLabel
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
-        '
-        'ToolStripDropDownButton1
-        '
-        Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
-        Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
-        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(29, 22)
-        Me.ToolStripDropDownButton1.Text = "ToolStripDropDownButton1"
-        '
-        'productIDTextBox
-        '
-        Me.productIDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_ID", True))
-        Me.productIDTextBox.Location = New System.Drawing.Point(162, 25)
-        Me.productIDTextBox.Name = "productIDTextBox"
-        Me.productIDTextBox.Size = New System.Drawing.Size(140, 23)
-        Me.productIDTextBox.TabIndex = 2
-        '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ExitToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(7, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1148, 24)
-        Me.MenuStrip1.TabIndex = 3
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChinaQueriesToolStripMenuItem})
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(59, 20)
-        Me.ToolStripMenuItem1.Text = "Queries"
-        '
-        'ChinaQueriesToolStripMenuItem
-        '
-        Me.ChinaQueriesToolStripMenuItem.Name = "ChinaQueriesToolStripMenuItem"
-        Me.ChinaQueriesToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
-        Me.ChinaQueriesToolStripMenuItem.Text = "China Queries"
-        '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
-        Me.ExitToolStripMenuItem.Text = "Exit"
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Label14)
-        Me.GroupBox1.Controls.Add(Me.ytdPurchasesTextBox)
-        Me.GroupBox1.Controls.Add(Label13)
-        Me.GroupBox1.Controls.Add(Me.discountTextBox)
-        Me.GroupBox1.Controls.Add(Label12)
-        Me.GroupBox1.Controls.Add(Me.brandTextBox)
-        Me.GroupBox1.Controls.Add(Label11)
-        Me.GroupBox1.Controls.Add(Me.productLineTextBox)
-        Me.GroupBox1.Controls.Add(Label10)
-        Me.GroupBox1.Controls.Add(Me.productLeadTimeTextBox)
-        Me.GroupBox1.Controls.Add(Label9)
-        Me.GroupBox1.Controls.Add(Me.productReorderLevelTextBox)
-        Me.GroupBox1.Controls.Add(Label8)
-        Me.GroupBox1.Controls.Add(Me.quantityOnOrderTextBox)
-        Me.GroupBox1.Controls.Add(Label7)
-        Me.GroupBox1.Controls.Add(Me.quantityOnHandTextBox)
-        Me.GroupBox1.Controls.Add(Label6)
-        Me.GroupBox1.Controls.Add(Me.productUnitPriceTextBox)
-        Me.GroupBox1.Controls.Add(Label4)
-        Me.GroupBox1.Controls.Add(Me.productCostTextBox)
-        Me.GroupBox1.Controls.Add(Label2)
-        Me.GroupBox1.Controls.Add(Me.vendorIDComboBox)
-        Me.GroupBox1.Controls.Add(Label1)
-        Me.GroupBox1.Controls.Add(Me.productIDTextBox)
-        Me.GroupBox1.Location = New System.Drawing.Point(14, 60)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(326, 454)
-        Me.GroupBox1.TabIndex = 4
-        Me.GroupBox1.TabStop = False
-        '
-        'ytdPurchasesTextBox
-        '
-        Me.ytdPurchasesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "YTD_Purchases", True))
-        Me.ytdPurchasesTextBox.Location = New System.Drawing.Point(162, 402)
-        Me.ytdPurchasesTextBox.Name = "ytdPurchasesTextBox"
-        Me.ytdPurchasesTextBox.Size = New System.Drawing.Size(100, 23)
-        Me.ytdPurchasesTextBox.TabIndex = 27
-        '
-        'discountTextBox
-        '
-        Me.discountTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Discount", True))
-        Me.discountTextBox.Location = New System.Drawing.Point(162, 373)
-        Me.discountTextBox.Name = "discountTextBox"
-        Me.discountTextBox.Size = New System.Drawing.Size(100, 23)
-        Me.discountTextBox.TabIndex = 25
-        '
-        'brandTextBox
-        '
-        Me.brandTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Brand", True))
-        Me.brandTextBox.Location = New System.Drawing.Point(162, 344)
-        Me.brandTextBox.Name = "brandTextBox"
-        Me.brandTextBox.Size = New System.Drawing.Size(100, 23)
-        Me.brandTextBox.TabIndex = 23
-        '
-        'productLineTextBox
-        '
-        Me.productLineTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Line", True))
-        Me.productLineTextBox.Location = New System.Drawing.Point(162, 315)
-        Me.productLineTextBox.Name = "productLineTextBox"
-        Me.productLineTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.productLineTextBox.TabIndex = 21
-        '
-        'productLeadTimeTextBox
-        '
-        Me.productLeadTimeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Lead_Time", True))
-        Me.productLeadTimeTextBox.Location = New System.Drawing.Point(162, 286)
-        Me.productLeadTimeTextBox.Name = "productLeadTimeTextBox"
-        Me.productLeadTimeTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.productLeadTimeTextBox.TabIndex = 19
-        '
-        'productReorderLevelTextBox
-        '
-        Me.productReorderLevelTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Reorder_Level", True))
-        Me.productReorderLevelTextBox.Location = New System.Drawing.Point(162, 257)
-        Me.productReorderLevelTextBox.Name = "productReorderLevelTextBox"
-        Me.productReorderLevelTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.productReorderLevelTextBox.TabIndex = 17
-        '
-        'quantityOnOrderTextBox
-        '
-        Me.quantityOnOrderTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Quantity_On_Order", True))
-        Me.quantityOnOrderTextBox.Location = New System.Drawing.Point(162, 228)
-        Me.quantityOnOrderTextBox.Name = "quantityOnOrderTextBox"
-        Me.quantityOnOrderTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.quantityOnOrderTextBox.TabIndex = 15
-        '
-        'quantityOnHandTextBox
-        '
-        Me.quantityOnHandTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Quantity_On_Hand", True))
-        Me.quantityOnHandTextBox.Location = New System.Drawing.Point(162, 199)
-        Me.quantityOnHandTextBox.Name = "quantityOnHandTextBox"
-        Me.quantityOnHandTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.quantityOnHandTextBox.TabIndex = 13
-        '
-        'productUnitPriceTextBox
-        '
-        Me.productUnitPriceTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Unit_Price", True))
-        Me.productUnitPriceTextBox.Location = New System.Drawing.Point(162, 170)
-        Me.productUnitPriceTextBox.Name = "productUnitPriceTextBox"
-        Me.productUnitPriceTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.productUnitPriceTextBox.TabIndex = 11
-        '
-        'productCostTextBox
-        '
-        Me.productCostTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Cost", True))
-        Me.productCostTextBox.Location = New System.Drawing.Point(162, 112)
-        Me.productCostTextBox.Name = "productCostTextBox"
-        Me.productCostTextBox.Size = New System.Drawing.Size(140, 23)
-        Me.productCostTextBox.TabIndex = 7
-        '
-        'vendorIDComboBox
-        '
-        Me.vendorIDComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Vendor_ID", True))
-        Me.vendorIDComboBox.FormattingEnabled = True
-        Me.vendorIDComboBox.Location = New System.Drawing.Point(162, 54)
-        Me.vendorIDComboBox.Name = "vendorIDComboBox"
-        Me.vendorIDComboBox.Size = New System.Drawing.Size(140, 23)
-        Me.vendorIDComboBox.TabIndex = 3
+        Me.contactNameLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Contact_Name", True))
+        Me.contactNameLabel.Location = New System.Drawing.Point(130, 391)
+        Me.contactNameLabel.Name = "contactNameLabel"
+        Me.contactNameLabel.Size = New System.Drawing.Size(100, 23)
+        Me.contactNameLabel.TabIndex = 27
+        Me.contactNameLabel.Text = "Label1"
         '
         'VendorBindingSource
         '
         Me.VendorBindingSource.DataMember = "Vendor"
         Me.VendorBindingSource.DataSource = Me.ProductDatabaseDataSet
         '
-        'VendorTableAdapter
+        'notesLabel
         '
-        Me.VendorTableAdapter.ClearBeforeFill = True
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Label34)
-        Me.GroupBox2.Controls.Add(Me.activeStatusLabel)
-        Me.GroupBox2.Controls.Add(Label33)
-        Me.GroupBox2.Controls.Add(Me.classificationLabel)
-        Me.GroupBox2.Controls.Add(Label26)
-        Me.GroupBox2.Controls.Add(Me.contactNameLabel)
-        Me.GroupBox2.Controls.Add(Label25)
-        Me.GroupBox2.Controls.Add(Me.notesLabel)
-        Me.GroupBox2.Controls.Add(Label24)
-        Me.GroupBox2.Controls.Add(Me.websiteAddressLabel)
-        Me.GroupBox2.Controls.Add(Label23)
-        Me.GroupBox2.Controls.Add(Me.phoneNumberLabel)
-        Me.GroupBox2.Controls.Add(Label22)
-        Me.GroupBox2.Controls.Add(Me.emailAddressLabel)
-        Me.GroupBox2.Controls.Add(Label21)
-        Me.GroupBox2.Controls.Add(Me.countryLabel1)
-        Me.GroupBox2.Controls.Add(Label20)
-        Me.GroupBox2.Controls.Add(Me.zipCodeLabel)
-        Me.GroupBox2.Controls.Add(Label19)
-        Me.GroupBox2.Controls.Add(Me.stateLabel)
-        Me.GroupBox2.Controls.Add(Label18)
-        Me.GroupBox2.Controls.Add(Me.cityLabel)
-        Me.GroupBox2.Controls.Add(Label17)
-        Me.GroupBox2.Controls.Add(Me.vendorRegionLabel)
-        Me.GroupBox2.Controls.Add(Label16)
-        Me.GroupBox2.Controls.Add(Me.vendorNameLabel)
-        Me.GroupBox2.Controls.Add(Label15)
-        Me.GroupBox2.Controls.Add(Me.productNameTextBox)
-        Me.GroupBox2.Location = New System.Drawing.Point(356, 60)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(342, 469)
-        Me.GroupBox2.TabIndex = 5
-        Me.GroupBox2.TabStop = False
+        Me.notesLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Notes", True))
+        Me.notesLabel.Location = New System.Drawing.Point(83, 367)
+        Me.notesLabel.Name = "notesLabel"
+        Me.notesLabel.Size = New System.Drawing.Size(100, 23)
+        Me.notesLabel.TabIndex = 25
+        Me.notesLabel.Text = "Label1"
         '
         'activeStatusLabel
         '
         Me.activeStatusLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Active_Status", True))
-        Me.activeStatusLabel.Location = New System.Drawing.Point(130, 138)
+        Me.activeStatusLabel.Location = New System.Drawing.Point(111, 342)
         Me.activeStatusLabel.Name = "activeStatusLabel"
         Me.activeStatusLabel.Size = New System.Drawing.Size(100, 23)
-        Me.activeStatusLabel.TabIndex = 27
+        Me.activeStatusLabel.TabIndex = 23
         Me.activeStatusLabel.Text = "Label1"
         '
         'classificationLabel
         '
         Me.classificationLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Classification", True))
-        Me.classificationLabel.Location = New System.Drawing.Point(130, 115)
+        Me.classificationLabel.Location = New System.Drawing.Point(103, 309)
         Me.classificationLabel.Name = "classificationLabel"
         Me.classificationLabel.Size = New System.Drawing.Size(100, 23)
-        Me.classificationLabel.TabIndex = 25
+        Me.classificationLabel.TabIndex = 21
         Me.classificationLabel.Text = "Label1"
-        '
-        'contactNameLabel
-        '
-        Me.contactNameLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Contact_Name", True))
-        Me.contactNameLabel.Location = New System.Drawing.Point(130, 349)
-        Me.contactNameLabel.Name = "contactNameLabel"
-        Me.contactNameLabel.Size = New System.Drawing.Size(100, 23)
-        Me.contactNameLabel.TabIndex = 23
-        Me.contactNameLabel.Text = "Label1"
-        '
-        'notesLabel
-        '
-        Me.notesLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Notes", True))
-        Me.notesLabel.Location = New System.Drawing.Point(130, 326)
-        Me.notesLabel.Name = "notesLabel"
-        Me.notesLabel.Size = New System.Drawing.Size(100, 23)
-        Me.notesLabel.TabIndex = 21
-        Me.notesLabel.Text = "Label1"
         '
         'websiteAddressLabel
         '
         Me.websiteAddressLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Website_Address", True))
-        Me.websiteAddressLabel.Location = New System.Drawing.Point(130, 303)
+        Me.websiteAddressLabel.Location = New System.Drawing.Point(113, 284)
         Me.websiteAddressLabel.Name = "websiteAddressLabel"
         Me.websiteAddressLabel.Size = New System.Drawing.Size(100, 23)
         Me.websiteAddressLabel.TabIndex = 19
@@ -802,7 +744,7 @@ Partial Class MainForm
         'phoneNumberLabel
         '
         Me.phoneNumberLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Phone_Number", True))
-        Me.phoneNumberLabel.Location = New System.Drawing.Point(130, 280)
+        Me.phoneNumberLabel.Location = New System.Drawing.Point(113, 261)
         Me.phoneNumberLabel.Name = "phoneNumberLabel"
         Me.phoneNumberLabel.Size = New System.Drawing.Size(100, 23)
         Me.phoneNumberLabel.TabIndex = 17
@@ -811,25 +753,25 @@ Partial Class MainForm
         'emailAddressLabel
         '
         Me.emailAddressLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Email_Address", True))
-        Me.emailAddressLabel.Location = New System.Drawing.Point(130, 257)
+        Me.emailAddressLabel.Location = New System.Drawing.Point(123, 238)
         Me.emailAddressLabel.Name = "emailAddressLabel"
         Me.emailAddressLabel.Size = New System.Drawing.Size(100, 23)
         Me.emailAddressLabel.TabIndex = 15
         Me.emailAddressLabel.Text = "Label1"
         '
-        'countryLabel1
+        'countryLabel
         '
-        Me.countryLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Country", True))
-        Me.countryLabel1.Location = New System.Drawing.Point(130, 234)
-        Me.countryLabel1.Name = "countryLabel1"
-        Me.countryLabel1.Size = New System.Drawing.Size(100, 23)
-        Me.countryLabel1.TabIndex = 13
-        Me.countryLabel1.Text = "Label1"
+        Me.countryLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Country", True))
+        Me.countryLabel.Location = New System.Drawing.Point(86, 202)
+        Me.countryLabel.Name = "countryLabel"
+        Me.countryLabel.Size = New System.Drawing.Size(100, 23)
+        Me.countryLabel.TabIndex = 13
+        Me.countryLabel.Text = "Label1"
         '
         'zipCodeLabel
         '
         Me.zipCodeLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Zip_Code", True))
-        Me.zipCodeLabel.Location = New System.Drawing.Point(130, 211)
+        Me.zipCodeLabel.Location = New System.Drawing.Point(92, 177)
         Me.zipCodeLabel.Name = "zipCodeLabel"
         Me.zipCodeLabel.Size = New System.Drawing.Size(100, 23)
         Me.zipCodeLabel.TabIndex = 11
@@ -838,7 +780,7 @@ Partial Class MainForm
         'stateLabel
         '
         Me.stateLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "State", True))
-        Me.stateLabel.Location = New System.Drawing.Point(130, 188)
+        Me.stateLabel.Location = New System.Drawing.Point(74, 138)
         Me.stateLabel.Name = "stateLabel"
         Me.stateLabel.Size = New System.Drawing.Size(100, 23)
         Me.stateLabel.TabIndex = 9
@@ -847,7 +789,7 @@ Partial Class MainForm
         'cityLabel
         '
         Me.cityLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "City", True))
-        Me.cityLabel.Location = New System.Drawing.Point(130, 165)
+        Me.cityLabel.Location = New System.Drawing.Point(62, 106)
         Me.cityLabel.Name = "cityLabel"
         Me.cityLabel.Size = New System.Drawing.Size(100, 23)
         Me.cityLabel.TabIndex = 7
@@ -856,7 +798,7 @@ Partial Class MainForm
         'vendorRegionLabel
         '
         Me.vendorRegionLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Vendor_Region", True))
-        Me.vendorRegionLabel.Location = New System.Drawing.Point(130, 91)
+        Me.vendorRegionLabel.Location = New System.Drawing.Point(113, 76)
         Me.vendorRegionLabel.Name = "vendorRegionLabel"
         Me.vendorRegionLabel.Size = New System.Drawing.Size(100, 23)
         Me.vendorRegionLabel.TabIndex = 5
@@ -865,7 +807,7 @@ Partial Class MainForm
         'vendorNameLabel
         '
         Me.vendorNameLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VendorBindingSource, "Vendor_Name", True))
-        Me.vendorNameLabel.Location = New System.Drawing.Point(130, 68)
+        Me.vendorNameLabel.Location = New System.Drawing.Point(103, 49)
         Me.vendorNameLabel.Name = "vendorNameLabel"
         Me.vendorNameLabel.Size = New System.Drawing.Size(100, 23)
         Me.vendorNameLabel.TabIndex = 3
@@ -874,9 +816,9 @@ Partial Class MainForm
         'productNameTextBox
         '
         Me.productNameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Name", True))
-        Me.productNameTextBox.Location = New System.Drawing.Point(130, 25)
+        Me.productNameTextBox.Location = New System.Drawing.Point(100, 21)
         Me.productNameTextBox.Name = "productNameTextBox"
-        Me.productNameTextBox.Size = New System.Drawing.Size(188, 23)
+        Me.productNameTextBox.Size = New System.Drawing.Size(100, 20)
         Me.productNameTextBox.TabIndex = 1
         '
         'GroupBox3
@@ -901,10 +843,10 @@ Partial Class MainForm
         Me.GroupBox3.Controls.Add(Me.Label28)
         Me.GroupBox3.Controls.Add(Me.psListBox)
         Me.GroupBox3.Controls.Add(Me.Label27)
-        Me.GroupBox3.Location = New System.Drawing.Point(714, 60)
+        Me.GroupBox3.Location = New System.Drawing.Point(620, 28)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(379, 587)
-        Me.GroupBox3.TabIndex = 6
+        Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
         '
         'exitButton
@@ -983,7 +925,7 @@ Partial Class MainForm
         '
         Me.totalTextBox.Location = New System.Drawing.Point(192, 420)
         Me.totalTextBox.Name = "totalTextBox"
-        Me.totalTextBox.Size = New System.Drawing.Size(100, 23)
+        Me.totalTextBox.Size = New System.Drawing.Size(100, 20)
         Me.totalTextBox.TabIndex = 11
         '
         'Label32
@@ -991,7 +933,7 @@ Partial Class MainForm
         Me.Label32.AutoSize = True
         Me.Label32.Location = New System.Drawing.Point(189, 402)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(87, 15)
+        Me.Label32.Size = New System.Drawing.Size(81, 13)
         Me.Label32.TabIndex = 10
         Me.Label32.Text = "Total purchase:"
         '
@@ -999,7 +941,7 @@ Partial Class MainForm
         '
         Me.avgTextBox.Location = New System.Drawing.Point(34, 419)
         Me.avgTextBox.Name = "avgTextBox"
-        Me.avgTextBox.Size = New System.Drawing.Size(100, 23)
+        Me.avgTextBox.Size = New System.Drawing.Size(100, 20)
         Me.avgTextBox.TabIndex = 9
         '
         'Label31
@@ -1007,7 +949,7 @@ Partial Class MainForm
         Me.Label31.AutoSize = True
         Me.Label31.Location = New System.Drawing.Point(31, 401)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(104, 15)
+        Me.Label31.Size = New System.Drawing.Size(97, 13)
         Me.Label31.TabIndex = 8
         Me.Label31.Text = "Average purchase:"
         '
@@ -1015,7 +957,7 @@ Partial Class MainForm
         '
         Me.minTextBox.Location = New System.Drawing.Point(192, 362)
         Me.minTextBox.Name = "minTextBox"
-        Me.minTextBox.Size = New System.Drawing.Size(100, 23)
+        Me.minTextBox.Size = New System.Drawing.Size(100, 20)
         Me.minTextBox.TabIndex = 7
         '
         'Label30
@@ -1023,7 +965,7 @@ Partial Class MainForm
         Me.Label30.AutoSize = True
         Me.Label30.Location = New System.Drawing.Point(189, 344)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(82, 15)
+        Me.Label30.Size = New System.Drawing.Size(74, 13)
         Me.Label30.TabIndex = 6
         Me.Label30.Text = "Min purchase:"
         '
@@ -1031,7 +973,7 @@ Partial Class MainForm
         '
         Me.maxTextBox.Location = New System.Drawing.Point(34, 362)
         Me.maxTextBox.Name = "maxTextBox"
-        Me.maxTextBox.Size = New System.Drawing.Size(100, 23)
+        Me.maxTextBox.Size = New System.Drawing.Size(100, 20)
         Me.maxTextBox.TabIndex = 5
         '
         'Label29
@@ -1039,17 +981,16 @@ Partial Class MainForm
         Me.Label29.AutoSize = True
         Me.Label29.Location = New System.Drawing.Point(31, 344)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(83, 15)
+        Me.Label29.Size = New System.Drawing.Size(77, 13)
         Me.Label29.TabIndex = 4
         Me.Label29.Text = "Max purchase:"
         '
         'ppListBox
         '
         Me.ppListBox.FormattingEnabled = True
-        Me.ppListBox.ItemHeight = 15
         Me.ppListBox.Location = New System.Drawing.Point(31, 224)
         Me.ppListBox.Name = "ppListBox"
-        Me.ppListBox.Size = New System.Drawing.Size(324, 94)
+        Me.ppListBox.Size = New System.Drawing.Size(324, 82)
         Me.ppListBox.TabIndex = 3
         '
         'Label28
@@ -1057,17 +998,16 @@ Partial Class MainForm
         Me.Label28.AutoSize = True
         Me.Label28.Location = New System.Drawing.Point(28, 202)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(108, 15)
+        Me.Label28.Size = New System.Drawing.Size(99, 13)
         Me.Label28.TabIndex = 2
         Me.Label28.Text = "Product purchases:"
         '
         'psListBox
         '
         Me.psListBox.FormattingEnabled = True
-        Me.psListBox.ItemHeight = 15
         Me.psListBox.Location = New System.Drawing.Point(28, 54)
         Me.psListBox.Name = "psListBox"
-        Me.psListBox.Size = New System.Drawing.Size(327, 124)
+        Me.psListBox.Size = New System.Drawing.Size(327, 121)
         Me.psListBox.TabIndex = 1
         '
         'Label27
@@ -1075,36 +1015,31 @@ Partial Class MainForm
         Me.Label27.AutoSize = True
         Me.Label27.Location = New System.Drawing.Point(25, 30)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(95, 15)
+        Me.Label27.Size = New System.Drawing.Size(87, 13)
         Me.Label27.TabIndex = 0
         Me.Label27.Text = "Product sources:"
         '
         'MainForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1148, 672)
+        Me.ClientSize = New System.Drawing.Size(1143, 688)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ProductBindingNavigator)
-        Me.Controls.Add(Me.MenuStrip1)
-        Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MainMenuStrip = Me.MenuStrip1
+        Me.Controls.Add(Me.GroupBox1)
         Me.Name = "MainForm"
         Me.Text = "Form1"
-        CType(Me.ProductDatabaseDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         CType(Me.ProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProductDatabaseDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProductBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ProductBindingNavigator.ResumeLayout(False)
         Me.ProductBindingNavigator.PerformLayout()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        CType(Me.VendorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.VendorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
@@ -1112,6 +1047,7 @@ Partial Class MainForm
 
     End Sub
 
+    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents ProductDatabaseDataSet As ProductDatabaseDataSet
     Friend WithEvents ProductBindingSource As BindingSource
     Friend WithEvents ProductTableAdapter As ProductDatabaseDataSetTableAdapters.ProductTableAdapter
@@ -1129,42 +1065,44 @@ Partial Class MainForm
     Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
     Friend WithEvents ProductBindingNavigatorSaveItem As ToolStripButton
-    Friend WithEvents ToolStripDropDownButton1 As ToolStripDropDownButton
-    Friend WithEvents productIDTextBox As TextBox
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents ChinaQueriesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents vendorIDComboBox As ComboBox
-    Friend WithEvents VendorBindingSource As BindingSource
-    Friend WithEvents VendorTableAdapter As ProductDatabaseDataSetTableAdapters.VendorTableAdapter
-    Friend WithEvents productCostTextBox As TextBox
     Friend WithEvents ytdPurchasesTextBox As TextBox
     Friend WithEvents discountTextBox As TextBox
     Friend WithEvents brandTextBox As TextBox
     Friend WithEvents productLineTextBox As TextBox
     Friend WithEvents productLeadTimeTextBox As TextBox
-    Friend WithEvents productReorderLevelTextBox As TextBox
     Friend WithEvents quantityOnOrderTextBox As TextBox
     Friend WithEvents quantityOnHandTextBox As TextBox
+    Friend WithEvents productCostTextBox As TextBox
     Friend WithEvents productUnitPriceTextBox As TextBox
-    Friend WithEvents ToolStripTextBox1 As ToolStripTextBox
-    Friend WithEvents ToolStripButton1 As ToolStripButton
+    Friend WithEvents vendorIDComboBox As ComboBox
+    Friend WithEvents productIDTextBox As TextBox
+    Friend WithEvents VendorTableAdapter As ProductDatabaseDataSetTableAdapters.VendorTableAdapter
     Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents productNameTextBox As TextBox
+    Friend WithEvents VendorBindingSource As BindingSource
+    Friend WithEvents productReorderLevelTextBox As TextBox
+    Friend WithEvents contactNameLabel As Label
+    Friend WithEvents notesLabel As Label
+    Friend WithEvents activeStatusLabel As Label
+    Friend WithEvents classificationLabel As Label
     Friend WithEvents websiteAddressLabel As Label
     Friend WithEvents phoneNumberLabel As Label
     Friend WithEvents emailAddressLabel As Label
-    Friend WithEvents countryLabel1 As Label
+    Friend WithEvents countryLabel As Label
     Friend WithEvents zipCodeLabel As Label
     Friend WithEvents stateLabel As Label
     Friend WithEvents cityLabel As Label
     Friend WithEvents vendorRegionLabel As Label
     Friend WithEvents vendorNameLabel As Label
-    Friend WithEvents productNameTextBox As TextBox
-    Friend WithEvents contactNameLabel As Label
-    Friend WithEvents notesLabel As Label
     Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents exitButton As Button
+    Friend WithEvents searchButton As Button
+    Friend WithEvents refreshButton As Button
+    Friend WithEvents calculateButton As Button
+    Friend WithEvents moveLButton As Button
+    Friend WithEvents moveFButton As Button
+    Friend WithEvents movePButton As Button
+    Friend WithEvents moveNButton As Button
     Friend WithEvents totalTextBox As TextBox
     Friend WithEvents Label32 As Label
     Friend WithEvents avgTextBox As TextBox
@@ -1177,14 +1115,4 @@ Partial Class MainForm
     Friend WithEvents Label28 As Label
     Friend WithEvents psListBox As ListBox
     Friend WithEvents Label27 As Label
-    Friend WithEvents exitButton As Button
-    Friend WithEvents searchButton As Button
-    Friend WithEvents refreshButton As Button
-    Friend WithEvents calculateButton As Button
-    Friend WithEvents moveLButton As Button
-    Friend WithEvents moveFButton As Button
-    Friend WithEvents movePButton As Button
-    Friend WithEvents moveNButton As Button
-    Friend WithEvents activeStatusLabel As Label
-    Friend WithEvents classificationLabel As Label
 End Class
