@@ -3020,7 +3020,8 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_Notes,String)
             End If
             If (Original_Contact_Name Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Contact_Name")
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_Contact_Name,String)
@@ -3104,7 +3105,7 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.InsertCommand.Parameters(11).Value = CType(Notes,String)
             End If
             If (Contact_Name Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Contact_Name")
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.InsertCommand.Parameters(12).Value = CType(Contact_Name,String)
             End If
@@ -3214,7 +3215,7 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Notes,String)
             End If
             If (Contact_Name Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Contact_Name")
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Contact_Name,String)
             End If
@@ -3288,7 +3289,8 @@ Namespace ProductDatabaseDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Notes,String)
             End If
             If (Original_Contact_Name Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Contact_Name")
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Contact_Name,String)
