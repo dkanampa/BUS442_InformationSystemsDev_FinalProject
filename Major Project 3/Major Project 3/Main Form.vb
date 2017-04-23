@@ -50,9 +50,7 @@ Public Class MainForm
         'Joins vendor and product tables and writes the vendor name, vendor region, 
         Dim recordsQuery = From vendor In ProductDatabaseDataSet.Vendor, product In ProductDatabaseDataSet.Product
                            Where vendor.Vendor_ID = product.Vendor_ID And product.Vendor_ID = vendorIDComboBox.SelectedIndex
-                           Select vendor.Vendor_Name, vendor.Vendor_Region, vendor.Classification, vendor.Active_Status, vendor.City,
-                            vendor.State, vendor.Zip_Code, vendor.Country, vendor.Email_Address, vendor.Phone_Number, vendor.Website_Address,
-                            vendor.Notes, vendor.Contact_Name
+                           Select vendor
                            Distinct
 
         'Writes data out to interface.  
@@ -68,9 +66,21 @@ Public Class MainForm
             emailAddressLabel.Text = result.Email_Address
             phoneNumberLabel.Text = result.Phone_Number
             websiteAddressLabel.Text = result.Website_Address
-            notesLabel.Text = result.Notes
-            contactNameLabel.Text = result.Contact_Name
+
+            'addresses error due to DBNull values.
+            Try
+                notesLabel.Text = result.Notes
+            Catch ex As StrongTypingException
+                notesLabel.Text = String.Empty
+            End Try
+            'Addresses error due to DBNull values.
+            Try
+                contactNameLabel.Text = result.Contact_Name
+            Catch ex As StrongTypingException
+                contactNameLabel.Text = String.Empty
+            End Try
         Next
 
     End Sub
+
 End Class
