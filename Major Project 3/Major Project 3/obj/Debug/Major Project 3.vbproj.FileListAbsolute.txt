@@ -22,3 +22,27 @@ C:\Users\Coritators\Desktop\Major Project 3-Old\Major Project 3\obj\Debug\Major 
 C:\Users\Coritators\Desktop\Major Project 3-Old\Major Project 3\obj\Debug\Major_Project_3.MainForm.resources
 C:\Users\Coritators\Desktop\Major Project 3-Old\Major Project 3\obj\Debug\Major_Project_3.Resources.resources
 C:\Users\Coritators\Desktop\Major Project 3-Old\Major Project 3\obj\Debug\Major Project 3.vbproj.GenerateResource.Cache
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\obj\Debug\Major Project 3.exe
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\obj\Debug\Major Project 3.xml
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\obj\Debug\Major Project 3.pdb
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\bin\Debug\ProductDatabase.accdb
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\bin\Debug\Major Project 3.pdb
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\bin\Debug\Major Project 3.xml
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbprojResolveAssemblyReference.cache
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.MainForm.resources
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.Resources.resources
+C:\Users\Coritators\Desktop\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbproj.GenerateResource.Cache
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major Project 3.exe
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major Project 3.xml
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major Project 3.pdb
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\bin\Debug\ProductDatabase.accdb
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\bin\Debug\Major Project 3.pdb
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\bin\Debug\Major Project 3.xml
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbprojResolveAssemblyReference.cache
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.MainForm.resources
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.Resources.resources
+K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbproj.GenerateResource.Cache
