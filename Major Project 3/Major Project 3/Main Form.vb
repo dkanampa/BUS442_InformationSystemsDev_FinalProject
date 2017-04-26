@@ -20,9 +20,12 @@ Public Class MainForm
         Me.ProductTableAdapter.Fill(Me.ProductDatabaseDataSet.Product)
 
         'Reads vendor, active statues, and classification valid values and loads them into the listbox.
-        For Each record As DataRow In Me.ProductDatabaseDataSet.Product
+        For Each record As DataRow In Me.ProductDatabaseDataSet.Vendor
             vendorIDComboBox.Items.Add(record.Item("Vendor_ID").ToString)
         Next
+
+        'Sorts the items in the combobox
+        vendorIDComboBox.Sorted = True
 
     End Sub
 
@@ -206,6 +209,9 @@ Public Class MainForm
     End Sub
 
     Private Sub calculateButton_Click(sender As Object, e As EventArgs) Handles calculateButton.Click
+        'Decalres totalPurchase variable
+        Dim totalPurchase As Double
+        Dim averagePurchase As Double
 
         'Finds the Product Name and Product Cost in the Product table and writes them to recordsQuery
         Dim recordsQuery = From product In ProductDatabaseDataSet.Product
@@ -232,17 +238,32 @@ Public Class MainForm
             tempString(0) = record.Item("Product_Name").ToString
             tempString(1) = record.Item("YTD_Purchases").ToString()
             tempNode = New ListViewItem(tempString)
-
+            
             'Adds items to listview
             ppListView.Items.Add(tempNode)
+
+            'Addes purchases to eachother to get total purchase
+            totalPurchase += Val(tempNode.SubItems.Item(1).Text)
         Next
 
-        Dim sum As Double
+        'Calculates the average purchase amount.
+        averagePurchase = totalPurchase / ppListView.Items.Count
 
-        For x As Integer = 0 To ppListView.Items.Count = -1
-            sum += Val(ppListView.Items.Item(x))
-        Next
+        'Writes total purchases in total purchase textbox.
+        totalTextBox.Text = totalPurchase.ToString("c2")
+        'Writes out average purchases in average purchase textbox.
+        avgTextBox.Text = averagePurchase.ToString("c2")
 
-        totalTextBox.Text = sum.ToString
+        'Finds the highest YTD purchase and assigns it to the maxPurchase variable.
+        Dim maxPurchase As Double = Aggregate product In ProductDatabaseDataSet.Product
+                                        Select product.YTD_Purchases Into Max()
+
+        'Finds the lowest YTD purchase and assigns it to the minPurchase variable.
+        Dim minPurchase As Double = Aggregate product In ProductDatabaseDataSet.Product
+                                        Select product.YTD_Purchases Into Min()
+
+        'Write out maxPurchase and min purchase to messagebox
+        MessageBox.Show("Maximum purchase amount is " & maxPurchase.ToString("c2") & ". Minimum purchase amount is " & minPurchase.ToString("c2") & ".", "Maximum and Minimum Purchase", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
     End Sub
 End Class
