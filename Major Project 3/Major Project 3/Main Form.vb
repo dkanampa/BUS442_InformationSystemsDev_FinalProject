@@ -206,21 +206,43 @@ Public Class MainForm
     End Sub
 
     Private Sub calculateButton_Click(sender As Object, e As EventArgs) Handles calculateButton.Click
+
+        'Finds the Product Name and Product Cost in the Product table and writes them to recordsQuery
         Dim recordsQuery = From product In ProductDatabaseDataSet.Product
                            Where product.Vendor_ID = vendorIDComboBox.SelectedIndex
-                           Select product.Product_Name
+                           Select product.Product_Name, product.YTD_Purchases
                            Distinct
+        ' Set columnar mode
+        ppListView.View = View.Details
 
+        ' Set column header and width
+        ppListView.Columns.Clear()
+        ppListView.Columns.Add("Product name", 250)
+        ppListView.Columns.Add("YTD Purchases", 100)
 
+        ' Remove previous items
+        ppListView.Items.Clear()
 
-        For Each record As DataRow In Me.Customer_DatabaseDataSet.SALESREP
-            sales_Rep_Code_ComboBox.Items.Add(record.Item("Sales_Rep_Id").ToString())
+        'Writes out the Product Name and Product Cost in the listbox.
+        For Each record As DataRow In ProductDatabaseDataSet.Product
 
+            'Sets up an array to hold listview data.
+            Dim tempString(1) As String
+            Dim tempNode As ListViewItem
+            tempString(0) = record.Item("Product_Name").ToString
+            tempString(1) = record.Item("YTD_Purchases").ToString()
+            tempNode = New ListViewItem(tempString)
+
+            'Adds items to listview
+            ppListView.Items.Add(tempNode)
         Next
 
-        For Each result In recordsQuery
-            result =
-            ppListBox.Items.Add(result)
+        Dim sum As Double
+
+        For x As Integer = 0 To ppListView.Items.Count = -1
+            sum += Val(ppListView.Items.Item(x))
         Next
+
+        totalTextBox.Text = sum.ToString
     End Sub
 End Class

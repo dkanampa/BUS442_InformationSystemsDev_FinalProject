@@ -46,3 +46,11 @@ K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Majo
 K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.MainForm.resources
 K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major_Project_3.Resources.resources
 K:\School\BUS 442\Major Project 3\Major Project 3\Major Project 3\obj\Debug\Major Project 3.vbproj.GenerateResource.Cache
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\BUS442_InformationSystemsDev_FinalProject-Corita-Branch\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\BUS442_InformationSystemsDev_FinalProject-Corita-Branch\Major Project 3\Major Project 3\obj\Debug\Major Project 3.exe
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\BUS442_InformationSystemsDev_FinalProject-Corita-Branch\Major Project 3\Major Project 3\obj\Debug\Major Project 3.xml
+C:\00 NC State Classes\BUS.442.Inforamtion Systems and Development\Major Project 3 Folder\BUS442_InformationSystemsDev_FinalProject-Corita-Branch\Major Project 3\Major Project 3\obj\Debug\Major Project 3.pdb
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\bin\Debug\Major Project 3.exe.config
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major Project 3.exe
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major Project 3.xml
+C:\Users\Coritators\Desktop\BUS442_InformationSystemsDev_FinalProject-master\Major Project 3\Major Project 3\obj\Debug\Major Project 3.pdb

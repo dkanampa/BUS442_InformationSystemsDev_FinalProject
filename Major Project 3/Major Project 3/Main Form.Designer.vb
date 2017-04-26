@@ -102,10 +102,6 @@ Partial Class MainForm
         Me.searchButton = New System.Windows.Forms.Button()
         Me.refreshButton = New System.Windows.Forms.Button()
         Me.calculateButton = New System.Windows.Forms.Button()
-        Me.moveLButton = New System.Windows.Forms.Button()
-        Me.moveFButton = New System.Windows.Forms.Button()
-        Me.movePButton = New System.Windows.Forms.Button()
-        Me.moveNButton = New System.Windows.Forms.Button()
         Me.totalTextBox = New System.Windows.Forms.TextBox()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.avgTextBox = New System.Windows.Forms.TextBox()
@@ -114,13 +110,18 @@ Partial Class MainForm
         Me.Label30 = New System.Windows.Forms.Label()
         Me.maxTextBox = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
-        Me.ppListBox = New System.Windows.Forms.ListBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.psListBox = New System.Windows.Forms.ListBox()
         Me.Label27 = New System.Windows.Forms.Label()
+        Me.moveLButton = New System.Windows.Forms.Button()
+        Me.moveFButton = New System.Windows.Forms.Button()
+        Me.movePButton = New System.Windows.Forms.Button()
+        Me.moveNButton = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.QuerryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.ppListView = New System.Windows.Forms.ListView()
         Label1 = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
@@ -156,12 +157,13 @@ Partial Class MainForm
         CType(Me.VendorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(23, 32)
+        Label1.Location = New System.Drawing.Point(16, 32)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(66, 15)
         Label1.TabIndex = 0
@@ -170,16 +172,16 @@ Partial Class MainForm
         'Label2
         '
         Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(31, 70)
+        Label2.Location = New System.Drawing.Point(16, 64)
         Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(62, 15)
+        Label2.Size = New System.Drawing.Size(61, 15)
         Label2.TabIndex = 2
         Label2.Text = "Vendor ID:"
         '
         'Label3
         '
         Label3.AutoSize = True
-        Label3.Location = New System.Drawing.Point(34, 113)
+        Label3.Location = New System.Drawing.Point(16, 107)
         Label3.Name = "Label3"
         Label3.Size = New System.Drawing.Size(105, 15)
         Label3.TabIndex = 4
@@ -188,7 +190,7 @@ Partial Class MainForm
         'Label4
         '
         Label4.AutoSize = True
-        Label4.Location = New System.Drawing.Point(38, 151)
+        Label4.Location = New System.Drawing.Point(16, 143)
         Label4.Name = "Label4"
         Label4.Size = New System.Drawing.Size(77, 15)
         Label4.TabIndex = 6
@@ -197,7 +199,7 @@ Partial Class MainForm
         'Label5
         '
         Label5.AutoSize = True
-        Label5.Location = New System.Drawing.Point(24, 183)
+        Label5.Location = New System.Drawing.Point(16, 179)
         Label5.Name = "Label5"
         Label5.Size = New System.Drawing.Size(103, 15)
         Label5.TabIndex = 8
@@ -206,7 +208,7 @@ Partial Class MainForm
         'Label6
         '
         Label6.AutoSize = True
-        Label6.Location = New System.Drawing.Point(24, 215)
+        Label6.Location = New System.Drawing.Point(16, 211)
         Label6.Name = "Label6"
         Label6.Size = New System.Drawing.Size(104, 15)
         Label6.TabIndex = 10
@@ -215,7 +217,7 @@ Partial Class MainForm
         'Label7
         '
         Label7.AutoSize = True
-        Label7.Location = New System.Drawing.Point(26, 241)
+        Label7.Location = New System.Drawing.Point(16, 246)
         Label7.Name = "Label7"
         Label7.Size = New System.Drawing.Size(104, 15)
         Label7.TabIndex = 12
@@ -242,7 +244,7 @@ Partial Class MainForm
         'Label11
         '
         Label11.AutoSize = True
-        Label11.Location = New System.Drawing.Point(35, 369)
+        Label11.Location = New System.Drawing.Point(16, 381)
         Label11.Name = "Label11"
         Label11.Size = New System.Drawing.Size(57, 15)
         Label11.TabIndex = 18
@@ -251,7 +253,7 @@ Partial Class MainForm
         'Label12
         '
         Label12.AutoSize = True
-        Label12.Location = New System.Drawing.Point(49, 418)
+        Label12.Location = New System.Drawing.Point(16, 422)
         Label12.Name = "Label12"
         Label12.Size = New System.Drawing.Size(88, 15)
         Label12.TabIndex = 20
@@ -271,7 +273,7 @@ Partial Class MainForm
         Label14.AutoSize = True
         Label14.Location = New System.Drawing.Point(26, 57)
         Label14.Name = "Label14"
-        Label14.Size = New System.Drawing.Size(81, 15)
+        Label14.Size = New System.Drawing.Size(80, 15)
         Label14.TabIndex = 2
         Label14.Text = "Vendor name:"
         '
@@ -280,7 +282,7 @@ Partial Class MainForm
         Label15.AutoSize = True
         Label15.Location = New System.Drawing.Point(30, 88)
         Label15.Name = "Label15"
-        Label15.Size = New System.Drawing.Size(85, 15)
+        Label15.Size = New System.Drawing.Size(84, 15)
         Label15.TabIndex = 4
         Label15.Text = "Vendor region:"
         '
@@ -418,12 +420,11 @@ Partial Class MainForm
         Me.GroupBox1.Controls.Add(Me.vendorIDComboBox)
         Me.GroupBox1.Controls.Add(Label1)
         Me.GroupBox1.Controls.Add(Me.productIDTextBox)
-        Me.GroupBox1.Location = New System.Drawing.Point(29, 38)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 62)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(321, 460)
+        Me.GroupBox1.Size = New System.Drawing.Size(321, 501)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "GroupBox1"
         '
         'productReorderLevelTextBox
         '
@@ -446,7 +447,7 @@ Partial Class MainForm
         'ytdPurchasesTextBox
         '
         Me.ytdPurchasesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "YTD_Purchases", True))
-        Me.ytdPurchasesTextBox.Location = New System.Drawing.Point(155, 414)
+        Me.ytdPurchasesTextBox.Location = New System.Drawing.Point(125, 427)
         Me.ytdPurchasesTextBox.Name = "ytdPurchasesTextBox"
         Me.ytdPurchasesTextBox.Size = New System.Drawing.Size(116, 23)
         Me.ytdPurchasesTextBox.TabIndex = 21
@@ -454,7 +455,7 @@ Partial Class MainForm
         'discountTextBox
         '
         Me.discountTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Discount", True))
-        Me.discountTextBox.Location = New System.Drawing.Point(103, 366)
+        Me.discountTextBox.Location = New System.Drawing.Point(125, 378)
         Me.discountTextBox.Name = "discountTextBox"
         Me.discountTextBox.Size = New System.Drawing.Size(116, 23)
         Me.discountTextBox.TabIndex = 19
@@ -478,7 +479,7 @@ Partial Class MainForm
         'productLeadTimeTextBox
         '
         Me.productLeadTimeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Lead_Time", True))
-        Me.productLeadTimeTextBox.Location = New System.Drawing.Point(149, 238)
+        Me.productLeadTimeTextBox.Location = New System.Drawing.Point(127, 238)
         Me.productLeadTimeTextBox.Name = "productLeadTimeTextBox"
         Me.productLeadTimeTextBox.Size = New System.Drawing.Size(116, 23)
         Me.productLeadTimeTextBox.TabIndex = 13
@@ -486,7 +487,7 @@ Partial Class MainForm
         'quantityOnOrderTextBox
         '
         Me.quantityOnOrderTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Quantity_On_Order", True))
-        Me.quantityOnOrderTextBox.Location = New System.Drawing.Point(142, 211)
+        Me.quantityOnOrderTextBox.Location = New System.Drawing.Point(128, 208)
         Me.quantityOnOrderTextBox.Name = "quantityOnOrderTextBox"
         Me.quantityOnOrderTextBox.Size = New System.Drawing.Size(116, 23)
         Me.quantityOnOrderTextBox.TabIndex = 11
@@ -494,7 +495,7 @@ Partial Class MainForm
         'quantityOnHandTextBox
         '
         Me.quantityOnHandTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Quantity_On_Hand", True))
-        Me.quantityOnHandTextBox.Location = New System.Drawing.Point(142, 180)
+        Me.quantityOnHandTextBox.Location = New System.Drawing.Point(125, 171)
         Me.quantityOnHandTextBox.Name = "quantityOnHandTextBox"
         Me.quantityOnHandTextBox.Size = New System.Drawing.Size(116, 23)
         Me.quantityOnHandTextBox.TabIndex = 9
@@ -502,7 +503,7 @@ Partial Class MainForm
         'productCostTextBox
         '
         Me.productCostTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Cost", True))
-        Me.productCostTextBox.Location = New System.Drawing.Point(128, 148)
+        Me.productCostTextBox.Location = New System.Drawing.Point(127, 143)
         Me.productCostTextBox.Name = "productCostTextBox"
         Me.productCostTextBox.Size = New System.Drawing.Size(116, 23)
         Me.productCostTextBox.TabIndex = 7
@@ -510,7 +511,7 @@ Partial Class MainForm
         'productUnitPriceTextBox
         '
         Me.productUnitPriceTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_Unit_Price", True))
-        Me.productUnitPriceTextBox.Location = New System.Drawing.Point(153, 110)
+        Me.productUnitPriceTextBox.Location = New System.Drawing.Point(127, 107)
         Me.productUnitPriceTextBox.Name = "productUnitPriceTextBox"
         Me.productUnitPriceTextBox.Size = New System.Drawing.Size(116, 23)
         Me.productUnitPriceTextBox.TabIndex = 5
@@ -519,7 +520,7 @@ Partial Class MainForm
         '
         Me.vendorIDComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Vendor_ID", True))
         Me.vendorIDComboBox.FormattingEnabled = True
-        Me.vendorIDComboBox.Location = New System.Drawing.Point(106, 67)
+        Me.vendorIDComboBox.Location = New System.Drawing.Point(125, 61)
         Me.vendorIDComboBox.Name = "vendorIDComboBox"
         Me.vendorIDComboBox.Size = New System.Drawing.Size(140, 23)
         Me.vendorIDComboBox.TabIndex = 3
@@ -527,7 +528,7 @@ Partial Class MainForm
         'productIDTextBox
         '
         Me.productIDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductBindingSource, "Product_ID", True))
-        Me.productIDTextBox.Location = New System.Drawing.Point(101, 29)
+        Me.productIDTextBox.Location = New System.Drawing.Point(125, 28)
         Me.productIDTextBox.Name = "productIDTextBox"
         Me.productIDTextBox.Size = New System.Drawing.Size(116, 23)
         Me.productIDTextBox.TabIndex = 1
@@ -688,12 +689,11 @@ Partial Class MainForm
         Me.GroupBox2.Controls.Add(Me.vendorNameLabel)
         Me.GroupBox2.Controls.Add(Label13)
         Me.GroupBox2.Controls.Add(Me.productNameTextBox)
-        Me.GroupBox2.Location = New System.Drawing.Point(383, 38)
+        Me.GroupBox2.Location = New System.Drawing.Point(377, 62)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(321, 501)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "GroupBox2"
         '
         'contactNameLabel
         '
@@ -827,14 +827,11 @@ Partial Class MainForm
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.ppListView)
         Me.GroupBox3.Controls.Add(Me.exitButton)
         Me.GroupBox3.Controls.Add(Me.searchButton)
         Me.GroupBox3.Controls.Add(Me.refreshButton)
         Me.GroupBox3.Controls.Add(Me.calculateButton)
-        Me.GroupBox3.Controls.Add(Me.moveLButton)
-        Me.GroupBox3.Controls.Add(Me.moveFButton)
-        Me.GroupBox3.Controls.Add(Me.movePButton)
-        Me.GroupBox3.Controls.Add(Me.moveNButton)
         Me.GroupBox3.Controls.Add(Me.totalTextBox)
         Me.GroupBox3.Controls.Add(Me.Label32)
         Me.GroupBox3.Controls.Add(Me.avgTextBox)
@@ -843,19 +840,18 @@ Partial Class MainForm
         Me.GroupBox3.Controls.Add(Me.Label30)
         Me.GroupBox3.Controls.Add(Me.maxTextBox)
         Me.GroupBox3.Controls.Add(Me.Label29)
-        Me.GroupBox3.Controls.Add(Me.ppListBox)
         Me.GroupBox3.Controls.Add(Me.Label28)
         Me.GroupBox3.Controls.Add(Me.psListBox)
         Me.GroupBox3.Controls.Add(Me.Label27)
-        Me.GroupBox3.Location = New System.Drawing.Point(723, 32)
+        Me.GroupBox3.Location = New System.Drawing.Point(717, 62)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(442, 677)
+        Me.GroupBox3.Size = New System.Drawing.Size(440, 611)
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
         '
         'exitButton
         '
-        Me.exitButton.Location = New System.Drawing.Point(323, 595)
+        Me.exitButton.Location = New System.Drawing.Point(315, 493)
         Me.exitButton.Name = "exitButton"
         Me.exitButton.Size = New System.Drawing.Size(91, 47)
         Me.exitButton.TabIndex = 19
@@ -864,7 +860,7 @@ Partial Class MainForm
         '
         'searchButton
         '
-        Me.searchButton.Location = New System.Drawing.Point(225, 595)
+        Me.searchButton.Location = New System.Drawing.Point(221, 493)
         Me.searchButton.Name = "searchButton"
         Me.searchButton.Size = New System.Drawing.Size(91, 47)
         Me.searchButton.TabIndex = 18
@@ -873,7 +869,7 @@ Partial Class MainForm
         '
         'refreshButton
         '
-        Me.refreshButton.Location = New System.Drawing.Point(127, 595)
+        Me.refreshButton.Location = New System.Drawing.Point(124, 493)
         Me.refreshButton.Name = "refreshButton"
         Me.refreshButton.Size = New System.Drawing.Size(91, 47)
         Me.refreshButton.TabIndex = 17
@@ -882,52 +878,16 @@ Partial Class MainForm
         '
         'calculateButton
         '
-        Me.calculateButton.Location = New System.Drawing.Point(29, 595)
+        Me.calculateButton.Location = New System.Drawing.Point(27, 493)
         Me.calculateButton.Name = "calculateButton"
         Me.calculateButton.Size = New System.Drawing.Size(91, 47)
         Me.calculateButton.TabIndex = 16
         Me.calculateButton.Text = "Calculate"
         Me.calculateButton.UseVisualStyleBackColor = True
         '
-        'moveLButton
-        '
-        Me.moveLButton.Location = New System.Drawing.Point(323, 541)
-        Me.moveLButton.Name = "moveLButton"
-        Me.moveLButton.Size = New System.Drawing.Size(91, 47)
-        Me.moveLButton.TabIndex = 15
-        Me.moveLButton.Text = "Move Last"
-        Me.moveLButton.UseVisualStyleBackColor = True
-        '
-        'moveFButton
-        '
-        Me.moveFButton.Location = New System.Drawing.Point(225, 541)
-        Me.moveFButton.Name = "moveFButton"
-        Me.moveFButton.Size = New System.Drawing.Size(91, 47)
-        Me.moveFButton.TabIndex = 14
-        Me.moveFButton.Text = "Move First"
-        Me.moveFButton.UseVisualStyleBackColor = True
-        '
-        'movePButton
-        '
-        Me.movePButton.Location = New System.Drawing.Point(127, 541)
-        Me.movePButton.Name = "movePButton"
-        Me.movePButton.Size = New System.Drawing.Size(91, 47)
-        Me.movePButton.TabIndex = 13
-        Me.movePButton.Text = "Move Previous"
-        Me.movePButton.UseVisualStyleBackColor = True
-        '
-        'moveNButton
-        '
-        Me.moveNButton.Location = New System.Drawing.Point(29, 541)
-        Me.moveNButton.Name = "moveNButton"
-        Me.moveNButton.Size = New System.Drawing.Size(91, 47)
-        Me.moveNButton.TabIndex = 12
-        Me.moveNButton.Text = "Move Next"
-        Me.moveNButton.UseVisualStyleBackColor = True
-        '
         'totalTextBox
         '
-        Me.totalTextBox.Location = New System.Drawing.Point(224, 485)
+        Me.totalTextBox.Location = New System.Drawing.Point(214, 445)
         Me.totalTextBox.Name = "totalTextBox"
         Me.totalTextBox.Size = New System.Drawing.Size(116, 23)
         Me.totalTextBox.TabIndex = 11
@@ -935,15 +895,15 @@ Partial Class MainForm
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(220, 464)
+        Me.Label32.Location = New System.Drawing.Point(210, 424)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(88, 15)
+        Me.Label32.Size = New System.Drawing.Size(87, 15)
         Me.Label32.TabIndex = 10
         Me.Label32.Text = "Total purchase:"
         '
         'avgTextBox
         '
-        Me.avgTextBox.Location = New System.Drawing.Point(40, 483)
+        Me.avgTextBox.Location = New System.Drawing.Point(30, 443)
         Me.avgTextBox.Name = "avgTextBox"
         Me.avgTextBox.Size = New System.Drawing.Size(116, 23)
         Me.avgTextBox.TabIndex = 9
@@ -951,7 +911,7 @@ Partial Class MainForm
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(36, 463)
+        Me.Label31.Location = New System.Drawing.Point(26, 423)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(104, 15)
         Me.Label31.TabIndex = 8
@@ -959,7 +919,7 @@ Partial Class MainForm
         '
         'minTextBox
         '
-        Me.minTextBox.Location = New System.Drawing.Point(224, 418)
+        Me.minTextBox.Location = New System.Drawing.Point(214, 378)
         Me.minTextBox.Name = "minTextBox"
         Me.minTextBox.Size = New System.Drawing.Size(116, 23)
         Me.minTextBox.TabIndex = 7
@@ -967,7 +927,7 @@ Partial Class MainForm
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(220, 397)
+        Me.Label30.Location = New System.Drawing.Point(210, 357)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(82, 15)
         Me.Label30.TabIndex = 6
@@ -975,7 +935,7 @@ Partial Class MainForm
         '
         'maxTextBox
         '
-        Me.maxTextBox.Location = New System.Drawing.Point(40, 418)
+        Me.maxTextBox.Location = New System.Drawing.Point(30, 378)
         Me.maxTextBox.Name = "maxTextBox"
         Me.maxTextBox.Size = New System.Drawing.Size(116, 23)
         Me.maxTextBox.TabIndex = 5
@@ -983,25 +943,16 @@ Partial Class MainForm
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(36, 397)
+        Me.Label29.Location = New System.Drawing.Point(26, 357)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(83, 15)
         Me.Label29.TabIndex = 4
         Me.Label29.Text = "Max purchase:"
         '
-        'ppListBox
-        '
-        Me.ppListBox.FormattingEnabled = True
-        Me.ppListBox.ItemHeight = 15
-        Me.ppListBox.Location = New System.Drawing.Point(36, 258)
-        Me.ppListBox.Name = "ppListBox"
-        Me.ppListBox.Size = New System.Drawing.Size(377, 94)
-        Me.ppListBox.TabIndex = 3
-        '
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(33, 233)
+        Me.Label28.Location = New System.Drawing.Point(25, 216)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(108, 15)
         Me.Label28.TabIndex = 2
@@ -1011,7 +962,7 @@ Partial Class MainForm
         '
         Me.psListBox.FormattingEnabled = True
         Me.psListBox.ItemHeight = 15
-        Me.psListBox.Location = New System.Drawing.Point(33, 62)
+        Me.psListBox.Location = New System.Drawing.Point(27, 55)
         Me.psListBox.Name = "psListBox"
         Me.psListBox.Size = New System.Drawing.Size(381, 139)
         Me.psListBox.TabIndex = 1
@@ -1019,11 +970,47 @@ Partial Class MainForm
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(29, 35)
+        Me.Label27.Location = New System.Drawing.Point(24, 37)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(95, 15)
         Me.Label27.TabIndex = 0
         Me.Label27.Text = "Product sources:"
+        '
+        'moveLButton
+        '
+        Me.moveLButton.Location = New System.Drawing.Point(327, 33)
+        Me.moveLButton.Name = "moveLButton"
+        Me.moveLButton.Size = New System.Drawing.Size(91, 47)
+        Me.moveLButton.TabIndex = 15
+        Me.moveLButton.Text = "Move Last"
+        Me.moveLButton.UseVisualStyleBackColor = True
+        '
+        'moveFButton
+        '
+        Me.moveFButton.Location = New System.Drawing.Point(223, 33)
+        Me.moveFButton.Name = "moveFButton"
+        Me.moveFButton.Size = New System.Drawing.Size(91, 47)
+        Me.moveFButton.TabIndex = 14
+        Me.moveFButton.Text = "Move First"
+        Me.moveFButton.UseVisualStyleBackColor = True
+        '
+        'movePButton
+        '
+        Me.movePButton.Location = New System.Drawing.Point(126, 33)
+        Me.movePButton.Name = "movePButton"
+        Me.movePButton.Size = New System.Drawing.Size(91, 47)
+        Me.movePButton.TabIndex = 13
+        Me.movePButton.Text = "Move Previous"
+        Me.movePButton.UseVisualStyleBackColor = True
+        '
+        'moveNButton
+        '
+        Me.moveNButton.Location = New System.Drawing.Point(24, 33)
+        Me.moveNButton.Name = "moveNButton"
+        Me.moveNButton.Size = New System.Drawing.Size(91, 47)
+        Me.moveNButton.TabIndex = 12
+        Me.moveNButton.Text = "Move Next"
+        Me.moveNButton.UseVisualStyleBackColor = True
         '
         'MenuStrip1
         '
@@ -1046,11 +1033,32 @@ Partial Class MainForm
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.moveNButton)
+        Me.GroupBox4.Controls.Add(Me.movePButton)
+        Me.GroupBox4.Controls.Add(Me.moveFButton)
+        Me.GroupBox4.Controls.Add(Me.moveLButton)
+        Me.GroupBox4.Location = New System.Drawing.Point(97, 569)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(483, 100)
+        Me.GroupBox4.TabIndex = 9
+        Me.GroupBox4.TabStop = False
+        '
+        'ppListView
+        '
+        Me.ppListView.Location = New System.Drawing.Point(27, 234)
+        Me.ppListView.Name = "ppListView"
+        Me.ppListView.Size = New System.Drawing.Size(381, 114)
+        Me.ppListView.TabIndex = 21
+        Me.ppListView.UseCompatibleStateImageBehavior = False
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1333, 794)
+        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.ProductBindingNavigator)
@@ -1074,6 +1082,7 @@ Partial Class MainForm
         Me.GroupBox3.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1143,11 +1152,12 @@ Partial Class MainForm
     Friend WithEvents Label30 As Label
     Friend WithEvents maxTextBox As TextBox
     Friend WithEvents Label29 As Label
-    Friend WithEvents ppListBox As ListBox
     Friend WithEvents Label28 As Label
     Friend WithEvents psListBox As ListBox
     Friend WithEvents Label27 As Label
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents QuerryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents ppListView As ListView
 End Class
