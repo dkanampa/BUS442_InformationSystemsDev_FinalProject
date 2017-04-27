@@ -47,6 +47,10 @@ Public Class MainForm
     End Sub
 
     Private Sub moveNButton_Click(sender As Object, e As EventArgs) Handles moveNButton.Click
+        'Clears both notes and contact name label.
+        contactNameLabel.Text = String.Empty
+        notesLabel.Text = String.empty
+
         'Moves to next product and vendor record
         Me.ProductBindingSource.MoveNext()
 
@@ -87,6 +91,10 @@ Public Class MainForm
     End Sub
 
     Private Sub movePButton_Click(sender As Object, e As EventArgs) Handles movePButton.Click
+        'Clears both notes and contact name label.
+        contactNameLabel.Text = String.Empty
+        notesLabel.Text = String.Empty
+
         'Moves to next product and vendor record
         Me.ProductBindingSource.MovePrevious()
 
@@ -126,6 +134,10 @@ Public Class MainForm
     End Sub
 
     Private Sub moveFButton_Click(sender As Object, e As EventArgs) Handles moveFButton.Click
+        'Clears both notes and contact name label.
+        contactNameLabel.Text = String.Empty
+        notesLabel.Text = String.Empty
+
         'Moves to next product and vendor record
         Me.ProductBindingSource.MoveFirst()
 
@@ -165,6 +177,10 @@ Public Class MainForm
     End Sub
 
     Private Sub moveLButton_Click(sender As Object, e As EventArgs) Handles moveLButton.Click
+        'Clears both notes and contact name label.
+        contactNameLabel.Text = String.Empty
+        notesLabel.Text = String.Empty
+
         'Moves to next product and vendor record
         Me.ProductBindingSource.MoveLast()
 
@@ -238,7 +254,7 @@ Public Class MainForm
             tempString(0) = record.Item("Product_Name").ToString
             tempString(1) = record.Item("YTD_Purchases").ToString()
             tempNode = New ListViewItem(tempString)
-            
+
             'Adds items to listview
             ppListView.Items.Add(tempNode)
 
@@ -264,6 +280,10 @@ Public Class MainForm
 
         'Write out maxPurchase and min purchase to messagebox
         MessageBox.Show("Maximum purchase amount is " & maxPurchase.ToString("c2") & ". Minimum purchase amount is " & minPurchase.ToString("c2") & ".", "Maximum and Minimum Purchase", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+    End Sub
+
+    Private Sub refreshButton_Click(sender As Object, e As EventArgs) Handles refreshButton.Click
 
     End Sub
 End Class

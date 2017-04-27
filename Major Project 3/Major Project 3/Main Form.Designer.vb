@@ -98,6 +98,7 @@ Partial Class MainForm
         Me.vendorNameLabel = New System.Windows.Forms.Label()
         Me.productNameTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.ppListView = New System.Windows.Forms.ListView()
         Me.exitButton = New System.Windows.Forms.Button()
         Me.searchButton = New System.Windows.Forms.Button()
         Me.refreshButton = New System.Windows.Forms.Button()
@@ -121,7 +122,6 @@ Partial Class MainForm
         Me.QuerryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.ppListView = New System.Windows.Forms.ListView()
         Label1 = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
@@ -849,6 +849,14 @@ Partial Class MainForm
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
         '
+        'ppListView
+        '
+        Me.ppListView.Location = New System.Drawing.Point(27, 234)
+        Me.ppListView.Name = "ppListView"
+        Me.ppListView.Size = New System.Drawing.Size(381, 114)
+        Me.ppListView.TabIndex = 21
+        Me.ppListView.UseCompatibleStateImageBehavior = False
+        '
         'exitButton
         '
         Me.exitButton.Location = New System.Drawing.Point(315, 493)
@@ -1044,14 +1052,6 @@ Partial Class MainForm
         Me.GroupBox4.Size = New System.Drawing.Size(483, 100)
         Me.GroupBox4.TabIndex = 9
         Me.GroupBox4.TabStop = False
-        '
-        'ppListView
-        '
-        Me.ppListView.Location = New System.Drawing.Point(27, 234)
-        Me.ppListView.Name = "ppListView"
-        Me.ppListView.Size = New System.Drawing.Size(381, 114)
-        Me.ppListView.TabIndex = 21
-        Me.ppListView.UseCompatibleStateImageBehavior = False
         '
         'MainForm
         '
