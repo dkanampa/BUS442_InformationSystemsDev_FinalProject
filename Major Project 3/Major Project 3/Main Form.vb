@@ -47,10 +47,6 @@ Public Class MainForm
     End Sub
 
     Private Sub moveNButton_Click(sender As Object, e As EventArgs) Handles moveNButton.Click
-        'Clears both notes and contact name label.
-        contactNameLabel.Text = String.Empty
-        notesLabel.Text = String.empty
-
         'Moves to next product and vendor record
         Me.ProductBindingSource.MoveNext()
 
@@ -91,10 +87,6 @@ Public Class MainForm
     End Sub
 
     Private Sub movePButton_Click(sender As Object, e As EventArgs) Handles movePButton.Click
-        'Clears both notes and contact name label.
-        contactNameLabel.Text = String.Empty
-        notesLabel.Text = String.Empty
-
         'Moves to next product and vendor record
         Me.ProductBindingSource.MovePrevious()
 
@@ -134,10 +126,6 @@ Public Class MainForm
     End Sub
 
     Private Sub moveFButton_Click(sender As Object, e As EventArgs) Handles moveFButton.Click
-        'Clears both notes and contact name label.
-        contactNameLabel.Text = String.Empty
-        notesLabel.Text = String.Empty
-
         'Moves to next product and vendor record
         Me.ProductBindingSource.MoveFirst()
 
@@ -177,10 +165,6 @@ Public Class MainForm
     End Sub
 
     Private Sub moveLButton_Click(sender As Object, e As EventArgs) Handles moveLButton.Click
-        'Clears both notes and contact name label.
-        contactNameLabel.Text = String.Empty
-        notesLabel.Text = String.Empty
-
         'Moves to next product and vendor record
         Me.ProductBindingSource.MoveLast()
 
@@ -244,6 +228,7 @@ Public Class MainForm
 
         ' Remove previous items
         ppListView.Items.Clear()
+        psListBox.Items.Clear()
 
         'Writes out the Product Name and Product Cost in the listbox.
         For Each record As DataRow In ProductDatabaseDataSet.Product
@@ -252,7 +237,7 @@ Public Class MainForm
             Dim tempString(1) As String
             Dim tempNode As ListViewItem
             tempString(0) = record.Item("Product_Name").ToString
-            tempString(1) = record.Item("YTD_Purchases").ToString()
+            tempString(1) = record.Item("YTD_Purchases").ToString
             tempNode = New ListViewItem(tempString)
 
             'Adds items to listview
@@ -266,9 +251,9 @@ Public Class MainForm
         averagePurchase = totalPurchase / ppListView.Items.Count
 
         'Writes total purchases in total purchase textbox.
-        totalTextBox.Text = totalPurchase.ToString("c2")
+        totalLabel.Text = totalPurchase.ToString("c2")
         'Writes out average purchases in average purchase textbox.
-        avgTextBox.Text = averagePurchase.ToString("c2")
+        avgLabel.Text = averagePurchase.ToString("c2")
 
         'Finds the highest YTD purchase and assigns it to the maxPurchase variable.
         Dim maxPurchase As Double = Aggregate product In ProductDatabaseDataSet.Product
@@ -283,7 +268,129 @@ Public Class MainForm
 
     End Sub
 
-    Private Sub refreshButton_Click(sender As Object, e As EventArgs) Handles refreshButton.Click
+    Private Sub searchToolStripButton_Click(sender As Object, e As EventArgs) Handles searchToolStripButton.Click
+        'Declares needed variable
+        Dim searchItem As String
+
+        searchItem = searchToolStripTextBox.Text.ToUpper
+
+        'pulls string that is search and stores in search variable.
+        Dim Search = From product In ProductDatabaseDataSet.Product
+                     Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
+                     Select product
+
+        Try
+            'If no result is found, display product name is not found message.
+            If Search.Count = 0 Then
+                MessageBox.Show("Product Name is not found.", "No Product Name", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+                calculateButton.Enabled = True
+                'If result is found, display results.
+            Else
+                Me.ProductBindingSource.DataSource = Search.AsDataView
+            End If
+
+            'If exception error occurs, display error message.
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+        End Try
+
+        'disables calculateButton until refresh is clicked.
+        calculateButton.Enabled = False
+    End Sub
+
+    Private Sub ProductsSourcesInUSAToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsSourcesInUSAToolStripMenuItem.Click
+        'Finds products sourced in the USA and writes them to recordsQuerry
+        Dim recordsQuery = From vendor In Me.ProductDatabaseDataSet.Vendor, product In Me.ProductDatabaseDataSet.Product
+                           Where product.Vendor_ID = vendor.Vendor_ID And vendor.Country.ToUpper = "USA"
+                           Select product, vendor
+
+        'Clears listbox and listview prior to input.
+        psListBox.Items.Clear()
+        ppListView.Items.Clear()
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
+
+        'write it to the interface.
+        For Each result In recordsQuery
+            psListBox.Items.Add(result.product.Product_Name & " From " & result.vendor.Vendor_Name)
+        Next
+
+    End Sub
+
+    Private Sub ProductsSourcedInChinaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsSourcedInChinaToolStripMenuItem.Click
+        'Finds products sourced in the USA and writes them to recordsQuerry
+        Dim recordsQuery = From vendor In Me.ProductDatabaseDataSet.Vendor, product In Me.ProductDatabaseDataSet.Product
+                           Where product.Vendor_ID = vendor.Vendor_ID And vendor.Country.ToUpper = "CHI"
+                           Select product, vendor
+
+        'Clears listbox and listview prior to input.
+        psListBox.Items.Clear()
+        ppListView.Items.Clear()
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
+
+        'write it to the interface.
+        For Each result In recordsQuery
+            psListBox.Items.Add(result.product.Product_Name & " From " & result.vendor.Vendor_Name)
+        Next
+    End Sub
+
+    Private Sub ProductsSourcedInNewYorkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsSourcedInNewYorkToolStripMenuItem.Click
+        'Finds products sourced in the USA and writes them to recordsQuerry
+        Dim recordsQuery = From vendor In Me.ProductDatabaseDataSet.Vendor, product In Me.ProductDatabaseDataSet.Product
+                           Where product.Vendor_ID = vendor.Vendor_ID And vendor.State.ToUpper = "NY"
+                           Select product, vendor
+
+        'Clears listbox and listview prior to input.
+        psListBox.Items.Clear()
+        ppListView.Items.Clear()
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
+
+        'write it to the interface.
+        For Each result In recordsQuery
+            psListBox.Items.Add(result.product.Product_Name & " From " & result.vendor.Vendor_Name)
+        Next
+
+    End Sub
+
+    Private Sub searchButton_Click(sender As Object, e As EventArgs) Handles searchButton.Click
+        'Declares needed variable
+        Dim searchItem As String
+
+        searchItem = searchToolStripTextBox.Text.ToUpper
+
+        'pulls string that is search and stores in search variable.
+        Dim Search = From product In ProductDatabaseDataSet.Product
+                     Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
+                     Select product
+
+        Try
+            'If no result is found, display product name is not found message.
+            If Search.Count = 0 Then
+                MessageBox.Show("Product Name is not found.", "No Product Name", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+                calculateButton.Enabled = True
+                'If result is found, display results.
+            Else
+                Me.ProductBindingSource.DataSource = Search.AsDataView
+            End If
+
+            'If exception error occurs, display error message.
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+        End Try
+
+        'disables calculateButton until refresh is clicked.
+        calculateButton.Enabled = False
+    End Sub
+
+    Private Sub BindingNavigatorDeleteItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorDeleteItem.Click
 
     End Sub
 End Class
