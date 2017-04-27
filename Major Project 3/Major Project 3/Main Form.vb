@@ -237,14 +237,14 @@ Public Class MainForm
             Dim tempString(1) As String
             Dim tempNode As ListViewItem
             tempString(0) = record.Item("Product_Name").ToString
-            tempString(1) = record.Item("YTD_Purchases").ToString
+            tempString(1) = Format(record.Item("YTD_Purchases"), "$###,###,###,##0.00")
             tempNode = New ListViewItem(tempString)
 
             'Adds items to listview
             ppListView.Items.Add(tempNode)
 
             'Addes purchases to eachother to get total purchase
-            totalPurchase += Val(tempNode.SubItems.Item(1).Text)
+            totalPurchase += CDbl(record.Item("YTD_Purchases"))
         Next
 
         'Calculates the average purchase amount.
