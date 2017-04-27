@@ -237,14 +237,14 @@ Public Class MainForm
             Dim tempString(1) As String
             Dim tempNode As ListViewItem
             tempString(0) = record.Item("Product_Name").ToString
-            tempString(1) = record.Item("YTD_Purchases").ToString
+            tempString(1) = Format(record.Item("YTD_Purchases"), "$###,###,###,##0.00")
             tempNode = New ListViewItem(tempString)
 
             'Adds items to listview
             ppListView.Items.Add(tempNode)
 
             'Addes purchases to eachother to get total purchase
-            totalPurchase += Val(tempNode.SubItems.Item(1).Text)
+            totalPurchase += CDbl(record.Item("YTD_Purchases"))
         Next
 
         'Calculates the average purchase amount.
@@ -274,19 +274,80 @@ Public Class MainForm
 
         searchItem = searchToolStripTextBox.Text.ToUpper
 
+        calculateButton.Enabled = False
 
         Dim Search = From product In ProductDatabaseDataSet.Product
-                     Where product.Product_Name.ToUpper Like searchItem & "*"
+                     Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
                      Select product
 
         Try
-            Me.ProductBindingSource.DataSource = Search.AsDataView
+
+            If Search.Count = 0 Then
+
+                MessageBox.Show("Product Name Isn't Found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+
+                Me.ProductBindingSource.DataSource = Search.AsDataView
+
+            End If
+
 
         Catch ex As Exception
 
             MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
         End Try
+
+
+    End Sub
+
+    Private Sub searchButton_Click(sender As Object, e As EventArgs) Handles searchButton.Click
+
+        Dim searchItem As String
+
+        searchItem = searchToolStripTextBox.Text.ToUpper
+
+        calculateButton.Enabled = False
+
+        Dim Search = From product In ProductDatabaseDataSet.Product
+                     Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
+                     Select product
+
+        Try
+
+            If Search.Count = 0 Then
+
+                MessageBox.Show("Product Name Isn't Found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+
+                Me.ProductBindingSource.DataSource = Search.AsDataView
+
+            End If
+
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+        End Try
+
+    End Sub
+
+    Private Sub refreshButton_Click(sender As Object, e As EventArgs) Handles refreshButton.Click
+
+        calculateButton.Enabled = True
+
+        searchToolStripTextBox.Text = String.Empty
+
+        Dim searchItem As String
+
+        searchItem = searchToolStripTextBox.Text.ToUpper
+
+        Dim Search = From product In ProductDatabaseDataSet.Product
+                     Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
+                     Select product
+
+        Me.ProductBindingSource.DataSource = Search.AsDataView
 
 
     End Sub
@@ -345,4 +406,5 @@ Public Class MainForm
             psListBox.Items.Add(result.product.Product_Name & " From " & result.vendor.Vendor_Name)
         Next
     End Sub
+
 End Class
