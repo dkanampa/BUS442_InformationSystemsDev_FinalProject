@@ -407,4 +407,51 @@ Public Class MainForm
         Next
     End Sub
 
+    
+    Private Sub SortByAscendingOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortByAscendingOrderToolStripMenuItem.Click
+        'Sorts product names in ascending order.
+        Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
+                           Order By product.Product_Name Ascending
+                           Select product
+
+        ProductBindingSource.DataSource = recordsQuery.AsDataView
+    End Sub
+
+    Private Sub SortByDescendingOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortByDescendingOrderToolStripMenuItem.Click
+        'Sorts Product Price by Descending Order
+        Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
+                           Order By product.Product_Unit_Price Descending
+                           Select product
+
+        ProductBindingSource.DataSource = recordsQuery.AsDataView
+
+    End Sub
+
+    Private Sub ProductIDByDescendingOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductIDByDescendingOrderToolStripMenuItem.Click
+        'Sorts Product ID by descending order.
+        Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
+                          Order By product.Product_ID Descending
+                          Select product
+
+        ProductBindingSource.DataSource = recordsQuery.AsDataView
+    End Sub
+
+    Private Sub ProductCostByDescendingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductCostByDescendingToolStripMenuItem.Click
+        'Sorts Product ID by descending order.
+        Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
+                          Order By product.Product_Cost Descending
+                          Select product
+
+        ProductBindingSource.DataSource = recordsQuery.AsDataView
+    End Sub
+
+
+    Private Sub ProductBrandToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductBrandToolStripMenuItem.Click
+        'Pulls product data from database with energizer brand and counts them.
+        Dim recordsQuery As Integer = Aggregate product In Me.ProductDatabaseDataSet.Product
+                                     Where product.Brand.ToUpper = "DURACELL"
+                                        Into Count()
+
+        MessageBox.Show("The are " & recordsQuery & " products with Duracell brand.")
+    End Sub
 End Class

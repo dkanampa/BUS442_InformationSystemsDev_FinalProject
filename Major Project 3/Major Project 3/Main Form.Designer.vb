@@ -83,6 +83,10 @@ Partial Class MainForm
         Me.ProductBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.searchToolStripTextBox = New System.Windows.Forms.ToolStripTextBox()
         Me.searchToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.SortByAscendingOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SortByDescendingOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductCostByDescendingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.contactNameLabel = New System.Windows.Forms.Label()
         Me.VendorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -128,6 +132,8 @@ Partial Class MainForm
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ProductIDByDescendingOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductBrandToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Label1 = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
@@ -180,7 +186,7 @@ Partial Class MainForm
         Label2.AutoSize = True
         Label2.Location = New System.Drawing.Point(24, 62)
         Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(61, 15)
+        Label2.Size = New System.Drawing.Size(62, 15)
         Label2.TabIndex = 2
         Label2.Text = "Vendor ID:"
         '
@@ -279,7 +285,7 @@ Partial Class MainForm
         Label14.AutoSize = True
         Label14.Location = New System.Drawing.Point(24, 62)
         Label14.Name = "Label14"
-        Label14.Size = New System.Drawing.Size(80, 15)
+        Label14.Size = New System.Drawing.Size(81, 15)
         Label14.TabIndex = 2
         Label14.Text = "Vendor name:"
         '
@@ -288,7 +294,7 @@ Partial Class MainForm
         Label15.AutoSize = True
         Label15.Location = New System.Drawing.Point(24, 96)
         Label15.Name = "Label15"
-        Label15.Size = New System.Drawing.Size(84, 15)
+        Label15.Size = New System.Drawing.Size(85, 15)
         Label15.TabIndex = 4
         Label15.Text = "Vendor region:"
         '
@@ -572,7 +578,7 @@ Partial Class MainForm
         Me.ProductBindingNavigator.BindingSource = Me.ProductBindingSource
         Me.ProductBindingNavigator.CountItem = Me.BindingNavigatorCountItem
         Me.ProductBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.ProductBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ProductBindingNavigatorSaveItem, Me.searchToolStripTextBox, Me.searchToolStripButton})
+        Me.ProductBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ProductBindingNavigatorSaveItem, Me.searchToolStripTextBox, Me.searchToolStripButton, Me.ToolStripDropDownButton1})
         Me.ProductBindingNavigator.Location = New System.Drawing.Point(0, 24)
         Me.ProductBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.ProductBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
@@ -691,6 +697,34 @@ Partial Class MainForm
         Me.searchToolStripButton.Name = "searchToolStripButton"
         Me.searchToolStripButton.Size = New System.Drawing.Size(23, 22)
         Me.searchToolStripButton.Text = "ToolStripButton1"
+        '
+        'ToolStripDropDownButton1
+        '
+        Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SortByAscendingOrderToolStripMenuItem, Me.ProductIDByDescendingOrderToolStripMenuItem, Me.SortByDescendingOrderToolStripMenuItem, Me.ProductCostByDescendingToolStripMenuItem})
+        Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
+        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(29, 22)
+        Me.ToolStripDropDownButton1.Text = "ToolStripDropDownButton1"
+        '
+        'SortByAscendingOrderToolStripMenuItem
+        '
+        Me.SortByAscendingOrderToolStripMenuItem.Name = "SortByAscendingOrderToolStripMenuItem"
+        Me.SortByAscendingOrderToolStripMenuItem.Size = New System.Drawing.Size(259, 22)
+        Me.SortByAscendingOrderToolStripMenuItem.Text = "Product Name by Ascending Order"
+        '
+        'SortByDescendingOrderToolStripMenuItem
+        '
+        Me.SortByDescendingOrderToolStripMenuItem.Name = "SortByDescendingOrderToolStripMenuItem"
+        Me.SortByDescendingOrderToolStripMenuItem.Size = New System.Drawing.Size(259, 22)
+        Me.SortByDescendingOrderToolStripMenuItem.Text = "Product Price by Descending Order"
+        '
+        'ProductCostByDescendingToolStripMenuItem
+        '
+        Me.ProductCostByDescendingToolStripMenuItem.Name = "ProductCostByDescendingToolStripMenuItem"
+        Me.ProductCostByDescendingToolStripMenuItem.Size = New System.Drawing.Size(259, 22)
+        Me.ProductCostByDescendingToolStripMenuItem.Text = "Product Cost by Descending Order"
         '
         'GroupBox2
         '
@@ -943,7 +977,7 @@ Partial Class MainForm
         Me.Label32.AutoSize = True
         Me.Label32.Location = New System.Drawing.Point(210, 424)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(87, 15)
+        Me.Label32.Size = New System.Drawing.Size(88, 15)
         Me.Label32.TabIndex = 10
         Me.Label32.Text = "Total purchase:"
         '
@@ -1073,7 +1107,7 @@ Partial Class MainForm
         '
         'QueryToolStripMenuItem
         '
-        Me.QueryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductsSourcesInUSAToolStripMenuItem, Me.ProductsSourcedInChinaToolStripMenuItem, Me.ProductsSourcedInNewYorkToolStripMenuItem})
+        Me.QueryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductsSourcesInUSAToolStripMenuItem, Me.ProductsSourcedInChinaToolStripMenuItem, Me.ProductsSourcedInNewYorkToolStripMenuItem, Me.ProductBrandToolStripMenuItem})
         Me.QueryToolStripMenuItem.Name = "QueryToolStripMenuItem"
         Me.QueryToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
         Me.QueryToolStripMenuItem.Text = "Queries"
@@ -1081,19 +1115,19 @@ Partial Class MainForm
         'ProductsSourcesInUSAToolStripMenuItem
         '
         Me.ProductsSourcesInUSAToolStripMenuItem.Name = "ProductsSourcesInUSAToolStripMenuItem"
-        Me.ProductsSourcesInUSAToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.ProductsSourcesInUSAToolStripMenuItem.Size = New System.Drawing.Size(234, 22)
         Me.ProductsSourcesInUSAToolStripMenuItem.Text = "Products Sourced in USA"
         '
         'ProductsSourcedInChinaToolStripMenuItem
         '
         Me.ProductsSourcedInChinaToolStripMenuItem.Name = "ProductsSourcedInChinaToolStripMenuItem"
-        Me.ProductsSourcedInChinaToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.ProductsSourcedInChinaToolStripMenuItem.Size = New System.Drawing.Size(234, 22)
         Me.ProductsSourcedInChinaToolStripMenuItem.Text = "Products Sourced in China"
         '
         'ProductsSourcedInNewYorkToolStripMenuItem
         '
         Me.ProductsSourcedInNewYorkToolStripMenuItem.Name = "ProductsSourcedInNewYorkToolStripMenuItem"
-        Me.ProductsSourcedInNewYorkToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.ProductsSourcedInNewYorkToolStripMenuItem.Size = New System.Drawing.Size(234, 22)
         Me.ProductsSourcedInNewYorkToolStripMenuItem.Text = "Products Sourced in New York"
         '
         'ExitToolStripMenuItem
@@ -1113,6 +1147,18 @@ Partial Class MainForm
         Me.GroupBox4.Size = New System.Drawing.Size(483, 82)
         Me.GroupBox4.TabIndex = 9
         Me.GroupBox4.TabStop = False
+        '
+        'ProductIDByDescendingOrderToolStripMenuItem
+        '
+        Me.ProductIDByDescendingOrderToolStripMenuItem.Name = "ProductIDByDescendingOrderToolStripMenuItem"
+        Me.ProductIDByDescendingOrderToolStripMenuItem.Size = New System.Drawing.Size(259, 22)
+        Me.ProductIDByDescendingOrderToolStripMenuItem.Text = "Product ID by Descending Order"
+        '
+        'ProductBrandToolStripMenuItem
+        '
+        Me.ProductBrandToolStripMenuItem.Name = "ProductBrandToolStripMenuItem"
+        Me.ProductBrandToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.ProductBrandToolStripMenuItem.Text = "Number of Products with Duracell Brand"
         '
         'MainForm
         '
@@ -1228,4 +1274,10 @@ Partial Class MainForm
     Friend WithEvents ProductsSourcedInChinaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsSourcedInNewYorkToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents ToolStripDropDownButton1 As System.Windows.Forms.ToolStripDropDownButton
+    Friend WithEvents SortByAscendingOrderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SortByDescendingOrderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProductCostByDescendingToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProductIDByDescendingOrderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProductBrandToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
