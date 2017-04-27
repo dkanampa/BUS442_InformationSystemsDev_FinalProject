@@ -1,21 +1,42 @@
-﻿Option Explicit On
-Option Strict On
-Option Infer On
+﻿'Project name: Major Project 3 - Product/Vendor Database Application
+'Project purpose: Application is intergrated with a database, which can be manipulated and viewed via the interface.
+'Created/revised by: David K. Anampa, Corita Adamo, Cecil Kinsey
+
+Option Explicit On 'ensures that each variable is declared before its use by flagging any undeclared variables
+
+Option Infer On 'ensures that every variable and constants is delcared with a data type
+
+Option Strict On 'prevents implicit type conversion and data loss by variable values trying to fit the memory location
 
 Public Class MainForm
+
     Private Sub ProductBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles ProductBindingNavigatorSaveItem.Click
+        'This saves any new entries to the database.
+
         Try
+            'validates all inputs in the textboxes
             Me.Validate()
+
+            'ends the edit after validation
             Me.ProductBindingSource.EndEdit()
+
+            'update the database with the new updated info.
             Me.TableAdapterManager.UpdateAll(Me.ProductDatabaseDataSet)
+
         Catch ex As Exception
+
+            'message box displayed after an error is found
             MessageBox.Show(ex.Message, "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+
         End Try
+
     End Sub
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         'TODO: This line of code loads data into the 'ProductDatabaseDataSet.Vendor' table. You can move, or remove it, as needed.
         Me.VendorTableAdapter.Fill(Me.ProductDatabaseDataSet.Vendor)
+
         'TODO: This line of code loads data into the 'ProductDatabaseDataSet.Product' table. You can move, or remove it, as needed.
         Me.ProductTableAdapter.Fill(Me.ProductDatabaseDataSet.Product)
 
@@ -30,18 +51,26 @@ Public Class MainForm
     End Sub
 
     Private Sub exitButton_Click(sender As Object, e As EventArgs) Handles exitButton.Click
+
         'Closes the application
         Me.Close()
+
+        '*message box that appears during exit attempt is below in MainForm_FormClosing
+
     End Sub
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        'creates message box asking is user is sure they want to exit.
+        'creates message box asking the user if they are sure about exiting the application through whichever closing option.
+
         Dim button As DialogResult
+
         button = MessageBox.Show("Are you sure you want to exit?", "Exit Verification", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2)
 
         'If user selects no, cancels the exit process.
         If button = System.Windows.Forms.DialogResult.No Then
+
             e.Cancel = True
+
         End If
 
     End Sub
@@ -269,36 +298,120 @@ Public Class MainForm
     End Sub
 
     Private Sub searchToolStripButton_Click(sender As Object, e As EventArgs) Handles searchToolStripButton.Click
-        'Declares needed variable
+        ' Remove previous items
+        ppListView.Items.Clear()
+        psListBox.Items.Clear()
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
+
+        'button in the tool strip used to search via inputed product name
+
+        'declaring variable
         Dim searchItem As String
 
+        'turnes inputed search into string upparcase
         searchItem = searchToolStripTextBox.Text.ToUpper
 
-        'pulls string that is search and stores in search variable.
+        'turns the calculate button off during search
+        calculateButton.Enabled = False
+
+        'sets up the search procedure for the database
         Dim Search = From product In ProductDatabaseDataSet.Product
                      Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
                      Select product
 
         Try
-            'If no result is found, display product name is not found message.
+            'if nothing is found for search displays message stating so
             If Search.Count = 0 Then
-                MessageBox.Show("Product Name is not found.", "No Product Name", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Exit Sub
-                calculateButton.Enabled = True
-                'If result is found, display results.
+
+                MessageBox.Show("Product Name Isn't Found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
+                'if search is found then binds the search to be viewed on the interface
                 Me.ProductBindingSource.DataSource = Search.AsDataView
+
             End If
 
-            'If exception error occurs, display error message.
         Catch ex As Exception
-
+            'if any other error occures message appears. 
             MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
         End Try
 
-        'disables calculateButton until refresh is clicked.
+
+    End Sub
+
+    Private Sub searchButton_Click(sender As Object, e As EventArgs) Handles searchButton.Click
+        ' Remove previous items
+        ppListView.Items.Clear()
+        psListBox.Items.Clear()
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
+
+        'button in the tool strip used to search via inputed product name
+
+        'declaring variable
+        Dim searchItem As String
+
+        'turnes inputed search into string upparcase
+        searchItem = searchToolStripTextBox.Text.ToUpper
+
+        'turns the calculate button off during search
         calculateButton.Enabled = False
+
+        'sets up the search procedure for the database
+        Dim Search = From product In ProductDatabaseDataSet.Product
+                     Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
+                     Select product
+
+        Try
+            'if nothing is found for search displays message stating so
+            If Search.Count = 0 Then
+
+                MessageBox.Show("Product Name Isn't Found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                'if search is found then binds the search to be viewed on the interface
+                Me.ProductBindingSource.DataSource = Search.AsDataView
+
+            End If
+
+        Catch ex As Exception
+            'if any other error occures message appears. 
+            MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+        End Try
+
+    End Sub
+
+    Private Sub refreshButton_Click(sender As Object, e As EventArgs) Handles refreshButton.Click
+        ' Remove previous items
+        ppListView.Items.Clear()
+        psListBox.Items.Clear()
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
+
+        'the refresh button resets the database and interface after doing a search
+
+        'turns on the calculate button since search turn it off
+        calculateButton.Enabled = True
+
+        'clears the search textbox 
+        searchToolStripTextBox.Text = String.Empty
+
+        'declaring variable
+        Dim searchItem As String
+
+        'turnes inputed search into string upparcase
+        searchItem = searchToolStripTextBox.Text.ToUpper
+
+        'sets up the search procedure for the database
+        Dim Search = From product In ProductDatabaseDataSet.Product
+                     Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
+                     Select product
+
+        'if search is found then binds the search to be viewed on the interface
+        Me.ProductBindingSource.DataSource = Search.AsDataView
+
+
     End Sub
 
     Private Sub ProductsSourcesInUSAToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsSourcesInUSAToolStripMenuItem.Click
@@ -354,43 +467,152 @@ Public Class MainForm
         For Each result In recordsQuery
             psListBox.Items.Add(result.product.Product_Name & " From " & result.vendor.Vendor_Name)
         Next
+    End Sub
+
+    Private Sub SortByAscendingOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortByAscendingOrderToolStripMenuItem.Click
+        'Sorts product names in ascending order.
+        Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
+                           Order By product.Product_Name Ascending
+                           Select product
+
+        ProductBindingSource.DataSource = recordsQuery.AsDataView
+    End Sub
+
+    Private Sub SortByDescendingOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortByDescendingOrderToolStripMenuItem.Click
+        'Sorts Product Price by Descending Order
+        Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
+                           Order By product.Product_Unit_Price Descending
+                           Select product
+
+        ProductBindingSource.DataSource = recordsQuery.AsDataView
 
     End Sub
 
-    Private Sub searchButton_Click(sender As Object, e As EventArgs) Handles searchButton.Click
-        'Declares needed variable
-        Dim searchItem As String
+    Private Sub ProductIDByDescendingOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductIDByDescendingOrderToolStripMenuItem.Click
+        'Sorts Product ID by descending order.
+        Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
+                           Order By product.Product_ID Descending
+                           Select product
 
-        searchItem = searchToolStripTextBox.Text.ToUpper
+        ProductBindingSource.DataSource = recordsQuery.AsDataView
+    End Sub
 
-        'pulls string that is search and stores in search variable.
-        Dim Search = From product In ProductDatabaseDataSet.Product
-                     Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
-                     Select product
+    Private Sub ProductCostByDescendingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductCostByDescendingToolStripMenuItem.Click
+        'Sorts Product ID by descending order.
+        Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
+                           Order By product.Product_Cost Descending
+                           Select product
 
-        Try
-            'If no result is found, display product name is not found message.
-            If Search.Count = 0 Then
-                MessageBox.Show("Product Name is not found.", "No Product Name", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Exit Sub
-                calculateButton.Enabled = True
-                'If result is found, display results.
-            Else
-                Me.ProductBindingSource.DataSource = Search.AsDataView
+        ProductBindingSource.DataSource = recordsQuery.AsDataView
+    End Sub
+
+
+    Private Sub ProductBrandToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductBrandToolStripMenuItem.Click
+        'Pulls product data from database with energizer brand and counts them. *counts as the new feature added to project*
+
+        Dim recordsQuery As Integer = Aggregate product In Me.ProductDatabaseDataSet.Product
+                                     Where product.Brand.ToUpper = "DURACELL"
+                                        Into Count()
+
+        MessageBox.Show("The are " & recordsQuery & " products with Duracell brand.")
+    End Sub
+
+    Private Sub productIDTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productIDTextBox.KeyPress
+        'Only allows the use of numbers 0-9and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productUnitPriceTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productUnitPriceTextBox.KeyPress
+        'Only allows the use of numbers 0-9 and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productCostTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productCostTextBox.KeyPress
+        'Dis-allows key entry asside from numbers, periods, and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back AndAlso e.KeyChar <> "." Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub quantityOnHandTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles quantityOnHandTextBox.KeyPress
+        'Only allows the use of numbers 0-9 and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub quantityOnOrderTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles quantityOnOrderTextBox.KeyPress
+        'Only allows the use of numbers 0-9, the period symbol and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productLeadTimeTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productLeadTimeTextBox.KeyPress
+        'Only allows the use of numbers 0-9, the period symbol and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productReorderLevelTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productReorderLevelTextBox.KeyPress
+        'Only allows the use of numbers 0-9, the period symbol and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub discountTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles discountTextBox.KeyPress
+        'Dis-allows key entry asside from numbers, periods, and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back AndAlso e.KeyChar <> "." Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub ytdPurchasesTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ytdPurchasesTextBox.KeyPress
+        'Dis-allows key entry asside from numbers, periods, and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back AndAlso e.KeyChar <> "." Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productNameTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productNameTextBox.KeyPress
+        'Code found from: http://stackoverflow.com/questions/12633780/get-a-textbox-to-accept-only-characters-in-vb-net
+        'Disallows entry asside from letters.
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "abcdefghijklmnopqrstuvwxyz"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
             End If
-
-            'If exception error occurs, display error message.
-        Catch ex As Exception
-
-            MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-
-        End Try
-
-        'disables calculateButton until refresh is clicked.
-        calculateButton.Enabled = False
+        End If
     End Sub
 
-    Private Sub BindingNavigatorDeleteItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorDeleteItem.Click
+    Private Sub productLineTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productLineTextBox.KeyPress
+        'Code found from: http://stackoverflow.com/questions/12633780/get-a-textbox-to-accept-only-characters-in-vb-net
+        'Disallows entry asside from letters.
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "abcdefghijklmnopqrstuvwxyz"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
+            End If
+        End If
+    End Sub
 
+    Private Sub brandTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles brandTextBox.KeyPress
+        'Code found from: http://stackoverflow.com/questions/12633780/get-a-textbox-to-accept-only-characters-in-vb-net
+        'Disallows entry asside from letters.
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "abcdefghijklmnopqrstuvwxyz"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
+            End If
+        End If
     End Sub
 End Class

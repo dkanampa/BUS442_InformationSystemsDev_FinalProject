@@ -75,9 +75,15 @@ Partial Class MainForm
         Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
         Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ProductBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.searchToolStripTextBox = New System.Windows.Forms.ToolStripTextBox()
         Me.searchToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.SortByAscendingOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductIDByDescendingOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SortByDescendingOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductCostByDescendingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.contactNameLabel = New System.Windows.Forms.Label()
         Me.VendorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -116,8 +122,10 @@ Partial Class MainForm
         Me.ProductsSourcesInUSAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsSourcedInChinaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductsSourcedInNewYorkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductBrandToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Label1 = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
@@ -170,7 +178,7 @@ Partial Class MainForm
         Label2.AutoSize = True
         Label2.Location = New System.Drawing.Point(24, 62)
         Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(62, 15)
+        Label2.Size = New System.Drawing.Size(61, 15)
         Label2.TabIndex = 2
         Label2.Text = "Vendor ID:"
         '
@@ -225,7 +233,7 @@ Partial Class MainForm
         Label9.Location = New System.Drawing.Point(24, 300)
         Label9.Name = "Label9"
         Label9.Size = New System.Drawing.Size(74, 15)
-        Label9.TabIndex = 14
+        Label9.TabIndex = 16
         Label9.Text = "Product line:"
         '
         'Label10
@@ -234,7 +242,7 @@ Partial Class MainForm
         Label10.Location = New System.Drawing.Point(24, 332)
         Label10.Name = "Label10"
         Label10.Size = New System.Drawing.Size(41, 15)
-        Label10.TabIndex = 16
+        Label10.TabIndex = 18
         Label10.Text = "Brand:"
         '
         'Label11
@@ -243,7 +251,7 @@ Partial Class MainForm
         Label11.Location = New System.Drawing.Point(24, 366)
         Label11.Name = "Label11"
         Label11.Size = New System.Drawing.Size(57, 15)
-        Label11.TabIndex = 18
+        Label11.TabIndex = 20
         Label11.Text = "Discount:"
         '
         'Label12
@@ -252,7 +260,7 @@ Partial Class MainForm
         Label12.Location = New System.Drawing.Point(24, 400)
         Label12.Name = "Label12"
         Label12.Size = New System.Drawing.Size(88, 15)
-        Label12.TabIndex = 20
+        Label12.TabIndex = 22
         Label12.Text = "YTD purchases:"
         '
         'Label13
@@ -269,7 +277,7 @@ Partial Class MainForm
         Label14.AutoSize = True
         Label14.Location = New System.Drawing.Point(24, 62)
         Label14.Name = "Label14"
-        Label14.Size = New System.Drawing.Size(81, 15)
+        Label14.Size = New System.Drawing.Size(80, 15)
         Label14.TabIndex = 2
         Label14.Text = "Vendor name:"
         '
@@ -278,7 +286,7 @@ Partial Class MainForm
         Label15.AutoSize = True
         Label15.Location = New System.Drawing.Point(24, 96)
         Label15.Name = "Label15"
-        Label15.Size = New System.Drawing.Size(85, 15)
+        Label15.Size = New System.Drawing.Size(84, 15)
         Label15.TabIndex = 4
         Label15.Text = "Vendor region:"
         '
@@ -387,7 +395,7 @@ Partial Class MainForm
         Label8.Location = New System.Drawing.Point(24, 266)
         Label8.Name = "Label8"
         Label8.Size = New System.Drawing.Size(120, 15)
-        Label8.TabIndex = 22
+        Label8.TabIndex = 14
         Label8.Text = "Product reorder level:"
         '
         'GroupBox1
@@ -419,7 +427,7 @@ Partial Class MainForm
         Me.GroupBox1.Location = New System.Drawing.Point(12, 62)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(302, 501)
-        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         '
         'productReorderLevelTextBox
@@ -428,7 +436,8 @@ Partial Class MainForm
         Me.productReorderLevelTextBox.Location = New System.Drawing.Point(157, 263)
         Me.productReorderLevelTextBox.Name = "productReorderLevelTextBox"
         Me.productReorderLevelTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.productReorderLevelTextBox.TabIndex = 23
+        Me.productReorderLevelTextBox.TabIndex = 15
+        Me.ToolTip1.SetToolTip(Me.productReorderLevelTextBox, "The use of decimals are allowed")
         '
         'ProductBindingSource
         '
@@ -446,7 +455,8 @@ Partial Class MainForm
         Me.ytdPurchasesTextBox.Location = New System.Drawing.Point(157, 397)
         Me.ytdPurchasesTextBox.Name = "ytdPurchasesTextBox"
         Me.ytdPurchasesTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.ytdPurchasesTextBox.TabIndex = 21
+        Me.ytdPurchasesTextBox.TabIndex = 23
+        Me.ToolTip1.SetToolTip(Me.ytdPurchasesTextBox, "The use of decimals are allowed")
         '
         'discountTextBox
         '
@@ -454,7 +464,8 @@ Partial Class MainForm
         Me.discountTextBox.Location = New System.Drawing.Point(157, 363)
         Me.discountTextBox.Name = "discountTextBox"
         Me.discountTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.discountTextBox.TabIndex = 19
+        Me.discountTextBox.TabIndex = 21
+        Me.ToolTip1.SetToolTip(Me.discountTextBox, "Only insert as decimals")
         '
         'brandTextBox
         '
@@ -462,7 +473,8 @@ Partial Class MainForm
         Me.brandTextBox.Location = New System.Drawing.Point(157, 329)
         Me.brandTextBox.Name = "brandTextBox"
         Me.brandTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.brandTextBox.TabIndex = 17
+        Me.brandTextBox.TabIndex = 19
+        Me.ToolTip1.SetToolTip(Me.brandTextBox, "Insert text here")
         '
         'productLineTextBox
         '
@@ -470,7 +482,8 @@ Partial Class MainForm
         Me.productLineTextBox.Location = New System.Drawing.Point(157, 297)
         Me.productLineTextBox.Name = "productLineTextBox"
         Me.productLineTextBox.Size = New System.Drawing.Size(116, 23)
-        Me.productLineTextBox.TabIndex = 15
+        Me.productLineTextBox.TabIndex = 17
+        Me.ToolTip1.SetToolTip(Me.productLineTextBox, "Insert text here")
         '
         'productLeadTimeTextBox
         '
@@ -479,6 +492,7 @@ Partial Class MainForm
         Me.productLeadTimeTextBox.Name = "productLeadTimeTextBox"
         Me.productLeadTimeTextBox.Size = New System.Drawing.Size(116, 23)
         Me.productLeadTimeTextBox.TabIndex = 13
+        Me.ToolTip1.SetToolTip(Me.productLeadTimeTextBox, "The use of decimals are allowed")
         '
         'quantityOnOrderTextBox
         '
@@ -487,6 +501,7 @@ Partial Class MainForm
         Me.quantityOnOrderTextBox.Name = "quantityOnOrderTextBox"
         Me.quantityOnOrderTextBox.Size = New System.Drawing.Size(116, 23)
         Me.quantityOnOrderTextBox.TabIndex = 11
+        Me.ToolTip1.SetToolTip(Me.quantityOnOrderTextBox, "Enter only whole numbers")
         '
         'quantityOnHandTextBox
         '
@@ -495,6 +510,7 @@ Partial Class MainForm
         Me.quantityOnHandTextBox.Name = "quantityOnHandTextBox"
         Me.quantityOnHandTextBox.Size = New System.Drawing.Size(116, 23)
         Me.quantityOnHandTextBox.TabIndex = 9
+        Me.ToolTip1.SetToolTip(Me.quantityOnHandTextBox, "Enter only whole numbers")
         '
         'productCostTextBox
         '
@@ -503,6 +519,7 @@ Partial Class MainForm
         Me.productCostTextBox.Name = "productCostTextBox"
         Me.productCostTextBox.Size = New System.Drawing.Size(116, 23)
         Me.productCostTextBox.TabIndex = 7
+        Me.ToolTip1.SetToolTip(Me.productCostTextBox, "No symbols besides decimal point may be used.")
         '
         'productUnitPriceTextBox
         '
@@ -511,6 +528,7 @@ Partial Class MainForm
         Me.productUnitPriceTextBox.Name = "productUnitPriceTextBox"
         Me.productUnitPriceTextBox.Size = New System.Drawing.Size(116, 23)
         Me.productUnitPriceTextBox.TabIndex = 5
+        Me.ToolTip1.SetToolTip(Me.productUnitPriceTextBox, "No symbols besides decimal point may be used.")
         '
         'vendorIDComboBox
         '
@@ -520,6 +538,7 @@ Partial Class MainForm
         Me.vendorIDComboBox.Name = "vendorIDComboBox"
         Me.vendorIDComboBox.Size = New System.Drawing.Size(116, 23)
         Me.vendorIDComboBox.TabIndex = 3
+        Me.ToolTip1.SetToolTip(Me.vendorIDComboBox, "Select unique vendor id")
         '
         'productIDTextBox
         '
@@ -528,6 +547,7 @@ Partial Class MainForm
         Me.productIDTextBox.Name = "productIDTextBox"
         Me.productIDTextBox.Size = New System.Drawing.Size(116, 23)
         Me.productIDTextBox.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.productIDTextBox, "Insert unique product id")
         '
         'ProductTableAdapter
         '
@@ -550,7 +570,7 @@ Partial Class MainForm
         Me.ProductBindingNavigator.BindingSource = Me.ProductBindingSource
         Me.ProductBindingNavigator.CountItem = Me.BindingNavigatorCountItem
         Me.ProductBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.ProductBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ProductBindingNavigatorSaveItem, Me.searchToolStripTextBox, Me.searchToolStripButton})
+        Me.ProductBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ProductBindingNavigatorSaveItem, Me.searchToolStripTextBox, Me.searchToolStripButton, Me.ToolStripDropDownButton1})
         Me.ProductBindingNavigator.Location = New System.Drawing.Point(0, 24)
         Me.ProductBindingNavigator.MoveFirstItem = Nothing
         Me.ProductBindingNavigator.MoveLastItem = Nothing
@@ -606,6 +626,11 @@ Partial Class MainForm
         Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
         Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
         '
+        'BindingNavigatorSeparator2
+        '
+        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
+        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
         'ProductBindingNavigatorSaveItem
         '
         Me.ProductBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -618,6 +643,7 @@ Partial Class MainForm
         '
         Me.searchToolStripTextBox.Name = "searchToolStripTextBox"
         Me.searchToolStripTextBox.Size = New System.Drawing.Size(100, 25)
+        Me.searchToolStripTextBox.ToolTipText = "Insert item for search "
         '
         'searchToolStripButton
         '
@@ -627,6 +653,41 @@ Partial Class MainForm
         Me.searchToolStripButton.Name = "searchToolStripButton"
         Me.searchToolStripButton.Size = New System.Drawing.Size(23, 22)
         Me.searchToolStripButton.Text = "ToolStripButton1"
+        Me.searchToolStripButton.ToolTipText = "Search"
+        '
+        'ToolStripDropDownButton1
+        '
+        Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SortByAscendingOrderToolStripMenuItem, Me.ProductIDByDescendingOrderToolStripMenuItem, Me.SortByDescendingOrderToolStripMenuItem, Me.ProductCostByDescendingToolStripMenuItem})
+        Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
+        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(29, 22)
+        Me.ToolStripDropDownButton1.Text = "ToolStripDropDownButton1"
+        '
+        'SortByAscendingOrderToolStripMenuItem
+        '
+        Me.SortByAscendingOrderToolStripMenuItem.Name = "SortByAscendingOrderToolStripMenuItem"
+        Me.SortByAscendingOrderToolStripMenuItem.Size = New System.Drawing.Size(259, 22)
+        Me.SortByAscendingOrderToolStripMenuItem.Text = "Product Name by Ascending Order"
+        '
+        'ProductIDByDescendingOrderToolStripMenuItem
+        '
+        Me.ProductIDByDescendingOrderToolStripMenuItem.Name = "ProductIDByDescendingOrderToolStripMenuItem"
+        Me.ProductIDByDescendingOrderToolStripMenuItem.Size = New System.Drawing.Size(259, 22)
+        Me.ProductIDByDescendingOrderToolStripMenuItem.Text = "Product ID by Descending Order"
+        '
+        'SortByDescendingOrderToolStripMenuItem
+        '
+        Me.SortByDescendingOrderToolStripMenuItem.Name = "SortByDescendingOrderToolStripMenuItem"
+        Me.SortByDescendingOrderToolStripMenuItem.Size = New System.Drawing.Size(259, 22)
+        Me.SortByDescendingOrderToolStripMenuItem.Text = "Product Price by Descending Order"
+        '
+        'ProductCostByDescendingToolStripMenuItem
+        '
+        Me.ProductCostByDescendingToolStripMenuItem.Name = "ProductCostByDescendingToolStripMenuItem"
+        Me.ProductCostByDescendingToolStripMenuItem.Size = New System.Drawing.Size(259, 22)
+        Me.ProductCostByDescendingToolStripMenuItem.Text = "Product Cost by Descending Order"
         '
         'GroupBox2
         '
@@ -661,7 +722,7 @@ Partial Class MainForm
         Me.GroupBox2.Location = New System.Drawing.Point(337, 62)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(321, 501)
-        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         '
         'contactNameLabel
@@ -793,6 +854,7 @@ Partial Class MainForm
         Me.productNameTextBox.Name = "productNameTextBox"
         Me.productNameTextBox.Size = New System.Drawing.Size(116, 23)
         Me.productNameTextBox.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.productNameTextBox, "Insert text here")
         '
         'GroupBox3
         '
@@ -811,31 +873,30 @@ Partial Class MainForm
         Me.GroupBox3.Location = New System.Drawing.Point(684, 62)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(416, 598)
-        Me.GroupBox3.TabIndex = 7
+        Me.GroupBox3.TabIndex = 5
         Me.GroupBox3.TabStop = False
         '
         'totalLabel
         '
-        Me.totalLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.totalLabel.Location = New System.Drawing.Point(213, 442)
+        Me.totalLabel.Location = New System.Drawing.Point(214, 443)
         Me.totalLabel.Name = "totalLabel"
-        Me.totalLabel.Size = New System.Drawing.Size(116, 26)
-        Me.totalLabel.TabIndex = 23
+        Me.totalLabel.Size = New System.Drawing.Size(116, 23)
+        Me.totalLabel.TabIndex = 13
         '
         'avgLabel
         '
-        Me.avgLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.avgLabel.Location = New System.Drawing.Point(21, 442)
+        Me.avgLabel.Location = New System.Drawing.Point(18, 443)
         Me.avgLabel.Name = "avgLabel"
-        Me.avgLabel.Size = New System.Drawing.Size(116, 26)
-        Me.avgLabel.TabIndex = 22
+        Me.avgLabel.Size = New System.Drawing.Size(116, 23)
+        Me.avgLabel.TabIndex = 12
         '
         'ppListView
         '
-        Me.ppListView.Location = New System.Drawing.Point(18, 234)
+        Me.ppListView.Location = New System.Drawing.Point(18, 255)
         Me.ppListView.Name = "ppListView"
-        Me.ppListView.Size = New System.Drawing.Size(381, 114)
-        Me.ppListView.TabIndex = 21
+        Me.ppListView.Size = New System.Drawing.Size(381, 139)
+        Me.ppListView.TabIndex = 3
+        Me.ToolTip1.SetToolTip(Me.ppListView, "Display product name and purchase amount")
         Me.ppListView.UseCompatibleStateImageBehavior = False
         '
         'exitButton
@@ -843,8 +904,9 @@ Partial Class MainForm
         Me.exitButton.Location = New System.Drawing.Point(309, 516)
         Me.exitButton.Name = "exitButton"
         Me.exitButton.Size = New System.Drawing.Size(91, 47)
-        Me.exitButton.TabIndex = 19
-        Me.exitButton.Text = "Exit"
+        Me.exitButton.TabIndex = 11
+        Me.exitButton.Text = "E&xit"
+        Me.ToolTip1.SetToolTip(Me.exitButton, "Exit the application")
         Me.exitButton.UseVisualStyleBackColor = True
         '
         'searchButton
@@ -852,8 +914,9 @@ Partial Class MainForm
         Me.searchButton.Location = New System.Drawing.Point(212, 516)
         Me.searchButton.Name = "searchButton"
         Me.searchButton.Size = New System.Drawing.Size(91, 47)
-        Me.searchButton.TabIndex = 18
-        Me.searchButton.Text = "Search"
+        Me.searchButton.TabIndex = 10
+        Me.searchButton.Text = "&Search"
+        Me.ToolTip1.SetToolTip(Me.searchButton, "Search for item within dataset")
         Me.searchButton.UseVisualStyleBackColor = True
         '
         'refreshButton
@@ -861,8 +924,9 @@ Partial Class MainForm
         Me.refreshButton.Location = New System.Drawing.Point(115, 516)
         Me.refreshButton.Name = "refreshButton"
         Me.refreshButton.Size = New System.Drawing.Size(91, 47)
-        Me.refreshButton.TabIndex = 17
-        Me.refreshButton.Text = "Refresh"
+        Me.refreshButton.TabIndex = 9
+        Me.refreshButton.Text = "&Refresh"
+        Me.ToolTip1.SetToolTip(Me.refreshButton, "Revert to original data after a search")
         Me.refreshButton.UseVisualStyleBackColor = True
         '
         'calculateButton
@@ -870,8 +934,9 @@ Partial Class MainForm
         Me.calculateButton.Location = New System.Drawing.Point(18, 516)
         Me.calculateButton.Name = "calculateButton"
         Me.calculateButton.Size = New System.Drawing.Size(91, 47)
-        Me.calculateButton.TabIndex = 16
-        Me.calculateButton.Text = "Calculate"
+        Me.calculateButton.TabIndex = 8
+        Me.calculateButton.Text = "&Calculate"
+        Me.ToolTip1.SetToolTip(Me.calculateButton, "Calculate the above mathmatical expressions")
         Me.calculateButton.UseVisualStyleBackColor = True
         '
         'Label32
@@ -879,8 +944,8 @@ Partial Class MainForm
         Me.Label32.AutoSize = True
         Me.Label32.Location = New System.Drawing.Point(210, 424)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(88, 15)
-        Me.Label32.TabIndex = 10
+        Me.Label32.Size = New System.Drawing.Size(87, 15)
+        Me.Label32.TabIndex = 6
         Me.Label32.Text = "Total purchase:"
         '
         'Label31
@@ -889,13 +954,13 @@ Partial Class MainForm
         Me.Label31.Location = New System.Drawing.Point(18, 423)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(104, 15)
-        Me.Label31.TabIndex = 8
+        Me.Label31.TabIndex = 4
         Me.Label31.Text = "Average purchase:"
         '
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(18, 216)
+        Me.Label28.Location = New System.Drawing.Point(18, 237)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(108, 15)
         Me.Label28.TabIndex = 2
@@ -907,8 +972,9 @@ Partial Class MainForm
         Me.psListBox.ItemHeight = 15
         Me.psListBox.Location = New System.Drawing.Point(18, 55)
         Me.psListBox.Name = "psListBox"
-        Me.psListBox.Size = New System.Drawing.Size(381, 139)
+        Me.psListBox.Size = New System.Drawing.Size(381, 154)
         Me.psListBox.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.psListBox, "Displays query results")
         '
         'Label27
         '
@@ -924,8 +990,9 @@ Partial Class MainForm
         Me.moveLButton.Location = New System.Drawing.Point(370, 20)
         Me.moveLButton.Name = "moveLButton"
         Me.moveLButton.Size = New System.Drawing.Size(91, 47)
-        Me.moveLButton.TabIndex = 15
-        Me.moveLButton.Text = "Move Last"
+        Me.moveLButton.TabIndex = 3
+        Me.moveLButton.Text = "Move &Last"
+        Me.ToolTip1.SetToolTip(Me.moveLButton, "Move to the last item in dataset")
         Me.moveLButton.UseVisualStyleBackColor = True
         '
         'moveFButton
@@ -933,8 +1000,9 @@ Partial Class MainForm
         Me.moveFButton.Location = New System.Drawing.Point(250, 20)
         Me.moveFButton.Name = "moveFButton"
         Me.moveFButton.Size = New System.Drawing.Size(91, 47)
-        Me.moveFButton.TabIndex = 14
-        Me.moveFButton.Text = "Move First"
+        Me.moveFButton.TabIndex = 2
+        Me.moveFButton.Text = "Move &First"
+        Me.ToolTip1.SetToolTip(Me.moveFButton, "Move to the 1st item in dataset")
         Me.moveFButton.UseVisualStyleBackColor = True
         '
         'movePButton
@@ -942,8 +1010,9 @@ Partial Class MainForm
         Me.movePButton.Location = New System.Drawing.Point(18, 20)
         Me.movePButton.Name = "movePButton"
         Me.movePButton.Size = New System.Drawing.Size(91, 47)
-        Me.movePButton.TabIndex = 13
-        Me.movePButton.Text = "Move Previous"
+        Me.movePButton.TabIndex = 0
+        Me.movePButton.Text = "Move &Previous"
+        Me.ToolTip1.SetToolTip(Me.movePButton, "Move to last viewed item in dataset")
         Me.movePButton.UseVisualStyleBackColor = True
         '
         'moveNButton
@@ -951,8 +1020,9 @@ Partial Class MainForm
         Me.moveNButton.Location = New System.Drawing.Point(135, 20)
         Me.moveNButton.Name = "moveNButton"
         Me.moveNButton.Size = New System.Drawing.Size(91, 47)
-        Me.moveNButton.TabIndex = 12
-        Me.moveNButton.Text = "Move Next"
+        Me.moveNButton.TabIndex = 1
+        Me.moveNButton.Text = "Move &Next"
+        Me.ToolTip1.SetToolTip(Me.moveNButton, "Move to the very next item in dataset")
         Me.moveNButton.UseVisualStyleBackColor = True
         '
         'MenuStrip1
@@ -961,39 +1031,50 @@ Partial Class MainForm
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1170, 24)
-        Me.MenuStrip1.TabIndex = 8
+        Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'QueryToolStripMenuItem
         '
-        Me.QueryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductsSourcesInUSAToolStripMenuItem, Me.ProductsSourcedInChinaToolStripMenuItem, Me.ProductsSourcedInNewYorkToolStripMenuItem})
+        Me.QueryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductsSourcesInUSAToolStripMenuItem, Me.ProductsSourcedInChinaToolStripMenuItem, Me.ProductsSourcedInNewYorkToolStripMenuItem, Me.ProductBrandToolStripMenuItem})
         Me.QueryToolStripMenuItem.Name = "QueryToolStripMenuItem"
         Me.QueryToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
         Me.QueryToolStripMenuItem.Text = "Queries"
+        Me.QueryToolStripMenuItem.ToolTipText = "Menu for Queries"
         '
         'ProductsSourcesInUSAToolStripMenuItem
         '
         Me.ProductsSourcesInUSAToolStripMenuItem.Name = "ProductsSourcesInUSAToolStripMenuItem"
-        Me.ProductsSourcesInUSAToolStripMenuItem.Size = New System.Drawing.Size(234, 22)
+        Me.ProductsSourcesInUSAToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
         Me.ProductsSourcesInUSAToolStripMenuItem.Text = "Products Sourced in USA"
+        Me.ProductsSourcesInUSAToolStripMenuItem.ToolTipText = "Query of USA sourced products"
         '
         'ProductsSourcedInChinaToolStripMenuItem
         '
         Me.ProductsSourcedInChinaToolStripMenuItem.Name = "ProductsSourcedInChinaToolStripMenuItem"
-        Me.ProductsSourcedInChinaToolStripMenuItem.Size = New System.Drawing.Size(234, 22)
+        Me.ProductsSourcedInChinaToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
         Me.ProductsSourcedInChinaToolStripMenuItem.Text = "Products Sourced in China"
+        Me.ProductsSourcedInChinaToolStripMenuItem.ToolTipText = "Query of China Sourced Products"
         '
         'ProductsSourcedInNewYorkToolStripMenuItem
         '
         Me.ProductsSourcedInNewYorkToolStripMenuItem.Name = "ProductsSourcedInNewYorkToolStripMenuItem"
-        Me.ProductsSourcedInNewYorkToolStripMenuItem.Size = New System.Drawing.Size(234, 22)
+        Me.ProductsSourcedInNewYorkToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
         Me.ProductsSourcedInNewYorkToolStripMenuItem.Text = "Products Sourced in New York"
+        Me.ProductsSourcedInNewYorkToolStripMenuItem.ToolTipText = "Query of New York Sourced Products"
+        '
+        'ProductBrandToolStripMenuItem
+        '
+        Me.ProductBrandToolStripMenuItem.Name = "ProductBrandToolStripMenuItem"
+        Me.ProductBrandToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.ProductBrandToolStripMenuItem.Text = "Number of Products with Duracell Brand"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.ExitToolStripMenuItem.Text = "Exit"
+        Me.ExitToolStripMenuItem.ToolTipText = "Closes application"
         '
         'GroupBox4
         '
@@ -1004,7 +1085,7 @@ Partial Class MainForm
         Me.GroupBox4.Location = New System.Drawing.Point(105, 578)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(483, 82)
-        Me.GroupBox4.TabIndex = 9
+        Me.GroupBox4.TabIndex = 4
         Me.GroupBox4.TabStop = False
         '
         'MainForm
@@ -1022,7 +1103,7 @@ Partial Class MainForm
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "MainForm"
-        Me.Text = "Form1"
+        Me.Text = "DCC.Inc Product Information and Maintenance"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.ProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1055,6 +1136,7 @@ Partial Class MainForm
     Friend WithEvents BindingNavigatorSeparator As ToolStripSeparator
     Friend WithEvents BindingNavigatorPositionItem As ToolStripTextBox
     Friend WithEvents BindingNavigatorSeparator1 As ToolStripSeparator
+    Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
     Friend WithEvents ProductBindingNavigatorSaveItem As ToolStripButton
     Friend WithEvents ytdPurchasesTextBox As TextBox
     Friend WithEvents discountTextBox As TextBox
@@ -1109,6 +1191,13 @@ Partial Class MainForm
     Friend WithEvents ProductsSourcesInUSAToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsSourcedInChinaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductsSourcedInNewYorkToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents totalLabel As System.Windows.Forms.Label
-    Friend WithEvents avgLabel As System.Windows.Forms.Label
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents ToolStripDropDownButton1 As ToolStripDropDownButton
+    Friend WithEvents SortByAscendingOrderToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductIDByDescendingOrderToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SortByDescendingOrderToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductCostByDescendingToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductBrandToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents avgLabel As Label
+    Friend WithEvents totalLabel As Label
 End Class

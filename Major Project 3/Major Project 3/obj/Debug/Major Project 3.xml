@@ -2,90 +2,109 @@
 <doc>
 <assembly>
 <name>
-MajorProject3
+Major Project 3
 </name>
 </assembly>
 <members>
-<member name="T:Major_Project_3.ProductDatabaseDataSet.ProductDataTable">
-	<summary>
-Represents the strongly named DataTable class.
+<member name="T:Major_Project_3.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSet.VendorDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSet.ProductRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSet.VendorRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSet.ProductRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSet.VendorRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSet">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.ProductTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.VendorTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Major_Project_3.ProductDatabaseDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
-	<summary>
-Update rows in top-down order.
-</summary>
-</member><member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Major_Project_3.ProductDatabaseDataSet,System.Collections.Generic.List{System.Data.DataRow})">
-	<summary>
-Insert rows in top-down order.
-</summary>
-</member><member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Major_Project_3.ProductDatabaseDataSet,System.Collections.Generic.List{System.Data.DataRow})">
-	<summary>
-Delete rows in bottom-up order.
-</summary>
-</member><member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
-	<summary>
-Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
-</summary>
-</member><member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateAll(Major_Project_3.ProductDatabaseDataSet)">
-	<summary>
-Update all changes to the dataset.
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
-	<summary>
-Update Order Option
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
-	<summary>
-Used to sort self-referenced table's rows
-</summary>
-</member><member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager">
-	<summary>
-TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
-</summary>
-</member><member name="P:Major_Project_3.My.Resources.Resources.ResourceManager">
-	<summary>
+</member>
+<member name="P:Major_Project_3.My.Resources.Resources.ResourceManager">
+<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
-</member><member name="P:Major_Project_3.My.Resources.Resources.Culture">
-	<summary>
+</member>
+<member name="P:Major_Project_3.My.Resources.Resources.Culture">
+<summary>
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
-</member><member name="T:Major_Project_3.My.Resources.Resources">
-	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSet">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSet.ProductDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSet.VendorDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSet.ProductRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSet.VendorRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSet.ProductRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSet.VendorRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.ProductTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.VendorTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Major_Project_3.ProductDatabaseDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Major_Project_3.ProductDatabaseDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Major_Project_3.ProductDatabaseDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateAll(Major_Project_3.ProductDatabaseDataSet)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Major_Project_3.ProductDatabaseDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
 </summary>
 </member>
 </members>
