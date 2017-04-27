@@ -1,21 +1,42 @@
-﻿Option Explicit On
-Option Strict On
-Option Infer On
+﻿'Project name: Major Project 3 - Product/Vendor Database Application
+'Project purpose: Application is intergrated with a database, which can be manipulated and viewed via the interface.
+'Created/revised by: David K. Anampa, Corita Adamo, Cecil Kinsey
+
+Option Explicit On 'ensures that each variable is declared before its use by flagging any undeclared variables
+
+Option Infer On 'ensures that every variable and constants is delcared with a data type
+
+Option Strict On 'prevents implicit type conversion and data loss by variable values trying to fit the memory location
 
 Public Class MainForm
+
     Private Sub ProductBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles ProductBindingNavigatorSaveItem.Click
+        'This saves any new entries to the database.
+
         Try
+            'validates all inputs in the textboxes
             Me.Validate()
+
+            'ends the edit after validation
             Me.ProductBindingSource.EndEdit()
+
+            'update the database with the new updated info.
             Me.TableAdapterManager.UpdateAll(Me.ProductDatabaseDataSet)
+
         Catch ex As Exception
+
+            'message box displayed after an error is found
             MessageBox.Show(ex.Message, "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+
         End Try
+
     End Sub
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         'TODO: This line of code loads data into the 'ProductDatabaseDataSet.Vendor' table. You can move, or remove it, as needed.
         Me.VendorTableAdapter.Fill(Me.ProductDatabaseDataSet.Vendor)
+
         'TODO: This line of code loads data into the 'ProductDatabaseDataSet.Product' table. You can move, or remove it, as needed.
         Me.ProductTableAdapter.Fill(Me.ProductDatabaseDataSet.Product)
 
@@ -30,18 +51,26 @@ Public Class MainForm
     End Sub
 
     Private Sub exitButton_Click(sender As Object, e As EventArgs) Handles exitButton.Click
+
         'Closes the application
         Me.Close()
+
+        '*message box that appears during exit attempt is below in MainForm_FormClosing
+
     End Sub
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        'creates message box asking is user is sure they want to exit.
+        'creates message box asking the user if they are sure about exiting the application through whichever closing option.
+
         Dim button As DialogResult
+
         button = MessageBox.Show("Are you sure you want to exit?", "Exit Verification", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2)
 
         'If user selects no, cancels the exit process.
         If button = System.Windows.Forms.DialogResult.No Then
+
             e.Cancel = True
+
         End If
 
     End Sub
@@ -251,9 +280,9 @@ Public Class MainForm
         averagePurchase = totalPurchase / ppListView.Items.Count
 
         'Writes total purchases in total purchase textbox.
-        totalTextBox.Text = totalPurchase.ToString("c2")
+        totalLabel.Text = totalPurchase.ToString("c2")
         'Writes out average purchases in average purchase textbox.
-        avgTextBox.Text = averagePurchase.ToString("c2")
+        avgLabel.Text = averagePurchase.ToString("c2")
 
         'Finds the highest YTD purchase and assigns it to the maxPurchase variable.
         Dim maxPurchase As Double = Aggregate product In ProductDatabaseDataSet.Product
@@ -269,31 +298,35 @@ Public Class MainForm
     End Sub
 
     Private Sub searchToolStripButton_Click(sender As Object, e As EventArgs) Handles searchToolStripButton.Click
+        'button in the tool strip used to search via inputed product name
 
+        'declaring variable
         Dim searchItem As String
 
+        'turnes inputed search into string upparcase
         searchItem = searchToolStripTextBox.Text.ToUpper
 
+        'turns the calculate button off during search
         calculateButton.Enabled = False
 
+        'sets up the search procedure for the database
         Dim Search = From product In ProductDatabaseDataSet.Product
                      Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
                      Select product
 
         Try
-
+            'if nothing is found for search displays message stating so
             If Search.Count = 0 Then
 
                 MessageBox.Show("Product Name Isn't Found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
-
+                'if search is found then binds the search to be viewed on the interface
                 Me.ProductBindingSource.DataSource = Search.AsDataView
 
             End If
 
-
         Catch ex As Exception
-
+            'if any other error occures message appears. 
             MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
         End Try
@@ -302,31 +335,35 @@ Public Class MainForm
     End Sub
 
     Private Sub searchButton_Click(sender As Object, e As EventArgs) Handles searchButton.Click
+        'button in the tool strip used to search via inputed product name
 
+        'declaring variable
         Dim searchItem As String
 
+        'turnes inputed search into string upparcase
         searchItem = searchToolStripTextBox.Text.ToUpper
 
+        'turns the calculate button off during search
         calculateButton.Enabled = False
 
+        'sets up the search procedure for the database
         Dim Search = From product In ProductDatabaseDataSet.Product
                      Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
                      Select product
 
         Try
-
+            'if nothing is found for search displays message stating so
             If Search.Count = 0 Then
 
                 MessageBox.Show("Product Name Isn't Found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
-
+                'if search is found then binds the search to be viewed on the interface
                 Me.ProductBindingSource.DataSource = Search.AsDataView
 
             End If
 
-
         Catch ex As Exception
-
+            'if any other error occures message appears. 
             MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
         End Try
@@ -334,19 +371,26 @@ Public Class MainForm
     End Sub
 
     Private Sub refreshButton_Click(sender As Object, e As EventArgs) Handles refreshButton.Click
+        'the refresh button resets the database and interface after doing a search
 
+        'turns on the calculate button since search turn it off
         calculateButton.Enabled = True
 
+        'clears the search textbox 
         searchToolStripTextBox.Text = String.Empty
 
+        'declaring variable
         Dim searchItem As String
 
+        'turnes inputed search into string upparcase
         searchItem = searchToolStripTextBox.Text.ToUpper
 
+        'sets up the search procedure for the database
         Dim Search = From product In ProductDatabaseDataSet.Product
                      Where product.Product_Name.ToUpper Like "*" & searchItem & "*"
                      Select product
 
+        'if search is found then binds the search to be viewed on the interface
         Me.ProductBindingSource.DataSource = Search.AsDataView
 
 
@@ -361,8 +405,8 @@ Public Class MainForm
         'Clears listbox and listview prior to input.
         psListBox.Items.Clear()
         ppListView.Items.Clear()
-        totalTextBox.Text = String.Empty
-        avgTextBox.Text = String.Empty
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
 
         'write it to the interface.
         For Each result In recordsQuery
@@ -380,8 +424,8 @@ Public Class MainForm
         'Clears listbox and listview prior to input.
         psListBox.Items.Clear()
         ppListView.Items.Clear()
-        totalTextBox.Text = String.Empty
-        avgTextBox.Text = String.Empty
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
 
         'write it to the interface.
         For Each result In recordsQuery
@@ -398,8 +442,8 @@ Public Class MainForm
         'Clears listbox and listview prior to input.
         psListBox.Items.Clear()
         ppListView.Items.Clear()
-        totalTextBox.Text = String.Empty
-        avgTextBox.Text = String.Empty
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
 
         'write it to the interface.
         For Each result In recordsQuery
@@ -407,7 +451,6 @@ Public Class MainForm
         Next
     End Sub
 
-    
     Private Sub SortByAscendingOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortByAscendingOrderToolStripMenuItem.Click
         'Sorts product names in ascending order.
         Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
@@ -430,8 +473,8 @@ Public Class MainForm
     Private Sub ProductIDByDescendingOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductIDByDescendingOrderToolStripMenuItem.Click
         'Sorts Product ID by descending order.
         Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
-                          Order By product.Product_ID Descending
-                          Select product
+                           Order By product.Product_ID Descending
+                           Select product
 
         ProductBindingSource.DataSource = recordsQuery.AsDataView
     End Sub
@@ -439,15 +482,16 @@ Public Class MainForm
     Private Sub ProductCostByDescendingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductCostByDescendingToolStripMenuItem.Click
         'Sorts Product ID by descending order.
         Dim recordsQuery = From product In Me.ProductDatabaseDataSet.Product
-                          Order By product.Product_Cost Descending
-                          Select product
+                           Order By product.Product_Cost Descending
+                           Select product
 
         ProductBindingSource.DataSource = recordsQuery.AsDataView
     End Sub
 
 
     Private Sub ProductBrandToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductBrandToolStripMenuItem.Click
-        'Pulls product data from database with energizer brand and counts them.
+        'Pulls product data from database with energizer brand and counts them. *counts as the new feature added to project*
+
         Dim recordsQuery As Integer = Aggregate product In Me.ProductDatabaseDataSet.Product
                                      Where product.Brand.ToUpper = "DURACELL"
                                         Into Count()
