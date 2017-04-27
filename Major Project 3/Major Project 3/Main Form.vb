@@ -20,9 +20,12 @@ Public Class MainForm
         Me.ProductTableAdapter.Fill(Me.ProductDatabaseDataSet.Product)
 
         'Reads vendor, active statues, and classification valid values and loads them into the listbox.
-        For Each record As DataRow In Me.ProductDatabaseDataSet.Product
+        For Each record As DataRow In Me.ProductDatabaseDataSet.Vendor
             vendorIDComboBox.Items.Add(record.Item("Vendor_ID").ToString)
         Next
+
+        'Sorts the items in the combobox
+        vendorIDComboBox.Sorted = True
 
     End Sub
 
@@ -206,21 +209,140 @@ Public Class MainForm
     End Sub
 
     Private Sub calculateButton_Click(sender As Object, e As EventArgs) Handles calculateButton.Click
+        'Decalres totalPurchase variable
+        Dim totalPurchase As Double
+        Dim averagePurchase As Double
+
+        'Finds the Product Name and Product Cost in the Product table and writes them to recordsQuery
         Dim recordsQuery = From product In ProductDatabaseDataSet.Product
                            Where product.Vendor_ID = vendorIDComboBox.SelectedIndex
-                           Select product.Product_Name
+                           Select product.Product_Name, product.YTD_Purchases
                            Distinct
+        ' Set columnar mode
+        ppListView.View = View.Details
 
+        ' Set column header and width
+        ppListView.Columns.Clear()
+        ppListView.Columns.Add("Product name", 250)
+        ppListView.Columns.Add("YTD Purchases", 100)
 
+        ' Remove previous items
+        ppListView.Items.Clear()
+        psListBox.Items.Clear()
 
-        For Each record As DataRow In Me.Customer_DatabaseDataSet.SALESREP
-            sales_Rep_Code_ComboBox.Items.Add(record.Item("Sales_Rep_Id").ToString())
+        'Writes out the Product Name and Product Cost in the listbox.
+        For Each record As DataRow In ProductDatabaseDataSet.Product
 
+            'Sets up an array to hold listview data.
+            Dim tempString(1) As String
+            Dim tempNode As ListViewItem
+            tempString(0) = record.Item("Product_Name").ToString
+            tempString(1) = record.Item("YTD_Purchases").ToString
+            tempNode = New ListViewItem(tempString)
+
+            'Adds items to listview
+            ppListView.Items.Add(tempNode)
+
+            'Addes purchases to eachother to get total purchase
+            totalPurchase += Val(tempNode.SubItems.Item(1).Text)
         Next
 
+        'Calculates the average purchase amount.
+        averagePurchase = totalPurchase / ppListView.Items.Count
+
+        'Writes total purchases in total purchase textbox.
+        totalTextBox.Text = totalPurchase.ToString("c2")
+        'Writes out average purchases in average purchase textbox.
+        avgTextBox.Text = averagePurchase.ToString("c2")
+
+        'Finds the highest YTD purchase and assigns it to the maxPurchase variable.
+        Dim maxPurchase As Double = Aggregate product In ProductDatabaseDataSet.Product
+                                        Select product.YTD_Purchases Into Max()
+
+        'Finds the lowest YTD purchase and assigns it to the minPurchase variable.
+        Dim minPurchase As Double = Aggregate product In ProductDatabaseDataSet.Product
+                                        Select product.YTD_Purchases Into Min()
+
+        'Write out maxPurchase and min purchase to messagebox
+        MessageBox.Show("Maximum purchase amount is " & maxPurchase.ToString("c2") & ". Minimum purchase amount is " & minPurchase.ToString("c2") & ".", "Maximum and Minimum Purchase", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+    End Sub
+
+    Private Sub searchToolStripButton_Click(sender As Object, e As EventArgs) Handles searchToolStripButton.Click
+
+        Dim searchItem As String
+
+        searchItem = searchToolStripTextBox.Text.ToUpper
+
+
+        Dim Search = From product In ProductDatabaseDataSet.Product
+                     Where product.Product_Name.ToUpper Like searchItem & "*"
+                     Select product
+
+        Try
+            Me.ProductBindingSource.DataSource = Search.AsDataView
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message, "Product Name Isn't Found.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+        End Try
+
+
+    End Sub
+
+    Private Sub ProductsSourcesInUSAToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsSourcesInUSAToolStripMenuItem.Click
+        'Finds products sourced in the USA and writes them to recordsQuerry
+        Dim recordsQuery = From vendor In Me.ProductDatabaseDataSet.Vendor, product In Me.ProductDatabaseDataSet.Product
+                           Where product.Vendor_ID = vendor.Vendor_ID And vendor.Country.ToUpper = "USA"
+                           Select product, vendor
+
+        'Clears listbox and listview prior to input.
+        psListBox.Items.Clear()
+        ppListView.Items.Clear()
+        totalTextBox.Text = String.Empty
+        avgTextBox.Text = String.Empty
+
+        'write it to the interface.
         For Each result In recordsQuery
-            result =
-            ppListBox.Items.Add(result)
+            psListBox.Items.Add(result.product.Product_Name & " From " & result.vendor.Vendor_Name)
+        Next
+
+    End Sub
+
+    Private Sub ProductsSourcedInChinaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsSourcedInChinaToolStripMenuItem.Click
+        'Finds products sourced in the USA and writes them to recordsQuerry
+        Dim recordsQuery = From vendor In Me.ProductDatabaseDataSet.Vendor, product In Me.ProductDatabaseDataSet.Product
+                           Where product.Vendor_ID = vendor.Vendor_ID And vendor.Country.ToUpper = "CHI"
+                           Select product, vendor
+
+        'Clears listbox and listview prior to input.
+        psListBox.Items.Clear()
+        ppListView.Items.Clear()
+        totalTextBox.Text = String.Empty
+        avgTextBox.Text = String.Empty
+
+        'write it to the interface.
+        For Each result In recordsQuery
+            psListBox.Items.Add(result.product.Product_Name & " From " & result.vendor.Vendor_Name)
+        Next
+    End Sub
+
+    Private Sub ProductsSourcedInNewYorkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductsSourcedInNewYorkToolStripMenuItem.Click
+        'Finds products sourced in the USA and writes them to recordsQuerry
+        Dim recordsQuery = From vendor In Me.ProductDatabaseDataSet.Vendor, product In Me.ProductDatabaseDataSet.Product
+                           Where product.Vendor_ID = vendor.Vendor_ID And vendor.State.ToUpper = "NY"
+                           Select product, vendor
+
+        'Clears listbox and listview prior to input.
+        psListBox.Items.Clear()
+        ppListView.Items.Clear()
+        totalTextBox.Text = String.Empty
+        avgTextBox.Text = String.Empty
+
+        'write it to the interface.
+        For Each result In recordsQuery
+            psListBox.Items.Add(result.product.Product_Name & " From " & result.vendor.Vendor_Name)
         Next
     End Sub
 End Class
