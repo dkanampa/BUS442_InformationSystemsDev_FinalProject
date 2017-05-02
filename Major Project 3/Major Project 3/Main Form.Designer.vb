@@ -101,6 +101,8 @@ Partial Class MainForm
         Me.vendorNameLabel = New System.Windows.Forms.Label()
         Me.productNameTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.totalLabel = New System.Windows.Forms.Label()
+        Me.avgLabel = New System.Windows.Forms.Label()
         Me.ppListView = New System.Windows.Forms.ListView()
         Me.exitButton = New System.Windows.Forms.Button()
         Me.searchButton = New System.Windows.Forms.Button()
@@ -124,8 +126,6 @@ Partial Class MainForm
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.avgLabel = New System.Windows.Forms.Label()
-        Me.totalLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
@@ -876,6 +876,20 @@ Partial Class MainForm
         Me.GroupBox3.TabIndex = 5
         Me.GroupBox3.TabStop = False
         '
+        'totalLabel
+        '
+        Me.totalLabel.Location = New System.Drawing.Point(214, 443)
+        Me.totalLabel.Name = "totalLabel"
+        Me.totalLabel.Size = New System.Drawing.Size(116, 23)
+        Me.totalLabel.TabIndex = 13
+        '
+        'avgLabel
+        '
+        Me.avgLabel.Location = New System.Drawing.Point(18, 443)
+        Me.avgLabel.Name = "avgLabel"
+        Me.avgLabel.Size = New System.Drawing.Size(116, 23)
+        Me.avgLabel.TabIndex = 12
+        '
         'ppListView
         '
         Me.ppListView.Location = New System.Drawing.Point(18, 255)
@@ -1073,20 +1087,6 @@ Partial Class MainForm
         Me.GroupBox4.Size = New System.Drawing.Size(483, 82)
         Me.GroupBox4.TabIndex = 4
         Me.GroupBox4.TabStop = False
-        '
-        'avgLabel
-        '
-        Me.avgLabel.Location = New System.Drawing.Point(18, 443)
-        Me.avgLabel.Name = "avgLabel"
-        Me.avgLabel.Size = New System.Drawing.Size(116, 23)
-        Me.avgLabel.TabIndex = 12
-        '
-        'totalLabel
-        '
-        Me.totalLabel.Location = New System.Drawing.Point(214, 443)
-        Me.totalLabel.Name = "totalLabel"
-        Me.totalLabel.Size = New System.Drawing.Size(116, 23)
-        Me.totalLabel.TabIndex = 13
         '
         'MainForm
         '

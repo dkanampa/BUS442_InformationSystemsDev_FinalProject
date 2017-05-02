@@ -298,6 +298,12 @@ Public Class MainForm
     End Sub
 
     Private Sub searchToolStripButton_Click(sender As Object, e As EventArgs) Handles searchToolStripButton.Click
+        ' Remove previous items
+        ppListView.Items.Clear()
+        psListBox.Items.Clear()
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
+
         'button in the tool strip used to search via inputed product name
 
         'declaring variable
@@ -335,6 +341,12 @@ Public Class MainForm
     End Sub
 
     Private Sub searchButton_Click(sender As Object, e As EventArgs) Handles searchButton.Click
+        ' Remove previous items
+        ppListView.Items.Clear()
+        psListBox.Items.Clear()
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
+
         'button in the tool strip used to search via inputed product name
 
         'declaring variable
@@ -371,6 +383,12 @@ Public Class MainForm
     End Sub
 
     Private Sub refreshButton_Click(sender As Object, e As EventArgs) Handles refreshButton.Click
+        ' Remove previous items
+        ppListView.Items.Clear()
+        psListBox.Items.Clear()
+        totalLabel.Text = String.Empty
+        avgLabel.Text = String.Empty
+
         'the refresh button resets the database and interface after doing a search
 
         'turns on the calculate button since search turn it off
@@ -497,5 +515,104 @@ Public Class MainForm
                                         Into Count()
 
         MessageBox.Show("The are " & recordsQuery & " products with Duracell brand.")
+    End Sub
+
+    Private Sub productIDTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productIDTextBox.KeyPress
+        'Only allows the use of numbers 0-9and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productUnitPriceTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productUnitPriceTextBox.KeyPress
+        'Only allows the use of numbers 0-9 and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productCostTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productCostTextBox.KeyPress
+        'Dis-allows key entry asside from numbers, periods, and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back AndAlso e.KeyChar <> "." Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub quantityOnHandTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles quantityOnHandTextBox.KeyPress
+        'Only allows the use of numbers 0-9 and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub quantityOnOrderTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles quantityOnOrderTextBox.KeyPress
+        'Only allows the use of numbers 0-9, the period symbol and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productLeadTimeTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productLeadTimeTextBox.KeyPress
+        'Only allows the use of numbers 0-9, the period symbol and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productReorderLevelTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productReorderLevelTextBox.KeyPress
+        'Only allows the use of numbers 0-9, the period symbol and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub discountTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles discountTextBox.KeyPress
+        'Dis-allows key entry asside from numbers, periods, and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back AndAlso e.KeyChar <> "." Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub ytdPurchasesTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ytdPurchasesTextBox.KeyPress
+        'Dis-allows key entry asside from numbers, periods, and backspace.
+        If (e.KeyChar < "0" OrElse e.KeyChar > "9") AndAlso e.KeyChar <> ControlChars.Back AndAlso e.KeyChar <> "." Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub productNameTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productNameTextBox.KeyPress
+        'Code found from: http://stackoverflow.com/questions/12633780/get-a-textbox-to-accept-only-characters-in-vb-net
+        'Disallows entry asside from letters.
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "abcdefghijklmnopqrstuvwxyz"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub productLineTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles productLineTextBox.KeyPress
+        'Code found from: http://stackoverflow.com/questions/12633780/get-a-textbox-to-accept-only-characters-in-vb-net
+        'Disallows entry asside from letters.
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "abcdefghijklmnopqrstuvwxyz"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub brandTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles brandTextBox.KeyPress
+        'Code found from: http://stackoverflow.com/questions/12633780/get-a-textbox-to-accept-only-characters-in-vb-net
+        'Disallows entry asside from letters.
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "abcdefghijklmnopqrstuvwxyz"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
+            End If
+        End If
     End Sub
 End Class
